@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>离泰 · AI研学 产品演示</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;
+  display:flex;justify-content:center;align-items:center;min-height:100vh;
+  padding:20px;
+}
+.container{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;justify-content:center}
+/* Phone Frame */
+.phone-frame{
+  width:390px;height:780px;background:#f5f5f5;
+  border-radius:44px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.4),inset 0 0 0 3px #1a1a2e;
+  position:relative;display:flex;flex-direction:column;
+}
+.status-bar{
+  height:44px;background:#f5f5f5;display:flex;
+  justify-content:space-between;align-items:center;
+  padding:0 28px;font-size:12px;font-weight:600;color:#1a1a2e;
+  flex-shrink:0;
+}
+.notch{width:120px;height:30px;background:#1a1a2e;border-radius:0 0 18px 18px;margin:0 auto;flex-shrink:0}
+.page-header{
+  background:#fff;padding:12px 16px;display:flex;
+  align-items:center;gap:8px;font-weight:600;font-size:16px;
+  border-bottom:1px solid #eee;flex-shrink:0;
+  min-height:44px;
+}
+.page-header .back{cursor:pointer;font-size:18px;color:#2563eb}
+/* Screens area */
+.screens-area{flex:1;overflow:hidden;position:relative}
+.screen{
+  position:absolute;inset:0;overflow-y:auto;
+  padding:16px;background:#f5f5f5;
+  display:none;
+}
+.screen.active{display:block}
+.screen::-webkit-scrollbar{width:0}
+/* Bottom Nav */
+.nav-bar{
+  height:64px;background:#fff;border-top:1px solid #eee;
+  display:flex;justify-content:space-around;align-items:center;
+  padding:0 8px 4px;flex-shrink:0;
+}
+.nav-item{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-size:10px;color:#999;cursor:pointer;transition:all .2s;
+  padding:4px 6px;min-width:52px;
+}
+.nav-item.active{color:#2563eb}
+.nav-item svg{width:22px;height:22px}
+/* Common */
+.btn-primary{
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:#fff;border:none;padding:14px 28px;border-radius:12px;
+  font-size:15px;font-weight:600;cursor:pointer;width:100%;
+  transition:all .2s;
+}
+.btn-primary:active{transform:scale(.98)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+.btn-secondary{
+  background:#f0f5ff;color:#2563eb;border:1.5px solid #2563eb;
+  padding:10px 20px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;
+}
+.btn-sm{padding:8px 16px;font-size:13px;border-radius:8px;width:auto}
+.card{
+  background:#fff;border-radius:14px;padding:14px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);margin-bottom:10px;
+}
+.ai-input{
+  width:100%;padding:12px 14px;border:2px solid #e5e7eb;
+  border-radius:10px;font-size:14px;outline:none;transition:all .2s;
+  resize:none;font-family:inherit;background:#fff;
+}
+.ai-input:focus{border-color:#2563eb}
+.tag{
+  display:inline-block;padding:6px 12px;background:#eef2ff;
+  color:#4f46e5;border-radius:20px;font-size:12px;margin:4px;cursor:pointer;
+  transition:all .2s;border:1px solid transparent;
+}
+.tag.selected{background:#2563eb;color:#fff;border-color:#2563eb}
+/* Loading */
+.loading-dots{display:flex;gap:6px;justify-content:center;padding:32px 0}
+.loading-dots span{width:10px;height:10px;background:#2563eb;border-radius:50%;animation:bounce 1.4s infinite ease-in-out}
+.loading-dots span:nth-child(2){animation-delay:.2s}
+.loading-dots span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+/* Game */
+.game-frame{
+  width:100%;height:280px;background:#0f172a;border-radius:12px;
+  position:relative;overflow:hidden;
+}
+.game-frame canvas{position:absolute;top:0;left:0}
+/* Video */
+.video-preview{
+  width:100%;height:200px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.video-preview .play-btn{
+  width:56px;height:56px;background:rgba(255,255,255,.9);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.video-preview .play-btn::after{content:'';border-left:18px solid #2563eb;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:3px}
+/* Report */
+.report-card{
+  background:#fff;border-radius:14px;padding:16px;
+  box-shadow:0 2px 8px rgba(37,99,235,.08);margin-bottom:10px;
+  border-left:3px solid #2563eb;
+}
+.report-header{
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:#fff;border-radius:14px;padding:20px;margin-bottom:12px;
+}
+.report-badge{
+  display:inline-block;padding:3px 10px;background:rgba(255,255,255,.2);
+  border-radius:10px;font-size:10px;
+}
+/* Coupon */
+.coupon-card{
+  background:linear-gradient(135deg,#fef3c7,#fde68a);
+  border:1.5px dashed #f59e0b;border-radius:12px;padding:12px;
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:10px;cursor:pointer;
+}
+.coupon-card .price{font-size:22px;font-weight:700;color:#d97706}
+.coupon-card .original{font-size:11px;color:#92400e;text-decoration:line-through}
+/* Works grid */
+.works-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.work-item{background:#fff;border-radius:10px;overflow:hidden;cursor:pointer}
+.work-item .thumb{height:90px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.work-item .info{padding:8px;font-size:11px}
+.work-item .game-thumb{background:linear-gradient(135deg,#1e293b,#334155)}
+.work-item .video-thumb{background:linear-gradient(135deg,#1e1b4b,#312e81)}
+/* Mall */
+.mall-item{
+  background:#fff;border-radius:12px;overflow:hidden;
+  margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.05);
+  cursor:pointer;
+}
+.mall-item .cover{
+  height:140px;display:flex;align-items:center;justify-content:center;
+  font-size:48px;position:relative;
+}
+.mall-item .cover-tag{
+  position:absolute;top:8px;left:8px;
+  background:#ef4444;color:#fff;padding:2px 8px;
+  border-radius:4px;font-size:10px;font-weight:600;
+}
+.mall-item .body{padding:12px}
+.mall-item .title{font-weight:600;font-size:14px;margin-bottom:4px}
+.mall-item .sub{font-size:11px;color:#9ca3af;margin-bottom:6px}
+.mall-item .bottom{display:flex;justify-content:space-between;align-items:center}
+.mall-item .m-price{font-size:18px;font-weight:700;color:#ef4444}
+.mall-item .m-price .unit{font-size:12px}
+/* Order */
+.order-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px}
+.order-card .o-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13px}
+.order-card .o-total{font-weight:700;color:#ef4444;font-size:16px}
+/* Commission */
+.commission-card{
+  background:linear-gradient(135deg,#ecfdf5,#d1fae5);
+  border-radius:14px;padding:16px;margin-bottom:10px;
+}
+.commission-card .comm-amount{font-size:36px;font-weight:800;color:#059669}
+.commission-card .comm-label{font-size:12px;color:#059669;opacity:.7}
+.stats-row{display:flex;gap:10px;margin-bottom:10px}
+.stat-card{
+  flex:1;background:#fff;border-radius:12px;padding:14px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+.stat-card .stat-num{font-size:24px;font-weight:700;color:#2563eb}
+.stat-card .stat-label{font-size:11px;color:#9ca3af;margin-top:2px}
+/* Order List */
+.order-item{
+  background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;
+  display:flex;align-items:center;gap:10px;
+}
+.order-item .o-icon{font-size:28px;width:44px;text-align:center}
+.order-item .o-info{flex:1}
+.order-item .o-name{font-size:13px;font-weight:600;margin-bottom:2px}
+.order-item .o-time{font-size:11px;color:#9ca3af}
+.order-item .o-comm{font-size:15px;font-weight:700;color:#059669}
+/* Modal */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  display:none;align-items:center;justify-content:center;z-index:100;
+}
+.modal-overlay.show{display:flex}
+.modal{
+  background:#fff;border-radius:16px;padding:24px;width:320px;
+  text-align:center;animation:slideUp .3s ease;
+}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal .m-icon{font-size:48px;margin-bottom:12px}
+.modal .m-title{font-size:18px;font-weight:700;margin-bottom:6px}
+.modal .m-desc{font-size:13px;color:#6b7280;margin-bottom:16px;line-height:1.6}
+/* Toggle */
+.toggle-group{display:flex;background:#e5e7eb;border-radius:10px;padding:3px;margin-bottom:16px}
+.toggle-btn{
+  flex:1;padding:10px;text-align:center;border-radius:8px;
+  font-size:13px;cursor:pointer;border:none;background:transparent;
+  transition:all .2s;
+}
+.toggle-btn.active{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1);font-weight:600}
+/* Flow dots */
+.flow-dots{display:flex;gap:6px;align-items:center;margin:8px 0}
+.flow-dot{width:8px;height:8px;border-radius:50%;background:#d1d5db;transition:all .3s}
+.flow-dot.active{background:#2563eb}
+.flow-line{flex:1;height:1px;background:#d1d5db;max-width:30px}
+.flow-line.done{background:#2563eb}
+/* Badge */
+.badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:600}
+.badge-green{background:#d1fae5;color:#059669}
+.badge-blue{background:#dbeafe;color:#2563eb}
+.badge-orange{background:#fed7aa;color:#ea580c}
+/* Side Panel */
+.info-panel{
+  width:300px;background:rgba(255,255,255,.05);border-radius:20px;
+  padding:20px;color:#fff;backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);align-self:flex-start;
+  position:sticky;top:20px;
+}
+.info-panel h3{font-size:18px;margin-bottom:5px}
+.info-panel .subtitle{font-size:12px;color:#94a3b8;margin-bottom:16px}
+.info-panel .flow-step{
+  display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;
+  padding:10px;border-radius:10px;transition:all .3s;opacity:.5;
+}
+.info-panel .flow-step.active{opacity:1;background:rgba(37,99,235,.15)}
+.info-panel .step-num{
+  width:26px;height:26px;background:rgba(37,99,235,.3);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;flex-shrink:0;color:#93c5fd;
+}
+.info-panel .flow-step.active .step-num{background:#2563eb;color:#fff}
+.info-panel .step-text{font-size:13px;line-height:1.6}
+.info-panel .step-text b{color:#93c5fd}
+.info-panel .flow-step.active .step-text b{color:#60a5fa}
+/* Toast */
+.toast{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  background:#333;color:#fff;padding:10px 24px;border-radius:20px;
+  font-size:13px;z-index:200;animation:fadeDown .3s ease;
+  display:none;
+}
+@keyframes fadeDown{from{transform:translate(-50%,-10px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+/* Checkmark animation */
+@keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+.checkmark{animation:checkBounce .5s ease}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<div class="container">
+
+  <!-- Phone Frame -->
+  <div class="phone-frame">
+    <div class="notch"></div>
+    <div class="status-bar" style="background:#f5f5f5">
+      <span style="font-size:13px">9:41</span>
+      <span style="font-weight:700;font-size:13px">离泰AI研学</span>
+      <span style="font-size:12px">📶 🔋</span>
+    </div>
+
+    <!-- Page Headers (contextual) -->
+    <div class="page-header" id="page-header" style="display:none">
+      <span class="back" onclick="goBack()">←</span>
+      <span id="page-title">标题</span>
+    </div>
+
+    <!-- Screens -->
+    <div class="screens-area" id="screens-area">
+
+      <!-- Tab 1: 创作 (Home) -->
+      <div class="screen active" id="tab-home">
+        <div style="text-align:center;padding:12px 0">
+          <div style="font-size:44px;margin-bottom:8px">🎓✨</div>
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:2px">AI 研学创作工坊</h2>
+          <p style="font-size:13px;color:#6b7280">用今天学到的知识，创造你的作品</p>
+        </div>
+
+        <div style="display:flex;gap:10px;margin:16px 0">
+          <div class="card" style="flex:1;text-align:center;cursor:pointer" onclick="selectType('game',this)">
+            <div style="font-size:36px;margin-bottom:6px">🎮</div>
+            <div style="font-weight:600;font-size:14px">AI 创作游戏</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:2px">一句话变可玩游戏</div>
+          </div>
+          <div class="card" style="flex:1;text-align:center;cursor:pointer" onclick="selectType('video',this)">
+            <div style="font-size:36px;margin-bottom:6px">🎬</div>
+            <div style="font-weight:600;font-size:14px">AI 创作视频</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:2px">输入主题生视频</div>
+          </div>
+        </div>
+
+        <div style="background:#eef2ff;border-radius:12px;padding:12px;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <span style="font-size:18px">💡</span>
+            <span style="font-size:12px;font-weight:600;color:#4f46e5">今天学了什么？试着创作出来</span>
+          </div>
+          <div style="font-size:12px;color:#6b7280;line-height:1.6">
+            学完三国故事 → 用AI做"草船借箭"射击游戏<br>
+            看完武侯祠建筑 → 用AI生成建筑巡礼短视频
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <button class="btn-primary" onclick="goCreate()" id="btn-start" disabled style="opacity:.4">选择创作类型开始</button>
+        </div>
+
+        <div style="text-align:center;margin-top:20px">
+          <div style="font-size:12px;color:#9ca3af">已有 <b style="color:#2563eb">1,286</b> 件学生AI作品</div>
+        </div>
+      </div>
+
+      <!-- Tab 2: 作品 (Works) -->
+      <div class="screen" id="tab-works">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:32px;height:32px;background:linear-gradient(135deg,#2563eb,#7c3aed);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600">张</div>
+            <div>
+              <div style="font-weight:600;font-size:13px">张小宇</div>
+              <div style="font-size:10px;color:#9ca3af">武侯祠 · 三国文化研学</div>
+            </div>
+          </div>
+          <span class="badge badge-blue">3件作品</span>
+        </div>
+
+        <div class="works-grid" id="works-list"></div>
+
+        <div style="background:#fff;border-radius:12px;padding:12px;margin-top:12px;border:1px solid #fef3c7;display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="showMallDetail('caotang')">
+          <div>
+            <div style="font-weight:600;font-size:13px">🎁 创作达人专属优惠</div>
+            <div style="font-size:11px;color:#92400e">完成今日作品，解锁专属价</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:18px;font-weight:700;color:#d97706">¥169</div>
+            <div style="font-size:10px;color:#92400e;text-decoration:line-through">¥299</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: 报告 (Report) -->
+      <div class="screen" id="tab-report">
+        <div class="report-header">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div>
+              <h3 style="font-size:18px;margin-bottom:4px">张小宇 · 研学报告</h3>
+              <div style="font-size:11px;opacity:.8">武侯祠 · 三国文化研学 | 2026.05.21</div>
+            </div>
+            <span class="report-badge">AI报告</span>
+          </div>
+        </div>
+
+        <div class="report-card">
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">📋 今日学习内容</div>
+          <div style="font-size:13px;color:#374151;line-height:1.8">
+            孩子走访<b>成都武侯祠</b>，系统学习了三国历史文化，深入了解诸葛亮生平、空城计、草船借箭等经典故事。在AI创作环节，孩子用AI工具将当天所学知识转化为互动游戏和短视频作品。
+          </div>
+        </div>
+
+        <div class="report-card" style="border-left-color:#7c3aed">
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">🎨 今日AI作品（2件）</div>
+          <div class="works-grid" id="report-works"></div>
+        </div>
+
+        <div class="report-card" style="border-left-color:#10b981">
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">⭐ 今日评价</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <span class="tag" style="cursor:default">积极参与讨论</span>
+            <span class="tag" style="cursor:default">团队协作优秀</span>
+            <span class="tag" style="cursor:default">AI创意能力突出</span>
+            <span class="tag" style="cursor:default">知识转化力强</span>
+          </div>
+        </div>
+
+        <!-- Promo: same as coupon card in tab-works -->
+        <div class="coupon-card" onclick="showMallDetail('caotang')">
+          <div>
+            <div style="font-weight:600;font-size:13px">杜甫草堂 · 诗圣之旅</div>
+            <div style="font-size:10px;color:#92400e">学完三国，再探诗圣 · 本周末出发剩8席</div>
+          </div>
+          <div style="text-align:right">
+            <div class="price">¥169</div>
+            <div class="original">¥299</div>
+          </div>
+        </div>
+
+        <div class="coupon-card" onclick="showMallDetail('samsung')" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-color:#a78bfa">
+          <div>
+            <div style="font-weight:600;font-size:13px">三星堆 · 古蜀探秘</div>
+            <div style="font-size:10px;color:#6d28d9">新馆特展开放 · 下周六发团</div>
+          </div>
+          <div style="text-align:right">
+            <div class="price" style="color:#7c3aed">¥219</div>
+            <div class="original" style="color:#6d28d9">¥369</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: 商城 (Mall) -->
+      <div class="screen" id="tab-mall">
+        <div style="margin-bottom:12px">
+          <div class="toggle-group">
+            <button class="toggle-btn active" onclick="switchMallTab('all')">全部</button>
+            <button class="toggle-btn" onclick="switchMallTab('museum')">博物馆</button>
+            <button class="toggle-btn" onclick="switchMallTab('nature')">自然探索</button>
+          </div>
+        </div>
+
+        <div id="mall-list">
+          <div class="mall-item" onclick="showMallDetail('caotang')">
+            <div class="cover" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">
+              <span>🏯</span>
+              <span class="cover-tag">🔥 热门</span>
+            </div>
+            <div class="body">
+              <div class="title">杜甫草堂 · 诗圣文化之旅</div>
+              <div class="sub">适用年龄 8-15岁 · 半日研学 · AI创作工坊</div>
+              <div class="bottom">
+                <div class="m-price"><span class="unit">¥</span>169<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥299</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('caotang')">立即报名</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mall-item" onclick="showMallDetail('samsung')">
+            <div class="cover" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">
+              <span>🗿</span>
+              <span class="cover-tag" style="background:#7c3aed">🆕 上新</span>
+            </div>
+            <div class="body">
+              <div class="title">三星堆 · 古蜀文明探秘</div>
+              <div class="sub">适用年龄 10-16岁 · 全日研学 · AI创作+考古体验</div>
+              <div class="bottom">
+                <div class="m-price"><span class="unit">¥</span>219<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥369</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('samsung')">立即报名</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mall-item" onclick="showMallDetail('wuhouci')">
+            <div class="cover" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">
+              <span>⚔️</span>
+            </div>
+            <div class="body">
+              <div class="title">武侯祠 · 三国争霸AI研学</div>
+              <div class="sub">适用年龄 8-14岁 · 半日研学 · AI游戏创作</div>
+              <div class="bottom">
+                <div class="m-price"><span class="unit">¥</span>149<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥259</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('wuhouci')">立即报名</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mall-item" onclick="showMallDetail('nature')">
+            <div class="cover" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">
+              <span>🦋</span>
+            </div>
+            <div class="body">
+              <div class="title">成都自然博物馆 · 恐龙与AI</div>
+              <div class="sub">适用年龄 6-12岁 · 半日研学 · AI视频创作</div>
+              <div class="bottom">
+                <div class="m-price"><span class="unit">¥</span>139<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥219</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('nature')">立即报名</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: 分销 (Commission)  OPC Sales -->
+      <div class="screen" id="tab-commission">
+        <!-- OPC Sales Person View -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">李</div>
+          <div>
+            <div style="font-weight:600;font-size:14px">李姐（OPC认证销售）</div>
+            <div style="font-size:10px;color:#9ca3af">累计服务 47个家庭 · 佣金 ¥4,230</div>
+          </div>
+        </div>
+
+        <div class="commission-card">
+          <div class="comm-label">本月累计佣金（5月）</div>
+          <div class="comm-amount">¥1,260</div>
+          <div style="font-size:12px;color:#059669;margin-top:4px">已完成 6单 · 待结算 2单 ¥340</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-num">47</div>
+            <div class="stat-label">累计订单</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">¥90</div>
+            <div class="stat-label">平均佣金/单</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">89%</div>
+            <div class="stat-label">成交率</div>
+          </div>
+        </div>
+
+        <div style="font-weight:600;font-size:14px;margin-bottom:8px">📋 近期佣金明细</div>
+
+        <div class="order-item">
+          <div class="o-icon">🏯</div>
+          <div class="o-info">
+            <div class="o-name">草堂诗韵研学 · 王先生</div>
+            <div class="o-time">5月21日 14:30 · 已成交</div>
+          </div>
+          <div class="o-comm">+¥80</div>
+        </div>
+
+        <div class="order-item">
+          <div class="o-icon">🗿</div>
+          <div class="o-info">
+            <div class="o-name">三星堆探秘 · 陈女士</div>
+            <div class="o-time">5月20日 10:15 · 已成交</div>
+          </div>
+          <div class="o-comm">+¥105</div>
+        </div>
+
+        <div class="order-item">
+          <div class="o-icon">⚔️</div>
+          <div class="o-info">
+            <div class="o-name">武侯祠三国 · 刘女士</div>
+            <div class="o-time">5月19日 16:42 · 已成交</div>
+          </div>
+          <div class="o-comm">+¥75</div>
+        </div>
+
+        <div class="order-item" style="opacity:.6">
+          <div class="o-icon">🦋</div>
+          <div class="o-info">
+            <div class="o-name">自然博物馆 · 张先生</div>
+            <div class="o-time">5月21日 11:00 · 待确认</div>
+          </div>
+          <span class="badge badge-orange">待结算 ¥70</span>
+        </div>
+
+        <div style="margin-top:16px;background:#eef2ff;border-radius:12px;padding:12px;text-align:center">
+          <div style="font-size:13px;color:#4f46e5;font-weight:600;margin-bottom:4px">💡 分享你的专属链接给家长，下单即赚佣金</div>
+          <div style="font-size:11px;color:#6b7280">每成功推荐一个研学活动，可获订单金额约5%-8%佣金</div>
+          <button class="btn-primary" style="margin-top:10px;font-size:14px" onclick="showToast('专属链接已复制，快去分享吧！')">📋 复制我的专属分享链接</button>
+        </div>
+      </div>
+
+      <!-- Sub-page: Create -->
+      <div class="screen" id="page-create">
+        <div class="toggle-group">
+          <button class="toggle-btn active" onclick="switchCreateType('game')">🎮 AI生成游戏</button>
+          <button class="toggle-btn" onclick="switchCreateType('video')">🎬 AI生成视频</button>
+        </div>
+
+        <div style="margin-bottom:10px">
+          <label style="font-size:12px;color:#6b7280;margin-bottom:4px;display:block;font-weight:500">说出你的创作想法</label>
+          <textarea id="prompt-input" class="ai-input" rows="3" placeholder="例如：帮我做一个三国主题的收集金币小游戏..."></textarea>
+        </div>
+
+        <div id="preset-tags" style="margin-bottom:12px"></div>
+
+        <button class="btn-primary" onclick="startGenerate()">✨ AI 立即生成</button>
+
+        <div id="result-area" style="display:none;margin-top:14px">
+          <div id="loading-area" style="display:none">
+            <div style="text-align:center;color:#6b7280;font-size:12px;margin-bottom:6px">AI 正在创作中...</div>
+            <div class="loading-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div id="done-area" style="display:none">
+            <div style="font-size:12px;color:#10b981;text-align:center;margin-bottom:8px">✅ 创作完成！</div>
+            <div id="game-container"></div>
+            <div id="video-container"></div>
+            <button class="btn-primary" onclick="saveWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-page: Mall Detail -->
+      <div class="screen" id="page-mall-detail">
+        <div id="mall-detail-content"></div>
+      </div>
+
+      <!-- Sub-page: Order Confirm -->
+      <div class="screen" id="page-order">
+        <div id="order-content"></div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="nav-bar">
+      <div class="nav-item active" onclick="switchTab('home')" id="nav-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 9 19 9 19 21 13 21 13 14 11 14 11 21 5 21 5 9 2 9"/></svg>
+        <span>创作</span>
+      </div>
+      <div class="nav-item" onclick="switchTab('works')" id="nav-works">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>作品</span>
+      </div>
+      <div class="nav-item" onclick="switchTab('report')" id="nav-report">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>报告</span>
+      </div>
+      <div class="nav-item" onclick="switchTab('mall')" id="nav-mall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>商城</span>
+      </div>
+      <div class="nav-item" onclick="switchTab('commission')" id="nav-commission">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>分销</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Panel -->
+  <div class="info-panel" id="info-panel">
+    <h3>🎯 离泰AI研学 · 产品演示</h3>
+    <div class="subtitle">手机模拟器 · 点击5个Tab体验完整流程</div>
+
+    <div class="flow-step active" id="flow-1">
+      <span class="step-num">1</span>
+      <span class="step-text"><b>学生AI创作</b> — 输入研学主题，AI生成可玩游戏或短视频</span>
+    </div>
+    <div class="flow-step" id="flow-2">
+      <span class="step-num">2</span>
+      <span class="step-text"><b>作品沉淀</b> — 自动保存至小程序"我的作品"</span>
+    </div>
+    <div class="flow-step" id="flow-3">
+      <span class="step-num">3</span>
+      <span class="step-text"><b>家长报告</b> — 放学后自动推送研学报告含孩子AI作品</span>
+    </div>
+    <div class="flow-step" id="flow-4">
+      <span class="step-num">4</span>
+      <span class="step-text"><b>商城复购</b> — 报告底部推荐其他研学+专属优惠券</span>
+    </div>
+    <div class="flow-step" id="flow-5">
+      <span class="step-num">5</span>
+      <span class="step-text"><b>OPC分销</b> — 导游/宝妈分享专属链接，成交赚佣金</span>
+    </div>
+
+    <div style="margin-top:20px;padding:14px;background:rgba(37,99,235,.12);border-radius:10px">
+      <div style="font-size:12px;color:#93c5fd;margin-bottom:6px;font-weight:600">🛠 技术底座</div>
+      <div style="font-size:11px;color:#94a3b8;line-height:1.8">
+        🎮 AI-Game-Generator API（文字→可玩游戏）<br>
+        🎬 第三方AI视频引擎（文字→短视频）<br>
+        📱 离泰小程序 webview 嵌入展示<br>
+        🔗 全链路数据贯通 + 佣金自动结算
+      </div>
+    </div>
+
+    <div style="margin-top:12px;padding:14px;background:rgba(16,185,129,.12);border-radius:10px">
+      <div style="font-size:12px;color:#6ee7b7;margin-bottom:6px;font-weight:600">💰 商业模式</div>
+      <div style="font-size:11px;color:#94a3b8;line-height:1.8">
+        研学客单价 ¥139-219/人<br>
+        OPC销售佣金 约订单5%-8%<br>
+        复购率提升（作品+报告驱动）<br>
+        30人/场 x 4场/月 x 12月 = 1,440人次/年
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Purchase Modal -->
+<div class="modal-overlay" id="purchase-modal">
+  <div class="modal">
+    <div class="m-icon checkmark" style="color:#10b981">✅</div>
+    <div class="m-title" id="modal-title">报名成功！</div>
+    <div class="m-desc" id="modal-desc">
+      订单编号：LT20260521-0882<br>
+      活动详情已发送至您的手机<br><br>
+      <span style="color:#059669;font-weight:600">推荐人：李姐 ✓</span><br>
+      <span style="font-size:11px;color:#9ca3af">OPC认证销售 · 您的专属顾问</span>
+    </div>
+    <button class="btn-primary" onclick="closeModal()" style="margin-top:4px">好的</button>
+  </div>
+</div>
+
+<script>
+// =================== State ===================
+let currentType = 'game';
+let currentTab = 'home';
+let currentPage = null; // sub-page name
+let generated = false;
+let savedWorks = [
+  {type:'game',title:'三国空城计躲避',icon:'🎮'},
+  {type:'video',title:'草船借箭故事',icon:'🎬'}
+];
+let gameAnimation = null;
+let gameState = null;
+let pageHistory = [];
+
+// =================== Tab Navigation ===================
+function switchTab(tab){
+  if(currentPage){ hideSubPage(); }
+  currentTab = tab;
+  document.querySelectorAll('.screen[id^="tab-"]').forEach(s=>s.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('nav-'+tab).classList.add('active');
+  document.getElementById('page-header').style.display = 'none';
+
+  if(tab==='works') renderWorks();
+  if(tab==='report') renderReportWorks();
+
+  // Update flow
+  const flowMap = {home:1, works:2, report:3, mall:4, commission:5};
+  updateFlow(flowMap[tab]||1);
+}
+
+function showSubPage(name, title){
+  document.querySelectorAll('.screen[id^="tab-"]').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.screen[id="page-'+name+'"]').forEach(s=>s.classList.add('active'));
+  document.getElementById('page-header').style.display = 'flex';
+  document.getElementById('page-title').textContent = title;
+  pageHistory.push(currentTab);
+  currentPage = name;
+}
+
+function hideSubPage(){
+  if(!currentPage) return;
+  document.querySelectorAll('.screen[id="page-'+currentPage+'"]').forEach(s=>s.classList.remove('active'));
+  currentPage = null;
+  const prev = pageHistory.pop();
+  if(prev) switchTab(prev);
+}
+
+function goBack(){
+  if(currentPage) hideSubPage();
+}
+
+// =================== Type Selection ===================
+function selectType(type, el){
+  currentType = type;
+  const btn = document.getElementById('btn-start');
+  btn.style.opacity = '1';
+  btn.disabled = false;
+  btn.textContent = type==='game' ? '🎮 开始AI创作游戏' : '🎬 开始AI创作视频';
+  document.querySelectorAll('#tab-home .card').forEach(c=>c.style.outline='none');
+  el.style.outline='2px solid #2563eb';
+}
+
+function goCreate(){
+  if(!currentType) return;
+  showSubPage('create', currentType==='game'?'AI创作游戏':'AI创作视频');
+  document.getElementById('result-area').style.display='none';
+  document.getElementById('game-container').innerHTML='';
+  document.getElementById('video-container').innerHTML='';
+  generated = false;
+  resetCreateTags();
+  document.getElementById('prompt-input').value = '';
+  updateFlow(1);
+}
+
+function switchCreateType(type){
+  currentType = type;
+  document.querySelectorAll('#page-create .toggle-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.includes(type==='game'?'游戏':'视频'));
+  });
+  document.getElementById('result-area').style.display='none';
+  document.getElementById('game-container').innerHTML='';
+  document.getElementById('video-container').innerHTML='';
+  generated = false;
+  resetCreateTags();
+  document.getElementById('prompt-input').value = '';
+}
+
+function resetCreateTags(){
+  const tags = document.getElementById('preset-tags');
+  if(currentType==='game'){
+    tags.innerHTML = '<span class="tag" onclick="setTag(\'三国空城计躲避游戏\',this)">三国空城计躲避</span><span class="tag" onclick="setTag(\'草船借箭射击游戏\',this)">草船借箭射击</span><span class="tag" onclick="setTag(\'蜀道难闯关游戏\',this)">蜀道难闯关</span>';
+    document.getElementById('prompt-input').placeholder = '例如：帮我做一个三国主题的收集金币小游戏...';
+  } else {
+    tags.innerHTML = '<span class="tag" onclick="setTag(\'诸葛亮北伐30秒故事\',this)">诸葛亮北伐</span><span class="tag" onclick="setTag(\'三国赤壁之战动画\',this)">赤壁之战</span><span class="tag" onclick="setTag(\'武侯祠建筑巡礼\',this)">武侯祠巡礼</span>';
+    document.getElementById('prompt-input').placeholder = '例如：帮我生成一段30秒关于草船借箭的短视频...';
+  }
+}
+
+function setTag(text, el){
+  document.getElementById('prompt-input').value = text;
+  document.querySelectorAll('#preset-tags .tag').forEach(t=>t.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// =================== Generate ===================
+function startGenerate(){
+  const prompt = document.getElementById('prompt-input').value.trim();
+  if(!prompt) return;
+  const resultArea = document.getElementById('result-area');
+  const loadingArea = document.getElementById('loading-area');
+  const doneArea = document.getElementById('done-area');
+  resultArea.style.display='block';
+  loadingArea.style.display='block';
+  doneArea.style.display='none';
+  if(gameAnimation){cancelAnimationFrame(gameAnimation);gameAnimation=null}
+  updateFlow(1);
+
+  setTimeout(()=>{
+    loadingArea.style.display='none';
+    doneArea.style.display='block';
+    generated = true;
+    updateFlow(2);
+    if(currentType==='game') renderGame();
+    else renderVideo();
+  }, 2200);
+}
+
+function renderGame(){
+  const c = document.getElementById('game-container');
+  document.getElementById('video-container').innerHTML='';
+  c.innerHTML = `<div class="game-frame" style="position:relative">
+    <div style="position:absolute;top:8px;left:12px;z-index:5;color:#fbbf24;font-size:12px;font-weight:600">⭐ 0</div>
+    <canvas id="game-canvas" width="358" height="280"></canvas>
+    <div style="position:absolute;bottom:8px;width:100%;text-align:center;color:#94a3b8;font-size:10px;z-index:5">← → 移动 · 空格发射 · 点击重开</div>
+  </div>`;
+  setTimeout(initGame, 150);
+}
+
+function renderVideo(){
+  const c = document.getElementById('video-container');
+  document.getElementById('game-container').innerHTML='';
+  c.innerHTML = `<div class="video-preview" style="background:linear-gradient(135deg,#1e1b4b,#312e81,#4c1d95);height:220px">
+    <div style="position:absolute;top:8%;left:8%;font-size:50px;opacity:.25">🏯</div>
+    <div style="position:absolute;top:30%;right:15%;font-size:36px;opacity:.2">⚔️</div>
+    <div style="position:absolute;bottom:20%;left:20%;font-size:60px;opacity:.12">🐴</div>
+    <div style="position:relative;z-index:2;text-align:center">
+      <div class="play-btn" onclick="simPlayVideo(this)" style="margin-bottom:10px"></div>
+      <div style="color:#fff;font-size:13px;font-weight:600">${document.getElementById('prompt-input').value.substring(0,14)}...</div>
+      <div style="color:#93c5fd;font-size:10px;margin-top:3px">⏱ 30秒 · AI生成</div>
+    </div>
+  </div>`;
+}
+
+function simPlayVideo(el){
+  const p = el.parentElement.parentElement;
+  el.style.opacity='0';
+  setTimeout(()=>{
+    p.innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000">
+      <div style="text-align:center;color:#fff;animation:fadeInOut 2s infinite">
+        <div style="font-size:36px">🎬</div>
+        <div style="font-size:13px;margin-top:6px">视频渲染中...</div>
+        <div style="font-size:10px;color:#93c5fd">AI 正在生成画面</div>
+      </div>
+    </div>`;
+  },300);
+}
+
+// =================== Game Engine ===================
+function initGame(){
+  const canvas = document.getElementById('game-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  gameState = {
+    player:{x:175,y:240,w:28,h:28,speed:4},
+    enemies:[],coins:[],bullets:[],
+    score:0,lives:3,enemyTimer:0,coinTimer:0,
+    keys:{left:false,right:false,space:false},gameOver:false
+  };
+  canvas.addEventListener('click',()=>{if(gameState.gameOver)resetGame()});
+  function hk(e,down){
+    if(e.key==='ArrowLeft'||e.key==='a') gameState.keys.left=down;
+    if(e.key==='ArrowRight'||e.key==='d') gameState.keys.right=down;
+    if(e.key===' '){e.preventDefault();if(down&&!gameState.gameOver)shoot()}
+  }
+  document.addEventListener('keydown',e=>hk(e,true));
+  document.addEventListener('keyup',e=>hk(e,false));
+  function shoot(){if(gameState.bullets.length<3) gameState.bullets.push({x:gameState.player.x+12,y:gameState.player.y,w:4,h:10,speed:6})}
+  function se(){if(!gameState.gameOver)gameState.enemies.push({x:Math.random()*336,y:-28,w:24,h:24,speed:1+Math.random()*2})}
+  function sc(){if(!gameState.gameOver)gameState.coins.push({x:Math.random()*340,y:-18,r:7,speed:1.5})}
+  function resetGame(){
+    gameState.player.x=175;gameState.player.y=240;
+    gameState.enemies=[];gameState.coins=[];gameState.bullets=[];
+    gameState.score=0;gameState.lives=3;gameState.gameOver=false;
+    gameState.enemyTimer=0;gameState.coinTimer=0;
+    gameState.keys={left:false,right:false,space:false};
+    gameLoop();
+  }
+  function update(){
+    if(gameState.gameOver)return;
+    const p=gameState.player;
+    if(gameState.keys.left)p.x-=p.speed;
+    if(gameState.keys.right)p.x+=p.speed;
+    p.x=Math.max(0,Math.min(330,p.x));
+    gameState.enemyTimer++;gameState.coinTimer++;
+    if(gameState.enemyTimer>38){se();gameState.enemyTimer=0}
+    if(gameState.coinTimer>28){sc();gameState.coinTimer=0}
+    for(let e of gameState.enemies)e.y+=e.speed;
+    for(let c of gameState.coins)c.y+=c.speed;
+    for(let b of gameState.bullets)b.y-=b.speed;
+    for(let i=gameState.bullets.length-1;i>=0;i--){
+      for(let j=gameState.enemies.length-1;j>=0;j--){
+        const b=gameState.bullets[i],e=gameState.enemies[j];
+        if(b.x<e.x+e.w&&b.x+b.w>e.x&&b.y<e.y+e.h&&b.y+b.h>e.y){
+          gameState.bullets.splice(i,1);gameState.enemies.splice(j,1);gameState.score+=10;break;
+        }
+      }
+    }
+    for(let j=gameState.enemies.length-1;j>=0;j--){
+      const e=gameState.enemies[j];
+      if(p.x<e.x+e.w&&p.x+p.w>e.x&&p.y<e.y+e.h&&p.y+p.h>e.y){
+        gameState.enemies.splice(j,1);gameState.lives--;
+        if(gameState.lives<=0)gameState.gameOver=true;
+      }
+    }
+    for(let j=gameState.coins.length-1;j>=0;j--){
+      const c=gameState.coins[j];
+      const dx=p.x+14-c.x,dy=p.y+14-c.y;
+      if(Math.sqrt(dx*dx+dy*dy)<c.r+14){gameState.coins.splice(j,1);gameState.score+=5}
+    }
+    gameState.enemies=gameState.enemies.filter(e=>e.y<300);
+    gameState.coins=gameState.coins.filter(c=>c.y<300);
+    gameState.bullets=gameState.bullets.filter(b=>b.y>-20);
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#0f172a';ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='rgba(255,255,255,.3)';
+    for(let i=0;i<18;i++){const sx=(i*173+Date.now()*0.01)%358,sy=(i*89+50)%280;ctx.fillRect(sx,sy,2,2)}
+    ctx.fillStyle='#3b82f6';ctx.fillRect(gameState.player.x,gameState.player.y,gameState.player.w,gameState.player.h);
+    ctx.fillStyle='#60a5fa';ctx.fillRect(gameState.player.x+5,gameState.player.y-5,4,4);ctx.fillRect(gameState.player.x+19,gameState.player.y-5,4,4);
+    ctx.fillStyle='#fff';ctx.fillRect(gameState.player.x+7,gameState.player.y+7,5,5);ctx.fillRect(gameState.player.x+16,gameState.player.y+7,5,5);
+    ctx.fillStyle='#1e293b';ctx.fillRect(gameState.player.x+9,gameState.player.y+8,2,2);ctx.fillRect(gameState.player.x+18,gameState.player.y+8,2,2);
+    for(let e of gameState.enemies){ctx.fillStyle='#ef4444';ctx.fillRect(e.x,e.y,e.w,e.h);ctx.fillStyle='#fca5a5';ctx.fillRect(e.x+3,e.y+3,5,5);ctx.fillRect(e.x+16,e.y+3,5,5)}
+    for(let c of gameState.coins){ctx.fillStyle='#fbbf24';ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fef3c7';ctx.beginPath();ctx.arc(c.x-2,c.y-2,c.r/3,0,Math.PI*2);ctx.fill()}
+    ctx.fillStyle='#a78bfa';for(let b of gameState.bullets)ctx.fillRect(b.x,b.y,b.w,b.h);
+    ctx.fillStyle='#fbbf24';ctx.font='bold 14px sans-serif';ctx.fillText('⭐ '+gameState.score,10,20);
+    ctx.fillStyle='#ef4444';ctx.fillText('❤️ '.repeat(gameState.lives),300,20);
+    if(gameState.gameOver){
+      ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fff';ctx.font='bold 22px sans-serif';ctx.textAlign='center';
+      ctx.fillText('游戏结束',canvas.width/2,canvas.height/2-8);
+      ctx.font='13px sans-serif';ctx.fillText('得分:'+gameState.score+' · 点击重新开始',canvas.width/2,canvas.height/2+18);
+      ctx.textAlign='start';
+    }
+  }
+  function gameLoop(){update();draw();gameAnimation=requestAnimationFrame(gameLoop)}
+  gameLoop();
+}
+
+// =================== Save & Works ===================
+function saveWork(){
+  const prompt = document.getElementById('prompt-input').value.trim();
+  savedWorks.unshift({type:currentType,title:prompt.substring(0,10)+(prompt.length>10?'...':''),icon:currentType==='game'?'🎮':'🎬'});
+  updateFlow(3);
+  hideSubPage();
+  switchTab('works');
+  showToast('作品已保存！家长将收到研学报告推送');
+}
+
+function renderWorks(){
+  const list = document.getElementById('works-list');
+  if(!list) return;
+  list.innerHTML = savedWorks.map((w,i)=>`
+    <div class="work-item" onclick="viewWork(${i})">
+      <div class="thumb ${w.type==='game'?'game-thumb':'video-thumb'}">
+        <span style="font-size:${w.type==='game'?'32px':'30px'}">${w.icon}</span>
+      </div>
+      <div class="info">
+        <div style="font-weight:500;font-size:12px">${w.title}</div>
+        <div style="color:#9ca3af;font-size:10px">${w.type==='game'?'可玩游戏':'视频作品'} · 今日</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderReportWorks(){
+  const list = document.getElementById('report-works');
+  if(!list) return;
+  list.innerHTML = savedWorks.map(w=>`
+    <div class="work-item">
+      <div class="thumb ${w.type==='game'?'game-thumb':'video-thumb'}">
+        <span style="font-size:28px">${w.icon}</span>
+      </div>
+      <div class="info">
+        <div style="font-weight:500;font-size:11px">${w.title}</div>
+        <div style="color:#9ca3af;font-size:10px">${w.type==='game'?'游戏':'视频'}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function viewWork(i){showToast(savedWorks[i].title+' · 正式版可在线游玩/观看')}
+
+// =================== Mall ===================
+function switchMallTab(cat){
+  document.querySelectorAll('#tab-mall .toggle-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+const mallProducts = {
+  caotang: {icon:'🏯',title:'杜甫草堂 · 诗圣文化之旅',age:'8-15岁',duration:'半日研学',price:169,orig:299,bg:'linear-gradient(135deg,#f0fdf4,#dcfce7)',desc:'跟随诗圣足迹，在草堂中体验AI诗词创作。学生将用AI将杜甫名句生成短视频，并可制作"诗圣闯关"互动小游戏。'},
+  samsung: {icon:'🗿',title:'三星堆 · 古蜀文明探秘',age:'10-16岁',duration:'全日研学',price:219,orig:369,bg:'linear-gradient(135deg,#ede9fe,#ddd6fe)',desc:'探秘三星堆新馆，AI还原古蜀祭祀场景。学生可用AI生成"青铜面具遗迹"探索游戏，或制作古蜀文明30秒短片。含午餐+考古体验。'},
+  wuhouci: {icon:'⚔️',title:'武侯祠 · 三国争霸AI研学',age:'8-14岁',duration:'半日研学',price:149,orig:259,bg:'linear-gradient(135deg,#fef3c7,#fde68a)',desc:'走进武侯祠，穿梭三国。学生用AI将空城计、草船借箭等故事变成可玩游戏，还能生成三国人物短视频。在创作中理解历史。'},
+  nature: {icon:'🦋',title:'自然博物馆 · 恐龙与AI',age:'6-12岁',duration:'半日研学',price:139,orig:219,bg:'linear-gradient(135deg,#dbeafe,#bfdbfe)',desc:'恐龙为什么会灭绝？用AI来做科普视频！学生可在自然博物馆边看化石边用AI生成恐龙主题短视频或互动问答游戏。'}
+};
+
+function showMallDetail(key){
+  const p = mallProducts[key];
+  const container = document.getElementById('mall-detail-content');
+  container.innerHTML = `
+    <div style="background:${p.bg};height:160px;display:flex;align-items:center;justify-content:center;font-size:64px;border-radius:14px;margin-bottom:14px">${p.icon}</div>
+    <div style="font-weight:700;font-size:18px;margin-bottom:4px">${p.title}</div>
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <span class="badge badge-blue">${p.age}</span>
+      <span class="badge badge-green">${p.duration}</span>
+      <span class="badge badge-blue">AI创作工坊</span>
+    </div>
+    <div style="font-size:13px;color:#374151;line-height:1.7;margin-bottom:16px">${p.desc}</div>
+    <div class="card">
+      <div style="font-weight:600;font-size:13px;margin-bottom:8px">📋 课程安排</div>
+      <div style="font-size:12px;color:#6b7280;line-height:1.8">
+        上午：导师带领实地研学（90分钟）<br>
+        下午：AI创作工坊（60分钟）<br>
+        &nbsp;&nbsp;• AI游戏创作 / AI视频制作<br>
+        &nbsp;&nbsp;• 作品保存到小程序<br>
+        放学：家长收到研学报告+作品展示
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+      <div>
+        <div style="font-size:24px;font-weight:700;color:#ef4444">¥${p.price}</div>
+        <div style="font-size:12px;color:#9ca3af;text-decoration:line-through">¥${p.orig}</div>
+      </div>
+      <button class="btn-primary" style="width:160px" onclick="buyNow('${key}')">立即报名</button>
+    </div>
+  `;
+  showSubPage('mall-detail', '活动详情');
+  updateFlow(4);
+}
+
+function buyNow(key){
+  const p = mallProducts[key];
+  showSubPage('order', '确认订单');
+  document.getElementById('order-content').innerHTML = `
+    <div class="order-card">
+      <div style="font-weight:600;font-size:15px;margin-bottom:10px">📋 订单确认</div>
+      <div class="o-row"><span>活动</span><span>${p.title}</span></div>
+      <div class="o-row"><span>学生</span><span>张小宇 · 10岁</span></div>
+      <div class="o-row"><span>日期</span><span>2026年5月24日（周六）</span></div>
+      <div class="o-row"><span>推荐人</span><span style="color:#059669">李姐（OPC认证销售）</span></div>
+      <div style="border-top:1px dashed #e5e7eb;margin:8px 0"></div>
+      <div class="o-row"><span>原价</span><span style="text-decoration:line-through;color:#9ca3af">¥${p.orig}</span></div>
+      <div class="o-row"><span>专属优惠</span><span style="color:#10b981">-¥${p.orig-p.price}</span></div>
+      <div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>
+      <div class="o-row"><span>应付</span><span class="o-total">¥${p.price}</span></div>
+    </div>
+    <div style="background:#f0fdf4;border-radius:10px;padding:12px;font-size:12px;color:#059669;margin-bottom:12px">
+      ✅ 推荐人<b>李姐</b>将获得佣金 <b>¥${Math.round(p.price*0.08)}</b>（约8%）
+    </div>
+    <button class="btn-primary" onclick="confirmOrder('${key}')">💳 确认支付 ¥${p.price}</button>
+  `;
+}
+
+function confirmOrder(key){
+  document.getElementById('purchase-modal').classList.add('show');
+  document.getElementById('modal-title').textContent = '报名成功！';
+  const p = mallProducts[key];
+  document.getElementById('modal-desc').innerHTML = `
+    订单编号：LT20260521-${Math.floor(Math.random()*9000+1000)}<br>
+    ${p.title}<br><br>
+    <span style="color:#059669;font-weight:600">推荐人：李姐 ✓</span><br>
+    <span style="font-size:11px;color:#9ca3af">佣金 ¥${Math.round(p.price*0.08)} 已计入</span>
+  `;
+  updateFlow(5);
+}
+
+function closeModal(){
+  document.getElementById('purchase-modal').classList.remove('show');
+  hideSubPage();
+  switchTab('mall');
+  showToast('报名成功！佣金已计入推荐人账户');
+}
+
+// =================== Flow & Toast ===================
+function updateFlow(n){
+  for(let i=1;i<=5;i++){
+    const el = document.getElementById('flow-'+i);
+    if(el) el.classList.toggle('active', i<=n);
+  }
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(()=>{t.style.display='none'},2000);
+}
+
+// =================== Init ===================
+renderWorks();
+renderReportWorks();
+</script>
+</body>
+</html>
