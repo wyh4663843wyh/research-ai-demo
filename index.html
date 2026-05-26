@@ -284,6 +284,119 @@ body{
 /* Checkmark animation */
 @keyframes checkBounce{0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
 .checkmark{animation:checkBounce .5s ease}
+/* ========== Partner B-End ========== */
+.partner-toggle{
+  display:flex;background:#e5e7eb;border-radius:12px;padding:4px;margin-bottom:14px
+}
+.partner-toggle-btn{
+  flex:1;padding:10px 8px;text-align:center;border-radius:10px;font-size:13px;font-weight:500;
+  cursor:pointer;border:none;background:transparent;transition:all .2s;color:#6b7280
+}
+.partner-toggle-btn.active{background:#fff;color:#1f2937;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.partner-toggle-btn .badge-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-left:4px}
+.partner-toggle-btn .badge-dot.c{background:#2563eb}
+.partner-toggle-btn .badge-dot.b{background:#7c3aed}
+/* Certification form */
+.cert-form{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.05);margin-bottom:14px}
+.cert-form .field-label{font-size:12px;color:#6b7280;margin-bottom:4px;font-weight:500}
+.cert-form input,.cert-form select{
+  width:100%;padding:10px 12px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;
+  margin-bottom:12px;outline:none;transition:border-color .2s;background:#fafafa
+}
+.cert-form input:focus,.cert-form select:focus{border-color:#7c3aed}
+.cert-status{
+  display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#fef3c7,#fde68a);
+  border-radius:12px;padding:14px;margin-bottom:14px
+}
+.cert-status.verified{background:linear-gradient(135deg,#ecfdf5,#d1fae5)}
+.cert-status-icon{font-size:32px;flex-shrink:0}
+/* Partner tools list */
+.tool-card{
+  background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05)
+}
+.tool-card:active{transform:scale(.98);background:#f8fafc}
+.tool-card .tool-icon{font-size:32px;flex-shrink:0}
+.tool-card .tool-info{flex:1}
+.tool-card .tool-info .tool-name{font-size:14px;font-weight:600;margin-bottom:2px}
+.tool-card .tool-info .tool-desc{font-size:11px;color:#9ca3af}
+.tool-card .tool-arrow{color:#d1d5db;font-size:18px}
+/* QR Code section */
+.qr-section{
+  background:#fff;border-radius:14px;padding:20px;text-align:center;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);margin-bottom:10px
+}
+.qr-box{
+  width:140px;height:140px;background:#f8fafc;border:2px dashed #d1d5db;
+  border-radius:12px;margin:12px auto;display:flex;align-items:center;justify-content:center;
+  font-size:80px;position:relative;overflow:hidden
+}
+.qr-box::after{content:'离泰研学';position:absolute;bottom:6px;font-size:8px;color:#9ca3af;letter-spacing:2px}
+/* Client list */
+.client-item{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;
+  border-radius:10px;margin-bottom:6px;box-shadow:0 1px 2px rgba(0,0,0,.03)
+}
+.client-item .c-avatar{
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0
+}
+.client-item .c-info{flex:1;min-width:0}
+.client-item .c-info .c-name{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.client-item .c-info .c-time{font-size:10px;color:#9ca3af}
+.client-item .c-status{font-size:11px;flex-shrink:0}
+/* Project card */
+.project-card{
+  background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);border-left:3px solid #7c3aed
+}
+.project-card .pj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.project-card .pj-name{font-weight:600;font-size:14px}
+.project-card .pj-date{font-size:10px;color:#9ca3af}
+.project-card .pj-stats{display:flex;gap:16px;font-size:11px;color:#6b7280}
+.project-card .pj-stats b{color:#1f2937}
+/* Project filter pills */
+.filter-pills{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;scrollbar-width:none}
+.filter-pills::-webkit-scrollbar{display:none}
+.filter-pill{
+  padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;white-space:nowrap;
+  border:1.5px solid #e5e7eb;background:#fff;transition:all .2s;flex-shrink:0
+}
+.filter-pill.active{background:#7c3aed;color:#fff;border-color:#7c3aed}
+/* Performance mini chart */
+.mini-bar-row{display:flex;align-items:flex-end;gap:4px;height:80px;margin:10px 0;padding:0 4px}
+.mini-bar{flex:1;background:linear-gradient(0deg,#7c3aed,#a78bfa);border-radius:3px 3px 0 0;min-width:16px;transition:all .3s;position:relative}
+.mini-bar .bar-label{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:#9ca3af;white-space:nowrap}
+.mini-bar .bar-val{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:9px;color:#7c3aed;font-weight:600;white-space:nowrap}
+/* Settlement card */
+.settle-card{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-radius:14px;padding:18px;margin-bottom:10px}
+.settle-card .settle-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.settle-card .settle-label{font-size:12px;color:#7c3aed}
+.settle-card .settle-amount{font-size:32px;font-weight:800;color:#5b21b6}
+/* Withdrawal modal */
+.withdraw-form{text-align:left}
+.withdraw-form input{
+  width:100%;padding:10px 12px;border:2px solid #e5e7eb;border-radius:10px;
+  font-size:14px;margin:8px 0 14px;outline:none;transition:border-color .2s
+}
+.withdraw-form input:focus{border-color:#2563eb}
+/* Sub-page header for partner subpages */
+.partner-sub-header{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px
+}
+.partner-sub-header .back-btn{
+  width:32px;height:32px;background:#e5e7eb;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;cursor:pointer;font-size:14px
+}
+.partner-sub-header .sub-title{font-size:15px;font-weight:600}
+/* Tier badge */
+.tier-badge{
+  display:inline-block;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700
+}
+.tier-badge.gold{background:#fef3c7;color:#d97706}
+.tier-badge.silver{background:#e5e7eb;color:#6b7280}
+.tier-badge.bronze{background:#fed7aa;color:#ea580c}
 </style>
 </head>
 <body>
@@ -507,80 +620,192 @@ body{
         </div>
       </div>
 
-      <!-- Tab 5: 分销 (Commission)  OPC Sales -->
+      <!-- Tab 5: 分销 (Commission) -->
       <div class="screen" id="tab-commission">
-        <!-- OPC Sales Person View -->
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-          <div style="width:36px;height:36px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">李</div>
-          <div>
-            <div style="font-weight:600;font-size:14px">李姐（OPC认证销售）</div>
-            <div style="font-size:10px;color:#9ca3af">累计服务 47个家庭 · 佣金 ¥4,230</div>
+        <!-- Role Toggle -->
+        <div class="partner-toggle" id="partner-toggle">
+          <button class="partner-toggle-btn active" onclick="switchPartnerRole('c')" id="role-c">
+            🧑 我是普通用户 <span class="badge-dot c"></span>
+          </button>
+          <button class="partner-toggle-btn" onclick="switchPartnerRole('b')" id="role-b">
+            🏢 我是合作伙伴 <span class="badge-dot b"></span>
+          </button>
+        </div>
+
+        <!-- ===== C端视图 ===== -->
+        <div id="partner-view-c">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">李</div>
+            <div>
+              <div style="font-weight:600;font-size:14px">李姐（OPC认证销售）</div>
+              <div style="font-size:10px;color:#9ca3af">累计服务 47个家庭 · 佣金 ¥4,230</div>
+            </div>
+          </div>
+
+          <div class="commission-card">
+            <div class="comm-label">本月累计佣金（5月）</div>
+            <div class="comm-amount">¥1,260</div>
+            <div style="font-size:12px;color:#059669;margin-top:4px">已完成 6单 · 待结算 2单 ¥340</div>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-card"><div class="stat-num">47</div><div class="stat-label">累计订单</div></div>
+            <div class="stat-card"><div class="stat-num">¥90</div><div class="stat-label">平均佣金/单</div></div>
+            <div class="stat-card"><div class="stat-num">89%</div><div class="stat-label">成交率</div></div>
+          </div>
+
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">📋 近期佣金明细</div>
+          <div class="order-item" style="opacity:1"><div class="o-icon">🏯</div><div class="o-info"><div class="o-name">草堂诗韵研学 · 王先生</div><div class="o-time">5月21日 14:30 · 已成交</div></div><div class="o-comm">+¥80</div></div>
+          <div class="order-item" style="opacity:1"><div class="o-icon">🗿</div><div class="o-info"><div class="o-name">三星堆探秘 · 陈女士</div><div class="o-time">5月20日 10:15 · 已成交</div></div><div class="o-comm">+¥105</div></div>
+          <div class="order-item" style="opacity:1"><div class="o-icon">⚔️</div><div class="o-info"><div class="o-name">武侯祠三国 · 刘女士</div><div class="o-time">5月19日 16:42 · 已成交</div></div><div class="o-comm">+¥75</div></div>
+          <div class="order-item" style="opacity:.6"><div class="o-icon">🦋</div><div class="o-info"><div class="o-name">自然博物馆 · 张先生</div><div class="o-time">5月21日 11:00 · 待确认</div></div><span class="badge badge-orange">待结算 ¥70</span></div>
+
+          <div style="margin-top:16px;background:#eef2ff;border-radius:12px;padding:12px;text-align:center">
+            <div style="font-size:13px;color:#4f46e5;font-weight:600;margin-bottom:4px">💡 分享你的专属链接给家长，下单即赚佣金</div>
+            <div style="font-size:11px;color:#6b7280">每成功推荐一个研学活动，可获订单金额约5%-8%佣金</div>
+            <button class="btn-primary" style="margin-top:10px;font-size:14px" onclick="showToast('专属链接已复制，快去分享吧！')">📋 复制我的专属分享链接</button>
+          </div>
+
+          <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af">
+            💼 你是导游/渠道方？<span style="color:#7c3aed;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('b')">切换为合作伙伴</span>
           </div>
         </div>
 
-        <div class="commission-card">
-          <div class="comm-label">本月累计佣金（5月）</div>
-          <div class="comm-amount">¥1,260</div>
-          <div style="font-size:12px;color:#059669;margin-top:4px">已完成 6单 · 待结算 2单 ¥340</div>
-        </div>
+        <!-- ===== B端视图 ===== -->
+        <div id="partner-view-b" style="display:none">
+          <!-- Not certified yet -->
+          <div id="partner-not-certified">
+            <div style="text-align:center;padding:16px 0">
+              <div style="font-size:48px;margin-bottom:8px">🏨</div>
+              <div style="font-weight:600;font-size:16px;margin-bottom:4px">成为合作伙伴</div>
+              <div style="font-size:12px;color:#6b7280">认证后可获取专属工具和更高佣金</div>
+            </div>
 
-        <div class="stats-row">
-          <div class="stat-card">
-            <div class="stat-num">47</div>
-            <div class="stat-label">累计订单</div>
+            <div class="cert-form">
+              <div class="field-label">姓名</div>
+              <input type="text" id="cert-name" placeholder="请输入真实姓名">
+              <div class="field-label">手机号</div>
+              <input type="text" id="cert-phone" placeholder="请输入手机号">
+              <div class="field-label">身份类型</div>
+              <select id="cert-type">
+                <option value="guide">导游/领队</option>
+                <option value="agency">研学机构/旅行社</option>
+                <option value="teacher">学校/教育机构</option>
+                <option value="other">其他渠道方</option>
+              </select>
+              <div class="field-label">证明材料（导游证/营业执照/名片 截图）</div>
+              <input type="text" id="cert-file" placeholder="📎 点击上传或描述证明信息" style="padding:10px 12px;border:2px dashed #d1d5db;border-radius:10px;cursor:pointer;background:#fafafa;font-size:13px;color:#6b7280" onclick="this.value='导游证_LJG2025068'">
+              <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-top:8px" onclick="submitCertification()">提交认证申请</button>
+              <div style="font-size:10px;color:#9ca3af;margin-top:6px;text-align:center">审核通常1-3个工作日，通过后可享受阶梯佣金</div>
+            </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-num">¥90</div>
-            <div class="stat-label">平均佣金/单</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-num">89%</div>
-            <div class="stat-label">成交率</div>
-          </div>
-        </div>
 
-        <div style="font-weight:600;font-size:14px;margin-bottom:8px">📋 近期佣金明细</div>
+          <!-- Certified partner dashboard -->
+          <div id="partner-certified" style="display:none">
+            <!-- Partner info + tier -->
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+              <div style="width:40px;height:40px;background:linear-gradient(135deg,#7c3aed,#a78bfa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600" id="partner-avatar">刘</div>
+              <div>
+                <div style="font-weight:600;font-size:14px" id="partner-name-display">刘导</div>
+                <div style="font-size:10px;color:#9ca3af" id="partner-tier-label"><span class="tier-badge silver">银牌伙伴</span> 累计带客 86人</div>
+              </div>
+            </div>
 
-        <div class="order-item">
-          <div class="o-icon">🏯</div>
-          <div class="o-info">
-            <div class="o-name">草堂诗韵研学 · 王先生</div>
-            <div class="o-time">5月21日 14:30 · 已成交</div>
+            <!-- Commission overview -->
+            <div class="commission-card" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+              <div class="comm-label" style="color:#7c3aed">本月累计佣金（5月）</div>
+              <div class="comm-amount" style="color:#5b21b6" id="partner-monthly">¥8,450</div>
+              <div style="font-size:12px;color:#7c3aed;margin-top:4px">已完成 34单 · 待结算 5单 ¥1,120 · 阶梯 12%</div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-row">
+              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">86</div><div class="stat-label">累计客户</div></div>
+              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">72%</div><div class="stat-label">转化率</div></div>
+              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">12%</div><div class="stat-label">当前佣金阶梯</div></div>
+            </div>
+
+            <!-- Tools section -->
+            <div style="font-weight:600;font-size:14px;margin-bottom:8px;margin-top:6px">🔧 专属工具</div>
+            <div class="tool-card" onclick="showToolDetail('qr')">
+              <div class="tool-icon">📱</div>
+              <div class="tool-info"><div class="tool-name">专属二维码 / 海报</div><div class="tool-desc">扫码即绑，成交自动追踪来源</div></div>
+              <span class="tool-arrow">›</span>
+            </div>
+            <div class="tool-card" onclick="showToolDetail('invite')">
+              <div class="tool-icon">📨</div>
+              <div class="tool-info"><div class="tool-name">批量邀请</div><div class="tool-desc">一键生成邀请，分享到家长群/朋友圈</div></div>
+              <span class="tool-arrow">›</span>
+            </div>
+            <div class="tool-card" onclick="showToolDetail('clients')">
+              <div class="tool-icon">👥</div>
+              <div class="tool-info"><div class="tool-name">我的客户</div><div class="tool-desc">管理客户名单，跟踪转化状态</div></div>
+              <span class="tool-arrow">›</span>
+            </div>
+
+            <!-- Projects section -->
+            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">📂 我的项目</div>
+            <div class="filter-pills" id="project-filters">
+              <span class="filter-pill active" onclick="filterProjects('all',this)">全部</span>
+              <span class="filter-pill" onclick="filterProjects('active',this)">进行中</span>
+              <span class="filter-pill" onclick="filterProjects('done',this)">已结束</span>
+            </div>
+            <div id="project-list">
+              <div class="project-card" data-status="active">
+                <div class="pj-header"><div class="pj-name">🎯 5月武侯祠研学团</div><div class="pj-date">2026.05.18 - 05.30</div></div>
+                <div class="pj-stats"><span>带来客户 <b>28人</b></span><span>已付费 <b>19人</b></span><span>佣金 <b>¥4,200</b></span></div>
+              </div>
+              <div class="project-card" data-status="active">
+                <div class="pj-header"><div class="pj-name">🏛 三星堆周末探究</div><div class="pj-date">2026.05.12 - 06.15</div></div>
+                <div class="pj-stats"><span>带来客户 <b>35人</b></span><span>已付费 <b>22人</b></span><span>佣金 <b>¥3,850</b></span></div>
+              </div>
+              <div class="project-card" data-status="done" style="border-left-color:#d1d5db;opacity:.6">
+                <div class="pj-header"><div class="pj-name">📝 4月草堂春日研学</div><div class="pj-date">2026.04.01 - 04.28</div></div>
+                <div class="pj-stats"><span>带来客户 <b>23人</b></span><span>已付费 <b>18人</b></span><span>佣金 <b>¥2,880</b></span></div>
+              </div>
+            </div>
+
+            <!-- Performance chart -->
+            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">📊 近6个月佣金趋势</div>
+            <div style="background:#fff;border-radius:12px;padding:16px 8px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+              <div class="mini-bar-row" id="commission-chart">
+                <div class="mini-bar" style="height:25%"><span class="bar-val">¥1.2k</span><span class="bar-label">12月</span></div>
+                <div class="mini-bar" style="height:40%"><span class="bar-val">¥2.1k</span><span class="bar-label">1月</span></div>
+                <div class="mini-bar" style="height:55%"><span class="bar-val">¥3.5k</span><span class="bar-label">2月</span></div>
+                <div class="mini-bar" style="height:48%"><span class="bar-val">¥2.8k</span><span class="bar-label">3月</span></div>
+                <div class="mini-bar" style="height:62%"><span class="bar-val">¥4.6k</span><span class="bar-label">4月</span></div>
+                <div class="mini-bar" style="height:82%"><span class="bar-val">¥8.5k</span><span class="bar-label">5月</span></div>
+              </div>
+              <div style="text-align:center;font-size:10px;color:#9ca3af;margin-top:20px">本月同比增长 85%</div>
+            </div>
+
+            <!-- Settlement Center -->
+            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">💳 结算中心</div>
+            <div class="settle-card">
+              <div class="settle-row"><span class="settle-label">可提现金额</span><span class="settle-amount">¥6,280</span></div>
+              <div class="settle-row"><span class="settle-label">待结算（预计6月5日）</span><span style="font-weight:600;color:#7c3aed">¥1,120</span></div>
+              <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-top:12px" onclick="openWithdrawModal()">💸 立即提现</button>
+              <div style="text-align:center;font-size:10px;color:#9ca3af;margin-top:6px">每月5号、20号结算 · 最低提现 ¥100</div>
+            </div>
+
+            <!-- Commission rules -->
+            <div style="background:#fff;border-radius:12px;padding:14px;margin-top:10px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+              <div style="font-weight:600;font-size:13px;margin-bottom:6px">📐 佣金阶梯规则</div>
+              <div style="display:flex;text-align:center;font-size:11px;color:#6b7280">
+                <div style="flex:1;border-right:1px solid #e5e7eb"><div style="color:#ea580c;font-weight:600">8%</div>月销 < 1万</div>
+                <div style="flex:1;border-right:1px solid #e5e7eb"><div style="color:#6b7280;font-weight:600">10%</div>1-5万</div>
+                <div style="flex:1"><div style="color:#d97706;font-weight:600">12%</div>> 5万 <span class="tier-badge gold" style="font-size:9px">当前</span></div>
+              </div>
+            </div>
           </div>
-          <div class="o-comm">+¥80</div>
-        </div>
 
-        <div class="order-item">
-          <div class="o-icon">🗿</div>
-          <div class="o-info">
-            <div class="o-name">三星堆探秘 · 陈女士</div>
-            <div class="o-time">5月20日 10:15 · 已成交</div>
+          <!-- Tool detail sub-page (hidden by default) -->
+          <div id="tool-detail" style="display:none"></div>
+
+          <!-- Back to C end -->
+          <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af">
+            👤 查看普通用户视角？<span style="color:#2563eb;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('c')">切换到C端分销</span>
           </div>
-          <div class="o-comm">+¥105</div>
-        </div>
-
-        <div class="order-item">
-          <div class="o-icon">⚔️</div>
-          <div class="o-info">
-            <div class="o-name">武侯祠三国 · 刘女士</div>
-            <div class="o-time">5月19日 16:42 · 已成交</div>
-          </div>
-          <div class="o-comm">+¥75</div>
-        </div>
-
-        <div class="order-item" style="opacity:.6">
-          <div class="o-icon">🦋</div>
-          <div class="o-info">
-            <div class="o-name">自然博物馆 · 张先生</div>
-            <div class="o-time">5月21日 11:00 · 待确认</div>
-          </div>
-          <span class="badge badge-orange">待结算 ¥70</span>
-        </div>
-
-        <div style="margin-top:16px;background:#eef2ff;border-radius:12px;padding:12px;text-align:center">
-          <div style="font-size:13px;color:#4f46e5;font-weight:600;margin-bottom:4px">💡 分享你的专属链接给家长，下单即赚佣金</div>
-          <div style="font-size:11px;color:#6b7280">每成功推荐一个研学活动，可获订单金额约5%-8%佣金</div>
-          <button class="btn-primary" style="margin-top:10px;font-size:14px" onclick="showToast('专属链接已复制，快去分享吧！')">📋 复制我的专属分享链接</button>
         </div>
       </div>
 
@@ -674,7 +899,7 @@ body{
     </div>
     <div class="flow-step" id="flow-5">
       <span class="step-num">5</span>
-      <span class="step-text"><b>OPC分销</b> — 导游/宝妈分享专属链接，成交赚佣金</span>
+      <span class="step-text"><b>分销体系</b> — C端分享赚佣金 + B端导游/机构专属工具（认证·二维码·客户管理·阶梯佣金）</span>
     </div>
 
     <div style="margin-top:20px;padding:14px;background:rgba(37,99,235,.12);border-radius:10px">
@@ -683,17 +908,17 @@ body{
         🎮 AI-Game-Generator API（文字→可玩游戏）<br>
         🎬 第三方AI视频引擎（文字→短视频）<br>
         📱 离泰小程序 webview 嵌入展示<br>
-        🔗 全链路数据贯通 + 佣金自动结算
+        🔗 全链路数据贯通 + B端/C端双佣金体系
       </div>
     </div>
 
-    <div style="margin-top:12px;padding:14px;background:rgba(16,185,129,.12);border-radius:10px">
-      <div style="font-size:12px;color:#6ee7b7;margin-bottom:6px;font-weight:600">💰 商业模式</div>
+    <div style="margin-top:12px;padding:14px;background:rgba(124,58,237,.12);border-radius:10px">
+      <div style="font-size:12px;color:#c4b5fd;margin-bottom:6px;font-weight:600">💰 B端分销模型</div>
       <div style="font-size:11px;color:#94a3b8;line-height:1.8">
-        研学客单价 ¥139-219/人<br>
-        OPC销售佣金 约订单5%-8%<br>
-        复购率提升（作品+报告驱动）<br>
-        30人/场 x 4场/月 x 12月 = 1,440人次/年
+        导游/机构阶梯佣金 8%-12%<br>
+        专属二维码+批量邀请+客户追踪<br>
+        按项目分组管理 → 按团统计转化<br>
+        每月5号/20号自动结算
       </div>
     </div>
   </div>
@@ -1238,6 +1463,204 @@ function showToast(msg){
 // =================== Init ===================
 renderWorks();
 renderReportWorks();
+
+// =================== Partner B-End ===================
+let partnerRole = 'c'; // 'c' or 'b'
+let partnerCertified = false;
+
+function switchPartnerRole(role){
+  partnerRole = role;
+  document.getElementById('role-c').classList.toggle('active', role==='c');
+  document.getElementById('role-b').classList.toggle('active', role==='b');
+  document.getElementById('partner-view-c').style.display = role==='c' ? 'block' : 'none';
+  document.getElementById('partner-view-b').style.display = role==='b' ? 'block' : 'none';
+
+  if(role==='b'){
+    updateBView();
+    updateFlow(5);
+  } else {
+    updateFlow(4);
+  }
+}
+
+function updateBView(){
+  if(partnerCertified){
+    document.getElementById('partner-not-certified').style.display='none';
+    document.getElementById('partner-certified').style.display='block';
+    document.getElementById('partner-avatar').textContent='刘';
+    document.getElementById('partner-name-display').textContent=document.getElementById('cert-name').value||'刘导';
+  } else {
+    document.getElementById('partner-not-certified').style.display='block';
+    document.getElementById('partner-certified').style.display='none';
+  }
+}
+
+function submitCertification(){
+  const name = document.getElementById('cert-name').value.trim();
+  const phone = document.getElementById('cert-phone').value.trim();
+  if(!name){showToast('请填写姓名');return}
+  if(!phone){showToast('请填写手机号');return}
+
+  // Replace form with pending status
+  const container = document.getElementById('partner-not-certified');
+  container.innerHTML = `
+    <div class="cert-status">
+      <div class="cert-status-icon">⏳</div>
+      <div>
+        <div style="font-weight:600;font-size:14px">认证审核中</div>
+        <div style="font-size:11px;color:#92400e">提交于 ${new Date().toLocaleDateString('zh-CN')} · 预计1-3个工作日</div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
+      <div style="font-weight:600;font-size:13px;margin-bottom:8px">📋 提交信息</div>
+      <div style="font-size:12px;color:#6b7280;line-height:2">
+        姓名：<b>${name}</b><br>
+        手机：${phone}<br>
+        身份：${document.getElementById('cert-type').options[document.getElementById('cert-type').selectedIndex].text}
+      </div>
+    </div>
+    <div style="text-align:center;padding:0 10px">
+      <div style="font-size:12px;color:#6b7280">审核通过后将自动开通全部合作伙伴工具</div>
+    </div>
+  `;
+
+  // Auto-certify after 3 seconds (demo)
+  setTimeout(()=>{
+    partnerCertified = true;
+    container.innerHTML = `
+      <div class="cert-status verified">
+        <div class="cert-status-icon">✅</div>
+        <div>
+          <div style="font-weight:600;font-size:14px;color:#059669">认证通过！</div>
+          <div style="font-size:11px;color:#059669">欢迎${name}成为离泰研学合作伙伴</div>
+        </div>
+      </div>
+    `;
+    document.getElementById('partner-certified').style.display='block';
+    document.getElementById('partner-avatar').textContent=name.charAt(0);
+    document.getElementById('partner-name-display').textContent=name;
+    showToast('🎉 认证成功！伙伴工具已全部开放');
+  }, 3000);
+}
+
+function showToolDetail(tool){
+  const area = document.getElementById('tool-detail');
+  const certifiedBlock = document.getElementById('partner-certified');
+  switch(tool){
+    case 'qr':
+      area.innerHTML = `
+        <div class="qr-section">
+          <div style="font-weight:600;font-size:15px;margin-bottom:4px">📱 专属二维码</div>
+          <div style="font-size:11px;color:#9ca3af;margin-bottom:8px">扫码即绑定来源，成交自动追踪</div>
+          <div class="qr-box">📱</div>
+          <div style="font-size:11px;color:#6b7280;margin:8px 0">链接：lt.ai/ref/liudao_5821</div>
+          <div class="stats-row">
+            <div class="stat-card"><div class="stat-num" style="color:#7c3aed">127</div><div class="stat-label">累计扫码</div></div>
+            <div class="stat-card"><div class="stat-num" style="color:#7c3aed">86</div><div class="stat-label">注册客户</div></div>
+            <div class="stat-card"><div class="stat-num" style="color:#7c3aed">34</div><div class="stat-label">已成交</div></div>
+          </div>
+          <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-top:6px" onclick="showToast('二维码已保存')">💾 保存二维码海报</button>
+        </div>
+        <div style="text-align:center;margin-top:8px">
+          <span style="color:#7c3aed;cursor:pointer;font-size:12px" onclick="toolBack()">← 返回工具列表</span>
+        </div>
+      `;
+      break;
+    case 'invite':
+      area.innerHTML = `
+        <div style="background:#fff;border-radius:14px;padding:18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05);margin-bottom:12px">
+          <div style="font-size:40px;margin-bottom:8px">📨</div>
+          <div style="font-weight:600;font-size:15px;margin-bottom:4px">批量邀请</div>
+          <div style="font-size:11px;color:#9ca3af;margin-bottom:12px">一键生成邀请，分享到家长群/朋友圈</div>
+          <div style="background:#f5f3ff;border-radius:10px;padding:12px;text-align:left;font-size:12px;color:#5b21b6;line-height:1.8;margin-bottom:12px">
+            🏛 各位家长好！<br>
+            离泰AI研学·武侯祠课程本周末发团，<br>
+            孩子将用AI创作三国游戏和微电影！<br><br>
+            📅 时间：5月24日（周六）9:00-16:00<br>
+            📍 地点：成都武侯祠<br>
+            💰 原价¥259，通过此链接报名立减¥110<br><br>
+            👇 点击下方链接立即报名 👇<br>
+            https://lt.ai/ref/liudao_5821
+          </div>
+          <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-bottom:6px" onclick="showToast('已复制邀请文案+链接')">📋 复制邀请文案</button>
+          <button class="btn-secondary btn-sm" style="display:block;width:100%;text-align:center" onclick="showToast('已分享到微信')">📤 分享到微信</button>
+        </div>
+        <div style="text-align:center"><span style="color:#7c3aed;cursor:pointer;font-size:12px" onclick="toolBack()">← 返回工具列表</span></div>
+      `;
+      break;
+    case 'clients':
+      const clients = [
+        {name:'王先生',init:3,time:'5月21日 · 已付款',tag:'已成交 ¥169',tagClass:'badge-green'},
+        {name:'陈女士',init:2,time:'5月20日 · 已付款',tag:'已成交 ¥219',tagClass:'badge-green'},
+        {name:'张爸爸',init:6,time:'5月19日 · 浏览中',tag:'未转化',tagClass:'badge-orange'},
+        {name:'李妈妈',init:8,time:'5月18日 · 咨询中',tag:'跟进中',tagClass:'badge-blue'},
+        {name:'周女士',init:4,time:'5月15日 · 已付款',tag:'已成交 ¥149',tagClass:'badge-green'},
+        {name:'赵先生',init:5,time:'5月14日 · 浏览中',tag:'未转化',tagClass:'badge-orange'},
+      ];
+      area.innerHTML = `
+        <div style="font-weight:600;font-size:14px;margin-bottom:8px">👥 我的客户（${clients.length}人）</div>
+        <div style="display:flex;gap:6px;margin-bottom:10px;font-size:11px">
+          <span style="padding:4px 10px;background:#7c3aed;color:#fff;border-radius:12px;font-size:10px">全部</span>
+          <span style="padding:4px 10px;background:#f5f3ff;color:#7c3aed;border-radius:12px;font-size:10px;cursor:pointer">已成交 3</span>
+          <span style="padding:4px 10px;background:#f5f3ff;color:#7c3aed;border-radius:12px;font-size:10px;cursor:pointer">跟进中 3</span>
+        </div>
+        ${clients.map(c=>`
+          <div class="client-item">
+            <div class="c-avatar" style="background:hsl(${c.init*37},70%,90%)">${c.name.charAt(0)}</div>
+            <div class="c-info"><div class="c-name">${c.name}</div><div class="c-time">${c.time}</div></div>
+            <span class="c-status badge ${c.tagClass}">${c.tag}</span>
+          </div>
+        `).join('')}
+        <div style="margin-top:12px;text-align:center">
+          <button class="btn-secondary btn-sm" onclick="showToast('即将提醒未转化客户')">🔔 提醒未转化客户</button>
+        </div>
+        <div style="text-align:center;margin-top:8px"><span style="color:#7c3aed;cursor:pointer;font-size:12px" onclick="toolBack()">← 返回工具列表</span></div>
+      `;
+      break;
+  }
+  certifiedBlock.style.display='none';
+  area.style.display='block';
+}
+
+function toolBack(){
+  document.getElementById('tool-detail').style.display='none';
+  document.getElementById('partner-certified').style.display='block';
+}
+
+function filterProjects(status, el){
+  document.querySelectorAll('#project-filters .filter-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#project-list .project-card').forEach(card=>{
+    if(status==='all') card.style.display='block';
+    else card.style.display = card.dataset.status===status ? 'block' : 'none';
+  });
+}
+
+function openWithdrawModal(){
+  const modal = document.getElementById('purchase-modal');
+  modal.classList.add('show');
+  document.getElementById('modal-title').textContent='提现确认';
+  document.getElementById('modal-desc').innerHTML = `
+    <div class="withdraw-form">
+      <div style="text-align:left;font-size:13px;color:#6b7280">可提现金额：<b style="color:#5b21b6;font-size:18px">¥6,280</b></div>
+      <label style="font-size:12px;color:#6b7280;display:block;margin-top:10px">提现金额</label>
+      <input type="number" id="withdraw-amount" value="6280" min="100" style="font-weight:600;font-size:16px;color:#1f2937">
+      <label style="font-size:12px;color:#6b7280;display:block">到账账户</label>
+      <input type="text" value="刘导 · 尾号 6821" readonly style="background:#f3f4f6">
+      <div style="font-size:10px;color:#9ca3af;margin:8px 0;text-align:left">预计30分钟内到账 · 免手续费</div>
+    </div>
+  `;
+  // Override close button action
+  const closeBtn = modal.querySelector('.btn-primary');
+  closeBtn.textContent = '确认提现';
+  closeBtn.onclick = function(){
+    modal.classList.remove('show');
+    showToast('💰 提现申请已提交，预计30分钟内到账');
+    // Restore
+    modal.querySelector('.btn-primary').textContent = '好的';
+    modal.querySelector('.btn-primary').onclick = closeModal;
+  };
+}
 </script>
 </body>
 </html>
