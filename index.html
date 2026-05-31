@@ -868,6 +868,7 @@ body{
             <div id="home-quiz-container"></div>
             <div id="home-video-result"></div>
             <button class="btn-primary" onclick="saveHomeWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>
+            <button class="btn-secondary btn-sm" onclick="exitHomeGame()" style="margin-top:8px;width:100%;text-align:center">← 退出游戏</button>
           </div>
         </div>
 
@@ -955,7 +956,10 @@ body{
 
         <!-- 教师操作区（生成前显示） -->
         <div class="report-teacher-panel" id="report-teacher-panel">
-          <div class="rtp-title">📋 生成研学报告</div>
+          <div class="rtp-title" style="display:flex;align-items:center;gap:10px">
+            <button onclick="goBackFromReport()" style="padding:6px 14px;background:#fff;color:#4f46e5;border:1.5px solid #4f46e5;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap">← 返回</button>
+            <span>📋 生成研学报告</span>
+          </div>
 
           <div class="rtp-row">
             <div class="rtp-label">选择学生</div>
@@ -997,7 +1001,7 @@ body{
             </div>
           </div>
 
-          <button class="btn-generate" onclick="generateReport()" id="btn-generate-report">✨ 生成AI报告</button>
+          <button class="btn-generate" onclick="debounce('gen-report',generateReport)" id="btn-generate-report">✨ 生成AI报告</button>
         </div>
 
         <!-- 重新生成链接（生成后显示） -->
@@ -1460,6 +1464,9 @@ body{
 
       <!-- Sub-page: Create (Custom generation) -->
       <div class="screen" id="page-create">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <button onclick="goBack()" style="padding:6px 14px;background:#fff;color:#4f46e5;border:1.5px solid #4f46e5;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">← 返回</button>
+        </div>
         <div style="text-align:center;padding:8px 0">
           <div style="font-size:32px;margin-bottom:4px">💡</div>
           <h3 style="font-size:17px;font-weight:700;margin-bottom:2px">自定义主题创作</h3>
@@ -1538,52 +1545,6 @@ body{
     </div>
   </div>
 
-  <!-- Info Panel -->
-  <div class="info-panel" id="info-panel">
-    <h3>🎯 离泰AI研学 · 产品演示</h3>
-    <div class="subtitle">手机模拟器 · 点击5个Tab体验完整流程</div>
-
-    <div class="flow-step active" id="flow-1">
-      <span class="step-num">1</span>
-      <span class="step-text"><b>学生AI创作</b> — 输入研学主题，AI生成可玩游戏或短视频</span>
-    </div>
-    <div class="flow-step" id="flow-2">
-      <span class="step-num">2</span>
-      <span class="step-text"><b>作品沉淀</b> — 自动保存至小程序"我的作品"</span>
-    </div>
-    <div class="flow-step" id="flow-3">
-      <span class="step-num">3</span>
-      <span class="step-text"><b>家长报告</b> — 放学后自动推送研学报告含孩子AI作品</span>
-    </div>
-    <div class="flow-step" id="flow-4">
-      <span class="step-num">4</span>
-      <span class="step-text"><b>商城复购</b> — 报告底部推荐其他研学+专属优惠券</span>
-    </div>
-    <div class="flow-step" id="flow-5">
-      <span class="step-num">5</span>
-      <span class="step-text"><b>分销体系</b> — C端分享赚佣金 + B端导游/机构专属工具（认证·二维码·客户管理·阶梯佣金）</span>
-    </div>
-
-    <div style="margin-top:20px;padding:14px;background:rgba(79,70,229,.12);border-radius:10px">
-      <div style="font-size:12px;color:#93c5fd;margin-bottom:6px;font-weight:600">🛠 技术底座</div>
-      <div style="font-size:11px;color:#94a3b8;line-height:1.8">
-        🎮 AI-Game-Generator API（文字→可玩游戏）<br>
-        🎬 第三方AI视频引擎（文字→短视频）<br>
-        📱 离泰小程序 webview 嵌入展示<br>
-        🔗 全链路数据贯通 + B端/C端双佣金体系
-      </div>
-    </div>
-
-    <div style="margin-top:12px;padding:14px;background:rgba(124,58,237,.12);border-radius:10px">
-      <div style="font-size:12px;color:#c4b5fd;margin-bottom:6px;font-weight:600">💰 B端分销模型</div>
-      <div style="font-size:11px;color:#94a3b8;line-height:1.8">
-        导游/机构阶梯佣金 8%-12%<br>
-        专属二维码+批量邀请+客户追踪<br>
-        按项目分组管理 → 按团统计转化<br>
-        每月5号/20号自动结算
-      </div>
-    </div>
-  </div>
 
 </div>
 
@@ -1603,6 +1564,14 @@ body{
 </div>
 
 <script>
+// =================== Debounce Utility ===================
+let _debounceTimers = {};
+function debounce(key, fn, delay=500){
+  if(_debounceTimers[key]){clearTimeout(_debounceTimers[key]);_debounceTimers[key]=null;return;}
+  _debounceTimers[key] = setTimeout(()=>{_debounceTimers[key]=null;}, delay);
+  fn();
+}
+
 // =================== Role System ===================
 let currentRole = 'teacher'; // 默认老师/渠道
 
@@ -1642,6 +1611,7 @@ let pageHistory = [];
 let homeCreateType = null; // 'shooting'|'quiz'|'dodge'|'collect'|'video'
 let homeGenerated = false;
 let homeCurrentWork = null;
+let reportSourceTab = null; // tracks where report generation was triggered from
 
 // =================== Preset Contents (预生成内容) ===================
 const presetContents = {
@@ -1906,7 +1876,10 @@ function renderHomeQuizQuestion(){
     <div class="quiz-card">
       <div class="quiz-header">
         <span class="quiz-title">${state.key.replace(/_quiz$/,'').replace(/_/g,' · ')}</span>
-        <span class="quiz-counter">第 ${state.currentIndex+1}/${state.total} 题</span>
+        <div style="display:flex;align-items:center;gap:10px">
+          <button onclick="exitHomeQuiz()" style="padding:4px 10px;background:#fef2f2;color:#ef4444;border:1px solid #fecaca;border-radius:6px;font-size:11px;cursor:pointer;white-space:nowrap">退出答题</button>
+          <span class="quiz-counter">第 ${state.currentIndex+1}/${state.total} 题</span>
+        </div>
       </div>
       <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${progress}%"></div></div>
       <div class="quiz-question">${q.question}</div>
@@ -1980,6 +1953,18 @@ function showHomeQuizResult(){
   homeQuizState = null;
   homeQuizTimer = null;
   updateFlow(2);
+}
+
+function exitHomeQuiz(){
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  homeQuizState = null;
+  const container = document.getElementById('home-quiz-container');
+  container.innerHTML = '';
+  container.classList.remove('show');
+  document.getElementById('home-result-area').style.display = 'none';
+  homeGenerated = false;
+  homeCurrentWork = null;
+  showToast('已退出答题');
 }
 
 function resetHomeQuiz(){
@@ -2375,6 +2360,25 @@ function renderHomeVideoResult(prompt){
   </div>`;
 }
 
+function exitHomeGame(){
+  if(homeGameAnimation){cancelAnimationFrame(homeGameAnimation);homeGameAnimation=null;}
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  homeGameState = null;
+  homeQuizState = null;
+  homeGenerated = false;
+  homeCurrentWork = null;
+  document.getElementById('home-result-area').style.display = 'none';
+  document.getElementById('home-game-container').innerHTML = '';
+  document.getElementById('home-quiz-container').innerHTML = '';
+  document.getElementById('home-quiz-container').classList.remove('show');
+  document.getElementById('home-video-result').innerHTML = '';
+  document.getElementById('home-video-output').innerHTML = '';
+  document.getElementById('theme-section').style.display = 'none';
+  document.querySelectorAll('.game-card').forEach(item=>item.classList.remove('selected'));
+  homeCreateType = null;
+  showToast('已退出游戏');
+}
+
 function saveHomeWork(){
   if(!homeGenerated || !homeCurrentWork) return;
   const today = new Date().toISOString().slice(0,10);
@@ -2545,6 +2549,17 @@ function hideSubPage(){
 
 function goBack(){
   if(currentPage) hideSubPage();
+  else switchTab('home');
+}
+
+function goBackFromReport(){
+  // If triggered from works tab → go to works; otherwise → home
+  if(reportSourceTab === 'works'){
+    switchTab('works');
+  } else {
+    switchTab('home');
+  }
+  reportSourceTab = null;
 }
 
 // =================== Type Selection ===================
@@ -2912,7 +2927,9 @@ function renderTeacherWorksView(){
           <span class="badge badge-blue">${works.length}件作品</span>
         </div>
         <div class="works-grid">
-          ${works.map(w=>`
+          ${works.length === 0
+            ? `<div style="grid-column:1/-1;text-align:center;padding:20px;color:#9ca3af;font-size:12px">暂无作品，快去创作吧</div>`
+            : works.map(w=>`
             <div class="work-card" onclick="viewWorkByName('${w.title}')">
               <div class="work-cover ${w.type==='video'?'video-cover':'game-cover'}">
                 <span style="font-size:32px">${w.icon}</span>
@@ -2938,7 +2955,9 @@ function renderParentWorksView(){
   const studentWorks = savedWorks.filter(w=>w.owner === '王小宇');
   document.getElementById('parent-work-count').textContent = studentWorks.length+'件作品';
 
-  list.innerHTML = studentWorks.map(w=>`
+  list.innerHTML = studentWorks.length === 0
+    ? '<div style="text-align:center;padding:40px 20px;color:#9ca3af"><div style="font-size:40px;margin-bottom:8px">📭</div><div style="font-size:14px">暂无作品，快去创作吧</div></div>'
+    : studentWorks.map(w=>`
     <div class="work-card" onclick="viewWorkByName('${w.title}')">
       <div class="work-cover ${w.type==='video'?'video-cover':'game-cover'}">
         <span style="font-size:32px">${w.icon}</span>
@@ -2992,6 +3011,7 @@ function renderTeacherTeachingView(){
 }
 
 function quickGenerateReport(studentName){
+  reportSourceTab = 'works';
   document.getElementById('report-student-select').value = studentName;
   switchTab('report');
   setTimeout(()=>{
@@ -3131,6 +3151,28 @@ function switchRole(role){
     document.getElementById('role-dropdown').classList.remove('show');
     return;
   }
+  
+  // Clean up any active game state on role switch
+  if(homeGameAnimation){cancelAnimationFrame(homeGameAnimation);homeGameAnimation=null;}
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  homeGameState = null;
+  homeQuizState = null;
+  homeGenerated = false;
+  homeCurrentWork = null;
+  homeCreateType = null;
+  document.getElementById('home-result-area').style.display = 'none';
+  document.getElementById('home-game-container').innerHTML = '';
+  document.getElementById('home-quiz-container').innerHTML = '';
+  document.getElementById('home-quiz-container').classList.remove('show');
+  document.getElementById('home-video-result').innerHTML = '';
+  document.getElementById('home-video-output').innerHTML = '';
+  document.getElementById('theme-section').style.display = 'none';
+  document.querySelectorAll('.game-card').forEach(item=>item.classList.remove('selected'));
+  document.getElementById('collapse-custom').classList.remove('show');
+  document.getElementById('custom-toggle').textContent = '💡 自定义主题（需联网）';
+  if(gameAnimation){cancelAnimationFrame(gameAnimation);gameAnimation=null;}
+  gameState = null;
+  
   currentRole = role;
 
   // Update button display
@@ -3369,16 +3411,32 @@ function openWithdrawModal(){
       <label style="font-size:12px;color:#6b7280;display:block">到账账户</label>
       <input type="text" value="刘导 · 尾号 6821" readonly style="background:#f3f4f6">
       <div style="font-size:10px;color:#9ca3af;margin:8px 0;text-align:left">预计30分钟内到账 · 免手续费</div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn-secondary btn-sm" onclick="closeWithdrawModal()" style="flex:1">取消</button>
+        <button class="btn-primary" onclick="confirmWithdraw()" style="flex:1;font-size:13px">确认提现</button>
+      </div>
     </div>
   `;
+  // Hide default close button
   const closeBtn = modal.querySelector('.btn-primary');
-  closeBtn.textContent = '确认提现';
-  closeBtn.onclick = function(){
-    modal.classList.remove('show');
-    showToast('💰 提现申请已提交，预计30分钟内到账');
-    modal.querySelector('.btn-primary').textContent = '好的';
-    modal.querySelector('.btn-primary').onclick = closeModal;
-  };
+  closeBtn.style.display='none';
+}
+
+function closeWithdrawModal(){
+  const modal = document.getElementById('purchase-modal');
+  modal.classList.remove('show');
+  modal.querySelector('.btn-primary').style.display='';
+  modal.querySelector('.btn-primary').textContent = '好的';
+  modal.querySelector('.btn-primary').onclick = closeModal;
+}
+
+function confirmWithdraw(){
+  const modal = document.getElementById('purchase-modal');
+  modal.classList.remove('show');
+  modal.querySelector('.btn-primary').style.display='';
+  modal.querySelector('.btn-primary').textContent = '好的';
+  modal.querySelector('.btn-primary').onclick = closeModal;
+  showToast('💰 提现申请已提交，预计30分钟内到账');
 }
 // =================== Home Video Quick Generation ===================
 function quickVideoTheme(theme){
@@ -3477,6 +3535,7 @@ function renderParentReportView(){
 }
 
 function generateReport(){
+  if(!reportSourceTab) reportSourceTab = 'home'; // default source
   const studentName = document.getElementById('report-student-select').value;
   const keywords = document.getElementById('report-keywords').value.trim();
   const checkedLabels = document.querySelectorAll('#report-checkboxes .teacher-checkbox-label.checked');
@@ -3534,6 +3593,10 @@ function generateReport(){
         <div class="rph-activity">武侯祠 · 三国文化研学 | 2026.05.21</div>
       </div>
       <div class="report-preview-body">
+        <!-- 返回编辑按钮 -->
+        <div style="text-align:center;margin-bottom:14px">
+          <button onclick="resetReport()" style="padding:8px 20px;background:#fff;color:#4f46e5;border:1.5px solid #4f46e5;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">✏️ 返回编辑</button>
+        </div>
         <!-- 学习内容 -->
         <div class="rpb-section">
           <div class="rpb-section-title">📚 今日学习内容</div>
