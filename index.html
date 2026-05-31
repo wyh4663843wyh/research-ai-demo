@@ -483,6 +483,94 @@ body{
   border-radius:50%;display:flex;align-items:center;justify-content:center;
   color:#fff;font-size:15px;font-weight:600;flex-shrink:0
 }
+/* ========== Quiz Game Styles ========== */
+#quiz-container{display:none;margin-top:10px}
+#quiz-container.show{display:block}
+.quiz-card{background:#fff;border-radius:14px;padding:20px 16px;box-shadow:0 2px 12px rgba(79,70,229,.08);margin-bottom:10px}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.quiz-header .quiz-title{font-weight:700;font-size:15px;color:#1f2937}
+.quiz-header .quiz-counter{font-size:12px;color:#6b7280}
+.quiz-progress-bar{width:100%;height:6px;background:#e5e7eb;border-radius:3px;margin-bottom:20px;overflow:hidden}
+.quiz-progress-fill{height:100%;background:linear-gradient(90deg,#4f46e5,#7c3aed);border-radius:3px;transition:width .3s ease}
+.quiz-question{font-size:15px;font-weight:600;color:#1f2937;line-height:1.6;margin-bottom:16px;min-height:48px}
+.quiz-options{display:flex;flex-direction:column;gap:10px}
+.quiz-option{
+  width:100%;padding:14px 16px;background:#f8fafc;border:2px solid #e5e7eb;
+  border-radius:12px;font-size:14px;text-align:left;cursor:pointer;
+  transition:all .2s;color:#374151;font-family:inherit;position:relative
+}
+.quiz-option:active{transform:scale(.98)}
+.quiz-option.correct{
+  background:#d1fae5;border-color:#10b981;color:#065f46;font-weight:600
+}
+.quiz-option.wrong{
+  background:#fee2e2;border-color:#ef4444;color:#991b1b
+}
+.quiz-option.reveal-correct{
+  background:#d1fae5;border-color:#10b981;color:#065f46
+}
+.quiz-option:disabled{pointer-events:none}
+.quiz-explanation{
+  background:#eef2ff;border-radius:10px;padding:12px 14px;
+  font-size:12px;color:#4338ca;line-height:1.6;margin-top:12px;
+  display:none;animation:fadeDown .3s ease
+}
+.quiz-explanation.show{display:block}
+.quiz-result{text-align:center;padding:24px 0}
+.quiz-result .result-icon{font-size:56px;margin-bottom:12px}
+.quiz-result .result-score{font-size:36px;font-weight:800;color:#4f46e5;margin-bottom:4px}
+.quiz-result .result-total{font-size:13px;color:#6b7280;margin-bottom:8px}
+.quiz-result .result-comment{font-size:15px;font-weight:600;color:#1f2937;margin-bottom:20px}
+/* ========== Home Creation Grid ========== */
+.create-type-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0 16px}
+.create-type-item{
+  background:#fff;border-radius:14px;padding:12px 8px;text-align:center;
+  cursor:pointer;border:2px solid transparent;transition:all .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);display:flex;flex-direction:column;align-items:center;gap:6px
+}
+.create-type-item:active{transform:scale(.97)}
+.create-type-item.selected{border-color:#4f46e5;background:#eef2ff}
+.create-type-item .type-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.create-type-item .type-icon svg{width:28px;height:28px}
+.create-type-item .type-label{font-size:11px;font-weight:600;color:#374151;line-height:1.3;text-align:center}
+.theme-section{margin-bottom:10px}
+.theme-section .theme-section-title{font-size:12px;font-weight:600;color:#6b7280;margin-bottom:8px}
+.theme-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.theme-chip{
+  padding:8px 14px;background:#fff;border:1.5px solid #e5e7eb;
+  border-radius:22px;font-size:13px;cursor:pointer;transition:all .2s;
+  color:#374151;font-weight:500
+}
+.theme-chip:active{transform:scale(.97)}
+.theme-chip:hover{border-color:#4f46e5;color:#4f46e5}
+.theme-chip.custom{
+  background:linear-gradient(135deg,#fef3c7,#fde68a);border-color:#f59e0b;
+  color:#92400e;font-size:12px
+}
+/* ========== Video Preview Card (home) ========== */
+.video-preview-card{
+  background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;
+  padding:20px;text-align:center;color:#fff;margin-bottom:10px
+}
+.video-preview-card .vp-icon{font-size:40px;margin-bottom:8px}
+.video-preview-card .vp-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.video-preview-card .vp-desc{font-size:11px;color:#93c5fd;margin-bottom:12px}
+.video-preview-card .vp-input{
+  width:100%;padding:10px 14px;border-radius:10px;border:none;
+  font-size:13px;outline:none;background:rgba(255,255,255,.15);
+  color:#fff;margin-bottom:10px;font-family:inherit
+}
+.video-preview-card .vp-input::placeholder{color:rgba(255,255,255,.4)}
+.video-preview-card .vp-input:focus{background:rgba(255,255,255,.2)}
+/* ========== Collapsible custom section ========== */
+.collapse-toggle{
+  width:100%;padding:12px 16px;background:#f8fafc;border:1.5px dashed #d1d5db;
+  border-radius:12px;font-size:13px;color:#6b7280;cursor:pointer;
+  text-align:center;transition:all .2s;font-family:inherit;margin-top:8px
+}
+.collapse-toggle:hover{border-color:#4f46e5;color:#4f46e5}
+.collapse-content{display:none;margin-top:8px}
+.collapse-content.show{display:block}
 </style>
 </head>
 <body>
@@ -575,61 +663,62 @@ body{
 
       <!-- Tab 1: 创作 (Home) -->
       <div class="screen active" id="tab-home" data-tab="home">
-        <div style="text-align:center;padding:12px 0">
-          <div style="font-size:44px;margin-bottom:8px">🎓✨</div>
-          <h2 style="font-size:20px;font-weight:700;margin-bottom:2px">AI 研学创作工坊</h2>
-          <p style="font-size:13px;color:#6b7280">用今天学到的知识，创造你的作品</p>
+        <div style="text-align:center;padding:8px 0">
+          <div style="font-size:36px;margin-bottom:4px">🎓✨</div>
+          <h2 style="font-size:19px;font-weight:700;margin-bottom:2px">AI 研学创作工坊</h2>
+          <p style="font-size:12px;color:#6b7280">选一个创作类型，马上开始</p>
         </div>
 
-        <div style="display:flex;gap:10px;margin:16px 0">
-          <div class="card" style="flex:1;text-align:center;cursor:pointer" onclick="selectType('game',this)">
-            <!-- SVG gamepad icon -->
-            <div class="entry-icon">
-              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="12" width="32" height="20" rx="6" stroke="#4f46e5" stroke-width="2"/>
-                <line x1="14" y1="12" x2="14" y2="8" stroke="#4f46e5" stroke-width="2" stroke-linecap="round"/>
-                <line x1="26" y1="12" x2="26" y2="8" stroke="#4f46e5" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="13" cy="22" r="3" fill="#4f46e5"/>
-                <circle cx="27" cy="22" r="3" fill="#4f46e5"/>
-                <rect x="17" y="20" width="6" height="2" rx="1" fill="#4f46e5" opacity=".4"/>
-                <rect x="19" y="27" width="2" height="4" rx="1" fill="#4f46e5" opacity=".4"/>
-              </svg>
-            </div>
-            <div style="font-weight:600;font-size:14px">AI 创作游戏</div>
-            <div style="font-size:11px;color:#9ca3af;margin-top:2px">一句话变可玩游戏</div>
+        <!-- 5 种创作类型 -->
+        <div class="create-type-grid" id="create-type-grid">
+          <div class="create-type-item" onclick="selectCreateType('shooting',this)" data-type="shooting">
+            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="8" width="22" height="16" rx="4" stroke="#4f46e5" stroke-width="1.8"/><line x1="10" y1="8" x2="10" y2="4" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"/><line x1="18" y1="8" x2="18" y2="4" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="16" r="2" fill="#4f46e5"/><circle cx="19" cy="16" r="2" fill="#4f46e5"/><rect x="12" y="14" width="4" height="1.5" rx="0.75" fill="#4f46e5" opacity=".4"/><rect x="13.5" y="20" width="1.5" height="2.5" rx="0.75" fill="#4f46e5" opacity=".4"/></svg></div>
+            <div class="type-label">三国射击</div>
           </div>
-          <div class="card" style="flex:1;text-align:center;cursor:pointer" onclick="selectType('video',this)">
-            <!-- SVG video/film icon -->
-            <div class="entry-icon">
-              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="8" width="32" height="24" rx="4" stroke="#4f46e5" stroke-width="2"/>
-                <polygon points="17,13 17,27 29,20" fill="#4f46e5" stroke="#4f46e5" stroke-width="1" stroke-linejoin="round"/>
-                <line x1="4" y1="14" x2="12" y2="14" stroke="#4f46e5" stroke-width="1.5" opacity=".4"/>
-                <line x1="4" y1="26" x2="12" y2="26" stroke="#4f46e5" stroke-width="1.5" opacity=".4"/>
-              </svg>
-            </div>
-            <div style="font-weight:600;font-size:14px">AI 创作视频</div>
-            <div style="font-size:11px;color:#9ca3af;margin-top:2px">输入主题生视频</div>
+          <div class="create-type-item" onclick="selectCreateType('quiz',this)" data-type="quiz">
+            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="3" stroke="#4f46e5" stroke-width="1.8"/><line x1="8" y1="10" x2="20" y2="10" stroke="#4f46e5" stroke-width="1.5"/><line x1="8" y1="14" x2="20" y2="14" stroke="#4f46e5" stroke-width="1.5"/><line x1="8" y1="18" x2="15" y2="18" stroke="#4f46e5" stroke-width="1.5"/></svg></div>
+            <div class="type-label">三国答题</div>
+          </div>
+          <div class="create-type-item" onclick="selectCreateType('dodge',this)" data-type="dodge">
+            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><path d="M4 20L14 6l10 14" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="10" y1="20" x2="18" y2="20" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"/><circle cx="14" cy="22" r="1.5" fill="#4f46e5"/></svg></div>
+            <div class="type-label">过关躲避</div>
+          </div>
+          <div class="create-type-item" onclick="selectCreateType('collect',this)" data-type="collect">
+            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="5" y="6" width="18" height="18" rx="3" stroke="#4f46e5" stroke-width="1.8"/><rect x="9" y="10" width="10" height="10" rx="2" fill="#4f46e5" opacity=".2"/><circle cx="14" cy="15" r="3" fill="#4f46e5"/></svg></div>
+            <div class="type-label">寻宝收集</div>
+          </div>
+          <div class="create-type-item" onclick="selectCreateType('video',this)" data-type="video">
+            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="18" rx="3" stroke="#4f46e5" stroke-width="1.8"/><polygon points="11,9 11,19 20,14" fill="#4f46e5" stroke="#4f46e5" stroke-width="0.8" stroke-linejoin="round"/></svg></div>
+            <div class="type-label">AI视频</div>
           </div>
         </div>
 
-        <div style="background:#eef2ff;border-radius:12px;padding:12px;">
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-            <span style="font-size:18px">💡</span>
-            <span style="font-size:12px;font-weight:600;color:#4f46e5">今天学了什么？试着创作出来</span>
-          </div>
-          <div style="font-size:12px;color:#6b7280;line-height:1.6">
-            学完三国故事 → 用AI做"草船借箭"射击游戏<br>
-            看完武侯祠建筑 → 用AI生成建筑巡礼短视频
+        <!-- 热门主题 -->
+        <div class="theme-section" id="theme-section" style="display:none">
+          <div class="theme-section-title">🔥 热门主题快速开始：</div>
+          <div class="theme-grid" id="theme-grid"></div>
+          <!-- 自定义主题（折叠区） -->
+          <button class="collapse-toggle" onclick="toggleCustomInput()" id="custom-toggle">💡 自定义主题（需联网）</button>
+          <div class="collapse-content" id="collapse-custom">
+            <textarea id="custom-prompt-input" class="ai-input" rows="2" placeholder="描述你想要的游戏主题..."></textarea>
+            <button class="btn-primary" onclick="startCustomGenerate()" style="margin-top:8px;font-size:13px">✨ AI 生成（需联网）</button>
+            <div style="font-size:10px;color:#9ca3af;text-align:center;margin-top:4px">即将接入 DeepSeek 云函数，敬请期待</div>
           </div>
         </div>
 
-        <div style="margin-top:16px">
-          <button class="btn-primary" onclick="goCreate()" id="btn-start" disabled style="opacity:.4">选择创作类型开始</button>
+        <!-- 视频预览区 -->
+        <div id="home-video-area" style="display:none"></div>
+
+        <!-- 结果区 -->
+        <div id="home-result-area" style="display:none;margin-top:14px">
+          <div id="home-game-container"></div>
+          <div id="home-quiz-container"></div>
+          <div id="home-video-result"></div>
+          <button class="btn-primary" onclick="saveHomeWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>
         </div>
 
-        <div style="text-align:center;margin-top:20px">
-          <div style="font-size:12px;color:#9ca3af">已有 <b style="color:#4f46e5">1,286</b> 件学生AI作品</div>
+        <div style="text-align:center;margin-top:18px">
+          <div style="font-size:11px;color:#9ca3af">已有 <b style="color:#4f46e5">1,286</b> 件学生AI作品</div>
         </div>
       </div>
 
@@ -1133,21 +1222,28 @@ body{
         </div>
       </div>
 
-      <!-- Sub-page: Create -->
+      <!-- Sub-page: Create (Custom generation) -->
       <div class="screen" id="page-create">
+        <div style="text-align:center;padding:8px 0">
+          <div style="font-size:32px;margin-bottom:4px">💡</div>
+          <h3 style="font-size:17px;font-weight:700;margin-bottom:2px">自定义主题创作</h3>
+          <p style="font-size:12px;color:#6b7280">输入你的研学主题，AI 即时生成</p>
+        </div>
+
         <div class="toggle-group">
-          <button class="toggle-btn active" onclick="switchCreateType('game')">🎮 AI生成游戏</button>
-          <button class="toggle-btn" onclick="switchCreateType('video')">🎬 AI生成视频</button>
+          <button class="toggle-btn active" onclick="switchCreateType('game')">🎮 生成游戏</button>
+          <button class="toggle-btn" onclick="switchCreateType('video')">🎬 生成视频</button>
         </div>
 
         <div style="margin-bottom:10px">
-          <label style="font-size:12px;color:#6b7280;margin-bottom:4px;display:block;font-weight:500">说出你的创作想法</label>
+          <label style="font-size:12px;color:#6b7280;margin-bottom:4px;display:block;font-weight:500">描述你的创作想法</label>
           <textarea id="prompt-input" class="ai-input" rows="3" placeholder="例如：帮我做一个三国主题的收集金币小游戏..."></textarea>
         </div>
 
         <div id="preset-tags" style="margin-bottom:12px"></div>
 
         <button class="btn-primary" onclick="startGenerate()">✨ AI 立即生成</button>
+        <div style="font-size:10px;color:#9ca3af;text-align:center;margin-top:4px">⚠️ 需联网 · 即将接入 DeepSeek 云函数</div>
 
         <div id="result-area" style="display:none;margin-top:14px">
           <div id="loading-area" style="display:none">
@@ -1157,6 +1253,7 @@ body{
           <div id="done-area" style="display:none">
             <div style="font-size:12px;color:#10b981;text-align:center;margin-bottom:8px">✅ 创作完成！</div>
             <div id="game-container"></div>
+            <div id="quiz-container"></div>
             <div id="video-container"></div>
             <button class="btn-primary" onclick="saveWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>
           </div>
@@ -1282,14 +1379,774 @@ let savedWorks = [
 let gameAnimation = null;
 let gameState = null;
 let pageHistory = [];
+let homeCreateType = null; // 'shooting'|'quiz'|'dodge'|'collect'|'video'
+let homeGenerated = false;
+let homeCurrentWork = null;
 
-// =================== Scroll Position Tracking ===================
+// =================== Preset Contents (预生成内容) ===================
+const presetContents = {
+  "草船借箭_quiz": {
+    type: "quiz",
+    questions: [
+      {question:"草船借箭的故事发生在哪个历史时期？",options:["A.东汉末年","B.三国鼎立","C.西晋初年","D.南北朝"],answer:0,explanation:"草船借箭发生在赤壁之战前夕，属于东汉末年。"},
+      {question:"草船借箭的主要策划者是谁？",options:["A.曹操","B.孙权","C.诸葛亮","D.周瑜"],answer:2,explanation:"诸葛亮利用大雾天气，用草船诱敌射箭，成功借得十万支箭。"},
+      {question:"草船借箭中，诸葛亮利用了哪种自然现象？",options:["A.暴雨","B.大风","C.大雾","D.雷电"],answer:2,explanation:"诸葛亮选择大雾天气，使曹军看不清虚实。"},
+      {question:"草船借箭中，诸葛亮向谁立下军令状？",options:["A.刘备","B.周瑜","C.鲁肃","D.曹操"],answer:1,explanation:"周瑜故意刁难，限三天造十万支箭。"},
+      {question:"草船借箭体现了诸葛亮哪种品质？",options:["A.勇猛无畏","B.足智多谋","C.忠厚老实","D.急躁冒进"],answer:1,explanation:"展现其足智多谋的特点。"}
+    ]
+  },
+  "赤壁之战_quiz": {
+    type: "quiz",
+    questions: [
+      {question:"赤壁之战发生在哪一年？",options:["A.208年","B.220年","C.215年","D.200年"],answer:0,explanation:"赤壁之战发生在建安十三年（公元208年）。"},
+      {question:"赤壁之战中，孙刘联军的主帅分别是？",options:["A.周瑜和诸葛亮","B.周瑜和刘备","C.孙权和诸葛亮","D.孙权和刘备"],answer:1,explanation:"周瑜和刘备分别为孙刘联军主帅。"},
+      {question:"赤壁之战中，曹操大败的主要原因？",options:["A.兵力不足","B.火攻战术","C.粮草短缺","D.士兵厌战"],answer:1,explanation:"周瑜利用火攻战术，焚烧曹操战船。"},
+      {question:"谁在赤壁之战中使用了苦肉计？",options:["A.黄盖","B.甘宁","C.程普","D.吕蒙"],answer:0,explanation:"黄盖诈降并实施火攻，是经典苦肉计。"},
+      {question:"赤壁之战后，三国建立的标志是？",options:["A.曹丕称帝","B.刘备称帝","C.孙权称帝","D.赤壁之战本身"],answer:0,explanation:"220年曹丕篡汉建魏，拉开三国序幕。"}
+    ]
+  },
+  "三顾茅庐_quiz": {
+    type: "quiz",
+    questions: [
+      {question:"刘备三顾茅庐是为了请谁出山？",options:["A.诸葛亮","B.庞统","C.徐庶","D.司马懿"],answer:0,explanation:"刘备三次拜访诸葛亮，请其出山辅佐。"},
+      {question:"诸葛亮在隆中隐居时自称什么？",options:["A.卧龙","B.凤雏","C.冢虎","D.幼麟"],answer:0,explanation:"人称'卧龙'，寓意未出世的英才。"},
+      {question:"刘备第一次拜访诸葛亮时遇到了谁？",options:["A.诸葛均","B.黄承彦","C.崔州平","D.徐庶"],answer:2,explanation:"首访未遇诸葛亮，先遇其友崔州平。"},
+      {question:"诸葛亮向刘备提出了什么战略？",options:["A.隆中对","B.出师表","C.空城计","D.草船借箭"],answer:0,explanation:"提出'隆中对'，规划三分天下蓝图。"},
+      {question:"三顾茅庐体现了刘备怎样的品质？",options:["A.勇猛","B.诚心求贤","C.足智多谋","D.急躁"],answer:1,explanation:"以诚心打动诸葛亮，体现求贤若渴的精神。"}
+    ]
+  },
+  "草船借箭_shooting": {
+    type: "shooting",
+    levelName:"草船借箭",
+    enemies:["曹军箭手","魏国弩兵","夏侯惇部","张辽先锋","曹操亲卫"],
+    winMessage:"草船满载而归！成功借得十万支箭！"
+  },
+  "过五关斩六将_dodge": {
+    type: "dodge",
+    obstacleTheme:"五关六将",
+    sceneDescription:"关羽护送嫂嫂，千里寻兄，突破五道关隘，躲避六员猛将拦截。",
+    obstacles:["东岭关孔秀","洛阳关韩福","汜水关卞喜","荥阳关王植"]
+  },
+  "三顾茅庐_collect": {
+    type: "collect",
+    items:["诸葛亮羽毛扇","三顾茅庐地图","刘备求贤信","卧龙岗竹简","隆中对锦囊"],
+    rewardMessage:"恭喜集齐信物！你已领悟三顾茅庐的诚心与智慧。"
+  }
+};
+
+// Theme-to-preset mapping (which presets are available per game type)
+const themePresetMap = {
+  shooting: [{label:"草船借箭",key:"草船借箭_shooting",desc:"驾驶草船，迎击曹军箭雨"}],
+  quiz: [
+    {label:"草船借箭",key:"草船借箭_quiz",desc:"5道三国知识问答"},
+    {label:"赤壁之战",key:"赤壁之战_quiz",desc:"5道赤壁之战问答"},
+    {label:"三顾茅庐",key:"三顾茅庐_quiz",desc:"5道三顾茅庐问答"}
+  ],
+  dodge: [{label:"过五关斩六将",key:"过五关斩六将_dodge",desc:"躲避五关六将追击"}],
+  collect: [{label:"三顾茅庐",key:"三顾茅庐_collect",desc:"收集卧龙岗信物"}],
+  video: [
+    {label:"草船借箭",key:"草船借箭_video",desc:"30秒知识短视频"},
+    {label:"赤壁之战",key:"赤壁之战_video",desc:"30秒战役动画"},
+    {label:"三顾茅庐",key:"三顾茅庐_video",desc:"30秒故事短视频"}
+  ]
+};
+
+// =================== Home Tab Creation Flow ===================
+function selectCreateType(type, el){
+  homeCreateType = type;
+  // Reset
+  document.getElementById('home-result-area').style.display = 'none';
+  document.getElementById('home-game-container').innerHTML = '';
+  document.getElementById('home-quiz-container').innerHTML = '';
+  document.getElementById('home-video-result').innerHTML = '';
+  document.getElementById('home-video-area').style.display = 'none';
+  document.getElementById('collapse-custom').classList.remove('show');
+  document.getElementById('custom-toggle').textContent = '💡 自定义主题（需联网）';
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  if(homeGameAnimation){cancelAnimationFrame(homeGameAnimation);homeGameAnimation=null;}
+  homeGenerated = false;
+  homeCurrentWork = null;
+
+  // Highlight selected type
+  document.querySelectorAll('.create-type-item').forEach(item=>item.classList.remove('selected'));
+  el.classList.add('selected');
+
+  // Show theme section
+  const themeSection = document.getElementById('theme-section');
+  themeSection.style.display = 'block';
+
+  // Load themes
+  const themes = themePresetMap[type] || [];
+  const themeGrid = document.getElementById('theme-grid');
+  themeGrid.innerHTML = themes.map(t=>`
+    <span class="theme-chip" onclick="loadPresetTheme('${t.key}')" title="${t.desc}">${t.label}</span>
+  `).join('');
+
+  // Special: video type shows preview card
+  if(type === 'video'){
+    renderHomeVideoPreview();
+  }
+}
+
+function renderHomeVideoPreview(){
+  const area = document.getElementById('home-video-area');
+  area.style.display = 'block';
+  area.innerHTML = `
+    <div class="video-preview-card">
+      <div class="vp-icon">🎬</div>
+      <div class="vp-title">AI 生成知识短视频</div>
+      <div class="vp-desc">输入研学主题，AI自动生成30秒知识短视频</div>
+      <input class="vp-input" id="home-video-theme-input" placeholder="输入主题，如：诸葛亮北伐故事...">
+      <button class="btn-primary" onclick="playHomeVideo()" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);font-size:13px">▶ 生成并播放</button>
+    </div>
+  `;
+}
+
+function playHomeVideo(){
+  const input = document.getElementById('home-video-theme-input');
+  const theme = (input && input.value.trim()) || '三国故事';
+  const resultArea = document.getElementById('home-result-area');
+  const videoResult = document.getElementById('home-video-result');
+  resultArea.style.display = 'block';
+  document.getElementById('home-game-container').innerHTML = '';
+  document.getElementById('home-quiz-container').innerHTML = '';
+  document.getElementById('home-quiz-container').classList.remove('show');
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  if(homeGameAnimation){cancelAnimationFrame(homeGameAnimation);homeGameAnimation=null;}
+  videoResult.innerHTML = '';
+  homeGenerated = true;
+  homeCurrentWork = {type:'video', title:theme};
+  updateFlow(2);
+
+  // Simulate video preview
+  videoResult.innerHTML = `<div class="video-preview" style="background:linear-gradient(135deg,#1e1b4b,#312e81,#4c1d95);height:220px">
+    <div style="position:absolute;top:8%;left:8%;font-size:50px;opacity:.25">🏯</div>
+    <div style="position:absolute;top:30%;right:15%;font-size:36px;opacity:.2">⚔️</div>
+    <div style="position:absolute;bottom:20%;left:20%;font-size:60px;opacity:.12">🐴</div>
+    <div style="position:relative;z-index:2;text-align:center">
+      <div class="play-btn" onclick="simPlayHomeVideo(this,'${theme.replace(/'/g,"\\'")}')" style="margin-bottom:10px"></div>
+      <div style="color:#fff;font-size:13px;font-weight:600">${theme.substring(0,14)}...</div>
+      <div style="color:#93c5fd;font-size:10px;margin-top:3px">⏱ 30秒 · AI生成</div>
+    </div>
+  </div>`;
+}
+
+function simPlayHomeVideo(el, theme){
+  const p = el.parentElement.parentElement;
+  el.style.opacity='0';
+  setTimeout(()=>{
+    p.innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000">
+      <div style="text-align:center;color:#fff"><div style="font-size:36px">🎬</div><div style="font-size:13px;margin-top:6px">AI 生成中...</div><div style="font-size:10px;color:#93c5fd;margin-top:3px">正在合成画面与音效</div></div>
+    </div>`;
+  },300);
+  setTimeout(()=>{
+    p.innerHTML = `<div style="position:absolute;inset:0;background:#000;display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="playCompletedVideo(this)" id="vid-player">
+      <div class="vid-frame" style="background:linear-gradient(135deg,#312e81,#4c1d95);display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center"><div style="font-size:28px">🏯</div><div style="color:#fff;font-size:11px;margin-top:6px;opacity:.8">${theme.substring(0,14)}...</div></div>
+      </div>
+      <div class="play-btn" style="z-index:2"></div>
+      <div style="position:absolute;bottom:8px;left:12px;color:#fff;font-size:10px;z-index:3;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px">00:00 / 00:30</div>
+    </div>`;
+  }, 3300);
+}
+
+function toggleCustomInput(){
+  const content = document.getElementById('collapse-custom');
+  const toggle = document.getElementById('custom-toggle');
+  content.classList.toggle('show');
+  toggle.textContent = content.classList.contains('show') ? '💡 收起自定义输入' : '💡 自定义主题（需联网）';
+}
+
+function startCustomGenerate(){
+  const prompt = document.getElementById('custom-prompt-input').value.trim();
+  if(!prompt){showToast('请输入创作主题');return;}
+  document.getElementById('home-result-area').style.display = 'block';
+  document.getElementById('home-game-container').innerHTML = '';
+  document.getElementById('home-quiz-container').innerHTML = '';
+  document.getElementById('home-quiz-container').classList.remove('show');
+  document.getElementById('home-video-result').innerHTML = '';
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  if(homeGameAnimation){cancelAnimationFrame(homeGameAnimation);homeGameAnimation=null;}
+
+  // Show simulated loading then fallback message
+  const container = homeCreateType==='video' ? document.getElementById('home-video-result') : document.getElementById('home-game-container');
+  container.innerHTML = '<div style="text-align:center;padding:20px"><div class="loading-dots"><span></span><span></span><span></span></div><div style="font-size:11px;color:#6b7280;margin-top:8px">AI 正在创作中...</div></div>';
+
+  setTimeout(()=>{
+    container.innerHTML = `
+      <div class="card" style="text-align:center;padding:24px">
+        <div style="font-size:40px;margin-bottom:8px">🔌</div>
+        <div style="font-weight:600;font-size:14px;margin-bottom:4px">自定义主题需要联网</div>
+        <div style="font-size:12px;color:#6b7280;line-height:1.6">
+          AI 生成服务即将接入 DeepSeek 云函数<br>
+          目前请使用上方<b>热门主题</b>体验完整功能
+        </div>
+      </div>
+    `;
+    homeGenerated = true;
+    homeCurrentWork = {type:'game', title:prompt};
+    updateFlow(2);
+  }, 1500);
+}
+
+function loadPresetTheme(key){
+  const preset = presetContents[key];
+  if(!preset) return;
+
+  const resultArea = document.getElementById('home-result-area');
+  resultArea.style.display = 'block';
+  document.getElementById('home-game-container').innerHTML = '';
+  document.getElementById('home-quiz-container').innerHTML = '';
+  document.getElementById('home-quiz-container').classList.remove('show');
+  document.getElementById('home-video-result').innerHTML = '';
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  if(homeGameAnimation){cancelAnimationFrame(homeGameAnimation);homeGameAnimation=null;}
+  homeGenerated = true;
+  homeCurrentWork = {type:preset.type==='video'?'video':'game', title:key.replace(/_/g,' ')};
+
+  switch(preset.type){
+    case 'quiz':
+      document.getElementById('home-quiz-container').classList.add('show');
+      initHomeQuizGame(key, preset);
+      break;
+    case 'shooting':
+      renderHomeShootingGame(key, preset);
+      break;
+    case 'dodge':
+      renderHomeDodgeGame(key, preset);
+      break;
+    case 'collect':
+      renderHomeCollectGame(key, preset);
+      break;
+    default:
+      break;
+  }
+  updateFlow(2);
+}
+
+// =================== Home Quiz Game ===================
+let homeQuizState = null;
+let homeQuizTimer = null;
+
+function initHomeQuizGame(key, preset){
+  homeQuizState = {
+    key: key,
+    questions: preset.questions,
+    currentIndex: 0,
+    score: 0,
+    total: preset.questions.length,
+    answered: false
+  };
+  renderHomeQuizQuestion();
+}
+
+function renderHomeQuizQuestion(){
+  if(!homeQuizState) return;
+  const state = homeQuizState;
+  const q = state.questions[state.currentIndex];
+  const progress = Math.round((state.currentIndex) / state.total * 100);
+
+  const container = document.getElementById('home-quiz-container');
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span class="quiz-title">${state.key.replace(/_quiz$/,'').replace(/_/g,' · ')}</span>
+        <span class="quiz-counter">第 ${state.currentIndex+1}/${state.total} 题</span>
+      </div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${progress}%"></div></div>
+      <div class="quiz-question">${q.question}</div>
+      <div class="quiz-options" id="home-quiz-options">
+        ${q.options.map((opt,i)=>`
+          <button class="quiz-option" onclick="selectHomeQuizOption(${i})">${opt}</button>
+        `).join('')}
+      </div>
+      <div class="quiz-explanation" id="home-quiz-explanation"></div>
+    </div>
+  `;
+  state.answered = false;
+}
+
+function selectHomeQuizOption(index){
+  if(!homeQuizState || homeQuizState.answered) return;
+  homeQuizState.answered = true;
+
+  const q = homeQuizState.questions[homeQuizState.currentIndex];
+  const correct = q.answer;
+  const buttons = document.querySelectorAll('#home-quiz-options .quiz-option');
+  const explanation = document.getElementById('home-quiz-explanation');
+
+  buttons.forEach((btn,i)=>{
+    btn.disabled = true;
+    if(i === correct){
+      btn.classList.add('correct');
+    } else if(i === index && i !== correct){
+      btn.classList.add('wrong');
+      buttons[correct].classList.add('reveal-correct');
+    }
+  });
+
+  if(index === correct){
+    homeQuizState.score++;
+  }
+
+  explanation.textContent = '📖 ' + q.explanation;
+  explanation.classList.add('show');
+
+  // Auto advance
+  homeQuizTimer = setTimeout(()=>{
+    homeQuizState.currentIndex++;
+    if(homeQuizState.currentIndex >= homeQuizState.total){
+      showHomeQuizResult();
+    } else {
+      renderHomeQuizQuestion();
+    }
+  }, 1500);
+}
+
+function showHomeQuizResult(){
+  const state = homeQuizState;
+  const container = document.getElementById('home-quiz-container');
+  let comment, icon;
+  if(state.score >= 4){comment='⭐ 三国小达人！你对三国历史了如指掌！';icon='🏆'}
+  else if(state.score >= 2){comment='继续加油！你对三国故事有一定了解。';icon='📚'}
+  else{comment='再来一次！多读三国故事，你会更棒！';icon='💪'}
+
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-result">
+        <div class="result-icon">${icon}</div>
+        <div class="result-score">${state.score}/${state.total}</div>
+        <div class="result-total">答对 ${state.score} 题</div>
+        <div class="result-comment">${comment}</div>
+        <button class="btn-primary" onclick="resetHomeQuiz()" style="width:auto;display:inline-block;padding:10px 32px">🔄 再来一局</button>
+      </div>
+    </div>
+  `;
+  homeQuizState = null;
+  homeQuizTimer = null;
+  updateFlow(2);
+}
+
+function resetHomeQuiz(){
+  const key = homeQuizState ? homeQuizState.key : '草船借箭_quiz';
+  homeQuizState = null;
+  if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+  const preset = presetContents[key];
+  if(preset) initHomeQuizGame(key, preset);
+}
+
+// =================== Home Shooting Game (Simplified space shooter) ===================
+let homeGameAnimation = null;
+let homeGameState = null;
+
+function renderHomeShootingGame(key, preset){
+  const container = document.getElementById('home-game-container');
+  container.innerHTML = `
+    <div style="background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:12px;padding:16px;color:#fff;margin-bottom:10px">
+      <div style="font-weight:700;font-size:14px;margin-bottom:2px">🎯 ${preset.levelName}</div>
+      <div style="font-size:11px;color:#94a3b8;margin-bottom:12px">迎击敌军，保卫战船！</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+        ${preset.enemies.map((e,i)=>`<span style="background:rgba(239,68,68,.2);color:#fca5a5;padding:4px 10px;border-radius:12px;font-size:11px">⚔️ ${e}</span>`).join('')}
+      </div>
+      <div class="game-frame" id="home-shooting-frame" style="height:260px">
+        <canvas id="home-shooting-canvas"></canvas>
+      </div>
+      <div class="touch-controls show" id="home-touch-controls">
+        <button class="touch-btn" id="home-btn-left">◀</button>
+        <button class="touch-btn touch-btn-fire" id="home-btn-fire">🔥 发射</button>
+        <button class="touch-btn" id="home-btn-right">▶</button>
+      </div>
+      <div class="touch-hint show">👆 左右移动 · 点击发射击败敌军</div>
+    </div>
+  `;
+  setTimeout(()=>initHomeShootingGame(preset), 200);
+}
+
+function initHomeShootingGame(preset){
+  const canvas = document.getElementById('home-shooting-canvas');
+  if(!canvas) return;
+  const frame = document.getElementById('home-shooting-frame');
+  canvas.width = frame.clientWidth;
+  canvas.height = frame.clientHeight;
+  const ctx = canvas.getContext('2d');
+
+  homeGameState = {
+    player:{x:canvas.width/2-14,y:canvas.height*0.8,w:28,h:28,speed:5},
+    enemies:[],bullets:[],score:0,killCount:0,
+    keys:{left:false,right:false},gameOver:false,won:false,
+    winKills:10,preset:preset
+  };
+
+  // Touch controls for home shooting
+  const btnLeft=document.getElementById('home-btn-left'),btnRight=document.getElementById('home-btn-right'),btnFire=document.getElementById('home-btn-fire');
+  if(btnLeft){
+    btnLeft.addEventListener('touchstart',e=>{e.preventDefault();homeGameState.keys.left=true});
+    btnLeft.addEventListener('touchend',()=>{homeGameState.keys.left=false});
+    btnLeft.addEventListener('mousedown',()=>{homeGameState.keys.left=true});
+    btnLeft.addEventListener('mouseup',()=>{homeGameState.keys.left=false});
+  }
+  if(btnRight){
+    btnRight.addEventListener('touchstart',e=>{e.preventDefault();homeGameState.keys.right=true});
+    btnRight.addEventListener('touchend',()=>{homeGameState.keys.right=false});
+    btnRight.addEventListener('mousedown',()=>{homeGameState.keys.right=true});
+    btnRight.addEventListener('mouseup',()=>{homeGameState.keys.right=false});
+  }
+  if(btnFire){
+    btnFire.addEventListener('touchstart',e=>{e.preventDefault();if(!homeGameState.gameOver&&!homeGameState.won)homeShoot()});
+    btnFire.addEventListener('mousedown',()=>{if(!homeGameState.gameOver&&!homeGameState.won)homeShoot()});
+  }
+
+  canvas.addEventListener('click',()=>{if(homeGameState.gameOver||homeGameState.won)resetHomeShooting()});
+  document.addEventListener('keydown',homeShootingKeyDown);
+  function homeShootingKeyDown(e){
+    if(!homeGameState) return;
+    if(e.key==='ArrowLeft'||e.key==='a') homeGameState.keys.left=true;
+    if(e.key==='ArrowRight'||e.key==='d') homeGameState.keys.right=true;
+    if(e.key===' '){e.preventDefault();if(!homeGameState.gameOver&&!homeGameState.won)homeShoot()}
+  }
+  document.addEventListener('keyup',e=>{
+    if(e.key==='ArrowLeft'||e.key==='a') homeGameState.keys.left=false;
+    if(e.key==='ArrowRight'||e.key==='d') homeGameState.keys.right=false;
+  });
+
+  function homeShoot(){if(homeGameState.bullets.length<3)homeGameState.bullets.push({x:homeGameState.player.x+12,y:homeGameState.player.y,w:4,h:10,speed:6})}
+  function homeSpawnEnemy(){if(!homeGameState.gameOver&&!homeGameState.won)homeGameState.enemies.push({x:Math.random()*(canvas.width-24),y:-28,w:24,h:24,speed:1+Math.random()*2.5})}
+
+  let enemyTimer=0;
+  function homeShootingLoop(){
+    if(homeGameState.gameOver||homeGameState.won){drawHomeShooting();return}
+    const p=homeGameState.player;
+    if(homeGameState.keys.left)p.x-=p.speed;
+    if(homeGameState.keys.right)p.x+=p.speed;
+    p.x=Math.max(0,Math.min(canvas.width-p.w,p.x));
+    enemyTimer++;
+    if(enemyTimer>35){homeSpawnEnemy();enemyTimer=0}
+    for(let e of homeGameState.enemies)e.y+=e.speed;
+    for(let b of homeGameState.bullets)b.y-=b.speed;
+    for(let i=homeGameState.bullets.length-1;i>=0;i--){
+      for(let j=homeGameState.enemies.length-1;j>=0;j--){
+        const b=homeGameState.bullets[i],e=homeGameState.enemies[j];
+        if(b.x<e.x+e.w&&b.x+b.w>e.x&&b.y<e.y+e.h&&b.y+b.h>e.y){
+          homeGameState.bullets.splice(i,1);homeGameState.enemies.splice(j,1);
+          homeGameState.score+=10;homeGameState.killCount++;break;
+        }
+      }
+    }
+    for(let j=homeGameState.enemies.length-1;j>=0;j--){
+      const e=homeGameState.enemies[j];
+      if(p.x<e.x+e.w&&p.x+p.w>e.x&&p.y<e.y+e.h&&p.y+p.h>e.y){
+        homeGameState.enemies.splice(j,1);homeGameState.gameOver=true;
+      }
+    }
+    homeGameState.enemies=homeGameState.enemies.filter(e=>e.y<canvas.height+50);
+    homeGameState.bullets=homeGameState.bullets.filter(b=>b.y>-20);
+    if(homeGameState.killCount>=homeGameState.winKills)homeGameState.won=true;
+    drawHomeShooting();
+    homeGameAnimation=requestAnimationFrame(homeShootingLoop);
+  }
+
+  function drawHomeShooting(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#0f172a';ctx.fillRect(0,0,canvas.width,canvas.height);
+    // Stars
+    ctx.fillStyle='rgba(255,255,255,.3)';
+    for(let i=0;i<15;i++){const sx=(i*173+Date.now()*0.01)%canvas.width,sy=(i*89+50)%canvas.height;ctx.fillRect(sx,sy,2,2)}
+    // Player (boat shape)
+    const p=homeGameState.player;
+    ctx.fillStyle='#3b82f6';ctx.fillRect(p.x,p.y,p.w,p.h);
+    ctx.fillStyle='#60a5fa';ctx.fillRect(p.x+5,p.y-5,4,4);ctx.fillRect(p.x+19,p.y-5,4,4);
+    ctx.fillStyle='#fff';ctx.fillRect(p.x+7,p.y+7,5,5);ctx.fillRect(p.x+16,p.y+7,5,5);
+    // Enemies
+    for(let e of homeGameState.enemies){ctx.fillStyle='#ef4444';ctx.fillRect(e.x,e.y,e.w,e.h);ctx.fillStyle='#fca5a5';ctx.fillRect(e.x+6,e.y+4,4,4)}
+    // Bullets
+    ctx.fillStyle='#a78bfa';for(let b of homeGameState.bullets)ctx.fillRect(b.x,b.y,b.w,b.h);
+    // UI
+    ctx.fillStyle='#fbbf24';ctx.font='bold 14px sans-serif';ctx.fillText('⭐ '+homeGameState.score,10,20);
+    ctx.fillStyle='#94a3b8';ctx.font='11px sans-serif';
+    ctx.fillText('击败: '+homeGameState.killCount+'/'+homeGameState.winKills,canvas.width-70,20);
+    if(homeGameState.won){
+      ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fbbf24';ctx.font='bold 22px sans-serif';ctx.textAlign='center';
+      ctx.fillText(preset.winMessage,canvas.width/2,canvas.height/2-8);
+      ctx.fillStyle='#fff';ctx.font='13px sans-serif';
+      ctx.fillText('得分:'+homeGameState.score+' · 点击重新开始',canvas.width/2,canvas.height/2+18);
+      ctx.textAlign='start';
+    }
+    if(homeGameState.gameOver){
+      ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fff';ctx.font='bold 22px sans-serif';ctx.textAlign='center';
+      ctx.fillText('草船被击沉...',canvas.width/2,canvas.height/2-8);
+      ctx.font='13px sans-serif';ctx.fillText('得分:'+homeGameState.score+' · 点击重新开始',canvas.width/2,canvas.height/2+18);
+      ctx.textAlign='start';
+    }
+  }
+
+  function resetHomeShooting(){
+    homeGameState.player.x=canvas.width/2-14;homeGameState.player.y=canvas.height*0.8;
+    homeGameState.enemies=[];homeGameState.bullets=[];homeGameState.score=0;homeGameState.killCount=0;
+    homeGameState.gameOver=false;homeGameState.won=false;
+    homeGameState.keys={left:false,right:false};
+    enemyTimer=0;
+  }
+  homeShootingLoop();
+}
+
+// =================== Home Dodge Game (Simplified) ===================
+function renderHomeDodgeGame(key, preset){
+  const container = document.getElementById('home-game-container');
+  container.innerHTML = `
+    <div style="background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:12px;padding:16px;color:#fff;margin-bottom:10px">
+      <div style="font-weight:700;font-size:14px;margin-bottom:2px">⚡ ${preset.obstacleTheme} · 过关躲避</div>
+      <div style="font-size:11px;color:#93c5fd;margin-bottom:12px">${preset.sceneDescription}</div>
+      <div class="game-frame" id="home-dodge-frame" style="height:260px">
+        <canvas id="home-dodge-canvas"></canvas>
+      </div>
+      <div class="touch-controls show" id="home-dodge-controls">
+        <button class="touch-btn" id="home-dodge-left">◀</button>
+        <button class="touch-btn" style="min-width:80px;color:#c4b5fd;font-size:12px">躲避</button>
+        <button class="touch-btn" id="home-dodge-right">▶</button>
+      </div>
+      <div class="touch-hint show">👆 左右移动关羽 · 躲避守将拦截</div>
+    </div>
+  `;
+  setTimeout(initHomeDodgeGame, 200);
+}
+
+function initHomeDodgeGame(){
+  const canvas = document.getElementById('home-dodge-canvas');
+  if(!canvas) return;
+  const frame = document.getElementById('home-dodge-frame');
+  canvas.width = frame.clientWidth;
+  canvas.height = frame.clientHeight;
+  const ctx = canvas.getContext('2d');
+
+  const state = {
+    player:{x:canvas.width/2-15,y:canvas.height-50,w:30,h:30,speed:5},
+    obstacles:[],score:0,timer:0,gameOver:false
+  };
+
+  // Touch
+  const bl=document.getElementById('home-dodge-left'),br=document.getElementById('home-dodge-right');
+  let kLeft=false,kRight=false;
+  if(bl){bl.addEventListener('touchstart',e=>{e.preventDefault();kLeft=true});bl.addEventListener('touchend',()=>{kLeft=false});bl.addEventListener('mousedown',()=>{kLeft=true});bl.addEventListener('mouseup',()=>{kLeft=false})}
+  if(br){br.addEventListener('touchstart',e=>{e.preventDefault();kRight=true});br.addEventListener('touchend',()=>{kRight=false});br.addEventListener('mousedown',()=>{kRight=true});br.addEventListener('mouseup',()=>{kRight=false})}
+  canvas.addEventListener('click',()=>{if(state.gameOver)resetDodge()});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='a')kLeft=true;if(e.key==='ArrowRight'||e.key==='d')kRight=true});
+  document.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key==='a')kLeft=false;if(e.key==='ArrowRight'||e.key==='d')kRight=false});
+
+  function resetDodge(){
+    state.player.x=canvas.width/2-15;
+    state.obstacles=[];state.score=0;state.timer=0;state.gameOver=false;
+  }
+
+  let obsTimer=0;
+  function loop(){
+    if(state.gameOver){drawDodge();return}
+    if(kLeft)state.player.x-=state.player.speed;
+    if(kRight)state.player.x+=state.player.speed;
+    state.player.x=Math.max(0,Math.min(canvas.width-state.player.w,state.player.x));
+    state.timer++;
+    obsTimer++;
+    if(obsTimer>45){state.obstacles.push({x:Math.random()*(canvas.width-30),y:-30,w:28,h:28,speed:2+Math.random()*2});obsTimer=0}
+    for(let o of state.obstacles)o.y+=o.speed;
+    for(let j=state.obstacles.length-1;j>=0;j--){
+      const o=state.obstacles[j];
+      const p=state.player;
+      if(p.x<o.x+o.w&&p.x+p.w>o.x&&p.y<o.y+o.h&&p.y+p.h>o.y){state.gameOver=true}
+    }
+    state.obstacles=state.obstacles.filter(o=>o.y<canvas.height+50);
+    state.score=Math.floor(state.timer/10);
+    drawDodge();
+    homeGameAnimation=requestAnimationFrame(loop);
+  }
+
+  function drawDodge(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#1e1b4b';ctx.fillRect(0,0,canvas.width,canvas.height);
+    // Road
+    ctx.fillStyle='rgba(255,255,255,.05)';
+    for(let i=0;i<8;i++){const y=(i*80+state.timer*3)%canvas.height;ctx.fillRect(canvas.width/2-4,y,8,40)}
+    // Player
+    const p=state.player;
+    ctx.fillStyle='#059669';ctx.fillRect(p.x,p.y,p.w,p.h);
+    ctx.fillStyle='#10b981';ctx.fillRect(p.x+4,p.y-6,22,6);
+    ctx.fillStyle='#fff';ctx.fillRect(p.x+6,p.y+6,6,6);ctx.fillRect(p.x+18,p.y+6,6,6);
+    // Obstacles
+    for(let o of state.obstacles){ctx.fillStyle='#ef4444';ctx.fillRect(o.x,o.y,o.w,o.h);ctx.fillStyle='#fca5a5';ctx.fillRect(o.x+4,o.y+4,8,8)}
+    // UI
+    ctx.fillStyle='#fff';ctx.font='bold 13px sans-serif';ctx.fillText('⭐ '+state.score,10,20);
+    if(state.gameOver){
+      ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fff';ctx.font='bold 20px sans-serif';ctx.textAlign='center';
+      ctx.fillText('被守将拦截！',canvas.width/2,canvas.height/2-8);
+      ctx.font='13px sans-serif';ctx.fillText('得分:'+state.score+' · 点击重新开始',canvas.width/2,canvas.height/2+18);
+      ctx.textAlign='start';
+    }
+  }
+  loop();
+}
+
+// =================== Home Collect Game (Simplified) ===================
+function renderHomeCollectGame(key, preset){
+  const container = document.getElementById('home-game-container');
+  container.innerHTML = `
+    <div style="background:linear-gradient(135deg,#166534,#15803d);border-radius:12px;padding:16px;color:#fff;margin-bottom:10px">
+      <div style="font-weight:700;font-size:14px;margin-bottom:2px">💎 寻宝收集 · 三顾茅庐</div>
+      <div style="font-size:11px;color:#bbf7d0;margin-bottom:10px">收集卧龙岗信物，集齐所有宝物</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+        ${preset.items.map((item,i)=>`<span style="background:rgba(251,191,36,.2);color:#fde68a;padding:4px 10px;border-radius:12px;font-size:11px" id="home-collect-item-${i}">⬜ ${item}</span>`).join('')}
+      </div>
+      <div class="game-frame" id="home-collect-frame" style="height:260px">
+        <canvas id="home-collect-canvas"></canvas>
+      </div>
+      <div class="touch-controls show" id="home-collect-controls">
+        <button class="touch-btn" id="home-collect-left">◀</button>
+        <button class="touch-btn" style="min-width:80px;color:#fde68a;font-size:12px">收集</button>
+        <button class="touch-btn" id="home-collect-right">▶</button>
+      </div>
+      <div class="touch-hint show">👆 左右移动收集宝物</div>
+    </div>
+  `;
+  setTimeout(()=>initHomeCollectGame(preset), 200);
+}
+
+function initHomeCollectGame(preset){
+  const canvas = document.getElementById('home-collect-canvas');
+  if(!canvas) return;
+  const frame = document.getElementById('home-collect-frame');
+  canvas.width = frame.clientWidth;
+  canvas.height = frame.clientHeight;
+  const ctx = canvas.getContext('2d');
+
+  const state = {
+    player:{x:canvas.width/2-15,y:canvas.height-50,w:30,h:30,speed:5},
+    items:[],collected:[],gameOver:false,won:false,
+    totalItems:preset.items.length
+  };
+
+  const bl=document.getElementById('home-collect-left'),br=document.getElementById('home-collect-right');
+  let kLeft=false,kRight=false;
+  if(bl){bl.addEventListener('touchstart',e=>{e.preventDefault();kLeft=true});bl.addEventListener('touchend',()=>{kLeft=false});bl.addEventListener('mousedown',()=>{kLeft=true});bl.addEventListener('mouseup',()=>{kLeft=false})}
+  if(br){br.addEventListener('touchstart',e=>{e.preventDefault();kRight=true});br.addEventListener('touchend',()=>{kRight=false});br.addEventListener('mousedown',()=>{kRight=true});br.addEventListener('mouseup',()=>{kRight=false})}
+  canvas.addEventListener('click',()=>{if(state.gameOver||state.won)resetCollect()});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='a')kLeft=true;if(e.key==='ArrowRight'||e.key==='d')kRight=true});
+  document.addEventListener('keyup',e=>{if(e.key==='ArrowLeft'||e.key==='a')kLeft=false;if(e.key==='ArrowRight'||e.key==='d')kRight=false});
+
+  function resetCollect(){
+    state.player.x=canvas.width/2-15;state.items=[];state.collected=[];state.gameOver=false;state.won=false;
+    // Reset display
+    for(let i=0;i<state.totalItems;i++){const el=document.getElementById('home-collect-item-'+i);if(el)el.textContent='⬜ '+preset.items[i]}
+  }
+
+  let itemTimer=0;
+  function spawnItem(){if(state.items.length<4){state.items.push({x:Math.random()*(canvas.width-24),y:-24,w:24,h:24,id:state.collected.length+state.items.length,speed:1.2+Math.random()})}}
+
+  function loop(){
+    if(state.gameOver||state.won){drawCollect();return}
+    if(kLeft)state.player.x-=state.player.speed;
+    if(kRight)state.player.x+=state.player.speed;
+    state.player.x=Math.max(0,Math.min(canvas.width-state.player.w,state.player.x));
+    itemTimer++;
+    if(itemTimer>60){spawnItem();itemTimer=0}
+    for(let it of state.items)it.y+=it.speed;
+    for(let j=state.items.length-1;j>=0;j--){
+      const it=state.items[j];
+      const p=state.player;
+      if(p.x<it.x+it.w&&p.x+p.w>it.x&&p.y<it.y+it.h&&p.y+p.h>it.y){
+        const itemIdx=state.collected.length;
+        state.collected.push(it);
+        const el=document.getElementById('home-collect-item-'+itemIdx);
+        if(el)el.innerHTML='✅ '+preset.items[itemIdx];
+        state.items.splice(j,1);
+        if(state.collected.length>=state.totalItems)state.won=true;
+      }
+    }
+    state.items=state.items.filter(it=>it.y<canvas.height+50);
+    if(state.items.some(it=>it.y>canvas.height-30&&it.y<canvas.height))state.gameOver=true; // Missed too many
+    drawCollect();
+    homeGameAnimation=requestAnimationFrame(loop);
+  }
+
+  function drawCollect(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#166534';ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='rgba(255,255,255,.05)';
+    for(let i=0;i<10;i++){const x=Math.sin(i*2+Date.now()*0.001)*50+canvas.width/2;ctx.fillRect(x,i*30,3,3)}
+    const p=state.player;
+    ctx.fillStyle='#fbbf24';ctx.fillRect(p.x,p.y,p.w,p.h);
+    ctx.fillStyle='#fef3c7';ctx.fillRect(p.x+5,p.y-5,p.w-10,6);
+    ctx.fillStyle='#92400e';ctx.fillRect(p.x+8,p.y+7,4,4);ctx.fillRect(p.x+18,p.y+7,4,4);
+    for(let it of state.items){ctx.fillStyle='#a78bfa';ctx.fillRect(it.x,it.y,it.w,it.h);ctx.fillStyle='#c4b5fd';ctx.fillRect(it.x+4,it.y+4,8,8)}
+    ctx.fillStyle='#fff';ctx.font='bold 13px sans-serif';ctx.fillText('收集: '+state.collected.length+'/'+state.totalItems,10,20);
+    if(state.won){
+      ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fbbf24';ctx.font='bold 20px sans-serif';ctx.textAlign='center';
+      ctx.fillText(preset.rewardMessage,canvas.width/2,canvas.height/2-8);
+      ctx.fillStyle='#fff';ctx.font='13px sans-serif';ctx.fillText('点击重新开始',canvas.width/2,canvas.height/2+18);
+      ctx.textAlign='start';
+    }
+    if(state.gameOver){
+      ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fff';ctx.font='bold 20px sans-serif';ctx.textAlign='center';
+      ctx.fillText('宝物遗失了...',canvas.width/2,canvas.height/2-8);
+      ctx.font='13px sans-serif';ctx.fillText('点击重新开始',canvas.width/2,canvas.height/2+18);
+      ctx.textAlign='start';
+    }
+  }
+  loop();
+}
+
+function renderSimpleQuiz(containerId, prompt){
+  const container = document.getElementById(containerId);
+  container.classList.add('show');
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-header"><span class="quiz-title">${prompt.substring(0,10)} 问答</span><span class="quiz-counter">自定义问答</span></div>
+      <div class="quiz-question" style="text-align:center;padding:20px">
+        <div style="font-size:13px;color:#6b7280">✨ 自定义主题问答将在接入 DeepSeek 后启用</div>
+        <div style="font-size:12px;color:#9ca3af;margin-top:8px">现在试试预设主题吧！</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHomeVideoResult(prompt){
+  return `<div class="video-preview" style="background:linear-gradient(135deg,#1e1b4b,#312e81,#4c1d95);height:220px">
+    <div style="position:relative;z-index:2;text-align:center;padding-top:80px">
+      <div class="play-btn" style="margin:0 auto 10px"></div>
+      <div style="color:#fff;font-size:13px;font-weight:600">${prompt.substring(0,14)}...</div>
+      <div style="color:#93c5fd;font-size:10px;margin-top:3px">⏱ 30秒 · 需联网生成</div>
+    </div>
+  </div>`;
+}
+
+function saveHomeWork(){
+  if(!homeGenerated || !homeCurrentWork) return;
+  const today = new Date().toISOString().slice(0,10);
+  savedWorks.unshift({
+    type: homeCurrentWork.type,
+    title: homeCurrentWork.title.substring(0,10)+(homeCurrentWork.title.length>10?'...':''),
+    icon: homeCurrentWork.type==='game'?'🎮':'🎬',
+    date: today
+  });
+  updateFlow(3);
+  switchTab('works');
+  showToast('作品已保存！家长将收到研学报告推送');
+}
 // 保存每个 Tab 和子页面的滚动位置，切换时恢复
 let scrollPositions = {};
 
 // =================== Tab Navigation (Optimized: display:none switching + scroll restore) ===================
 function switchTab(tab){
   if(currentPage){ hideSubPage(); }
+
+  // 清理 home tab 的游戏状态
+  if(currentTab === 'home' && tab !== 'home'){
+    if(homeGameAnimation){cancelAnimationFrame(homeGameAnimation);homeGameAnimation=null;}
+    if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
+    homeGameState = null;
+    homeQuizState = null;
+  }
 
   // 保存当前 Tab 的滚动位置
   const screensArea = document.getElementById('screens-area');
