@@ -797,7 +797,7 @@ body{
       <div class="role-selector-wrap">
         <button class="role-selector-btn" id="role-selector-btn" onclick="toggleRoleDropdown(event)">
           <span id="role-emoji">👨‍🏫</span>
-          <span id="role-name">老师</span>
+          <span id="role-name">老师/渠道</span>
           <span class="role-arrow">▼</span>
         </button>
         <div class="role-dropdown" id="role-dropdown">
@@ -805,10 +805,7 @@ body{
             <span>👨‍👩‍👧</span> 家长 <span class="check-icon">✓</span>
           </div>
           <div class="role-option selected" onclick="switchRole('teacher')" id="role-opt-teacher">
-            <span>👨‍🏫</span> 老师 <span class="check-icon">✓</span>
-          </div>
-          <div class="role-option" onclick="switchRole('channel')" id="role-opt-channel">
-            <span>🧑‍💼</span> 渠道 <span class="check-icon">✓</span>
+            <span>👨‍🏫</span> 老师/渠道 <span class="check-icon">✓</span>
           </div>
         </div>
       </div>
@@ -949,9 +946,10 @@ body{
           </div>
           <div id="report-parent-content"></div>
           <div id="report-parent-forward" style="display:none;margin-top:12px">
-            <button class="btn-primary" onclick="showToast('📲 分享链接已复制到剪贴板，快去分享给亲友吧！')" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">
-              📲 转发给亲友
-            </button>
+            <div class="rpb-btn-row">
+              <button class="rpb-btn rpb-btn-download" onclick="showToast('📥 报告已下载到本地')">📥 下载报告</button>
+              <button class="rpb-btn rpb-btn-share" onclick="showToast('📤 报告已分享给亲友')">📤 分享给亲友</button>
+            </div>
           </div>
         </div>
 
@@ -1257,6 +1255,22 @@ body{
 
       <!-- Tab 5: 分销 (Commission) -->
       <div class="screen" id="tab-commission" data-tab="commission">
+        <!-- Teacher/渠道 内部视图切换 -->
+        <div class="partner-toggle" id="teacher-commission-toggle" style="display:none">
+          <button class="partner-toggle-btn active" onclick="switchTeacherCommissionView('teaching')" id="teacher-toggle-teaching" style="background:#4f46e5;color:#fff">
+            📋 教学管理
+          </button>
+          <button class="partner-toggle-btn" onclick="switchTeacherCommissionView('channel')" id="teacher-toggle-channel" style="background:#f3f4f6;color:#6b7280">
+            💰 推广收益
+          </button>
+        </div>
+
+        <!-- Teacher: 教学管理视图 -->
+        <div id="teacher-teaching-view" style="display:none">
+          <div style="font-weight:600;font-size:15px;margin-bottom:12px;color:#1f2937">👨‍🏫 班级学生管理</div>
+          <div id="teacher-teaching-students"></div>
+        </div>
+
         <!-- Role Toggle -->
         <div class="partner-toggle" id="partner-toggle">
           <button class="partner-toggle-btn active" onclick="switchPartnerRole('c')" id="role-c">
@@ -1590,13 +1604,15 @@ body{
 
 <script>
 // =================== Role System ===================
-let currentRole = 'teacher';
+let currentRole = 'teacher'; // 默认老师/渠道
 
 const ROLES = {
   parent: { name: '家长', emoji: '👨‍👩‍👧', tabs: ['home','works','report','mall','commission'] },
-  teacher: { name: '老师', emoji: '👨‍🏫', tabs: ['home','works','report','mall'] },
-  channel: { name: '渠道', emoji: '🧑‍💼', tabs: ['mall','commission'] }
+  teacher: { name: '老师/渠道', emoji: '👨‍🏫', tabs: ['home','works','report','mall','commission'] }
 };
+
+// 老师/渠道角色的内部视图切换
+let teacherView = 'teaching'; // 'teaching' 或 'channel'
 
 const STUDENTS = {
   '王小宇': { avatar: '王', grade: '五年级', works: 2 },
@@ -2435,37 +2451,62 @@ function switchTab(tab){
 }
 
 function applyCommissionView(){
-  // Handle partner toggle visibility and default view based on role
   const toggle = document.getElementById('partner-toggle');
   const cView = document.getElementById('partner-view-c');
   const bView = document.getElementById('partner-view-b');
   const cSwitchHint = document.getElementById('partner-c-switch-hint');
   const bSwitchHint = document.getElementById('partner-b-switch-hint');
+  const teacherToggle = document.getElementById('teacher-commission-toggle');
+  const teachingView = document.getElementById('teacher-teaching-view');
 
-  if(currentRole === 'channel'){
-    // Channel: B-end only, hide toggle
+  if(currentRole === 'teacher'){
+    // Teacher/渠道: show internal view toggle (教学管理 / 推广收益)
     if(toggle) toggle.style.display = 'none';
     if(cView) cView.style.display = 'none';
-    if(bView) bView.style.display = 'block';
+    if(bView) bView.style.display = 'none';
     if(cSwitchHint) cSwitchHint.style.display = 'none';
     if(bSwitchHint) bSwitchHint.style.display = 'none';
+    if(teacherToggle) teacherToggle.style.display = 'flex';
     partnerRole = 'b';
-    partnerCertified = true; // Channel users are pre-certified
-    updateBView();
+    partnerCertified = true; // Teacher/渠道 are pre-certified
+    applyTeacherCommissionView();
   } else if(currentRole === 'parent'){
-    // Parent: C-end only (share mode), hide toggle
+    // Parent: C-end only (share mode)
     if(toggle) toggle.style.display = 'none';
     if(cView) cView.style.display = 'block';
     if(bView) bView.style.display = 'none';
     if(cSwitchHint) cSwitchHint.style.display = 'none';
     if(bSwitchHint) bSwitchHint.style.display = 'none';
+    if(teacherToggle) teacherToggle.style.display = 'none';
+    if(teachingView) teachingView.style.display = 'none';
     partnerRole = 'c';
-  } else {
-    // Other roles (teacher with no commission): restore toggle
-    if(toggle) toggle.style.display = '';
-    if(cSwitchHint) cSwitchHint.style.display = '';
-    if(bSwitchHint) bSwitchHint.style.display = '';
   }
+}
+
+function applyTeacherCommissionView(){
+  const teachingView = document.getElementById('teacher-teaching-view');
+  const bView = document.getElementById('partner-view-b');
+  const teachBtn = document.getElementById('teacher-toggle-teaching');
+  const channelBtn = document.getElementById('teacher-toggle-channel');
+
+  if(teacherView === 'teaching'){
+    if(teachingView) teachingView.style.display = 'block';
+    if(bView) bView.style.display = 'none';
+    if(teachBtn) { teachBtn.classList.add('active'); teachBtn.style.background = '#4f46e5'; teachBtn.style.color = '#fff'; }
+    if(channelBtn) { channelBtn.classList.remove('active'); channelBtn.style.background = '#f3f4f6'; channelBtn.style.color = '#6b7280'; }
+    renderTeacherTeachingView();
+  } else {
+    if(teachingView) teachingView.style.display = 'none';
+    if(bView) bView.style.display = 'block';
+    if(teachBtn) { teachBtn.classList.remove('active'); teachBtn.style.background = '#f3f4f6'; teachBtn.style.color = '#6b7280'; }
+    if(channelBtn) { channelBtn.classList.add('active'); channelBtn.style.background = '#4f46e5'; channelBtn.style.color = '#fff'; }
+    updateBView();
+  }
+}
+
+function switchTeacherCommissionView(view){
+  teacherView = view;
+  applyTeacherCommissionView();
 }
 
 function showSubPage(name, title){
@@ -2834,23 +2875,19 @@ function saveWork(){
 
 // =================== Works Rendering (Role-Aware: Teacher grouped, Parent filtered) ===================
 function renderWorks(){
-  const teacherView = document.getElementById('works-teacher-view');
+  const tv = document.getElementById('works-teacher-view');
   const parentView = document.getElementById('works-parent-view');
 
   if(currentRole === 'teacher'){
     // Teacher: show all 3 students grouped
     if(parentView) parentView.style.display = 'none';
-    if(teacherView) teacherView.style.display = 'block';
+    if(tv) tv.style.display = 'block';
     renderTeacherWorksView();
   } else if(currentRole === 'parent'){
     // Parent: only show 王小宇's works
-    if(teacherView) teacherView.style.display = 'none';
+    if(tv) tv.style.display = 'none';
     if(parentView) parentView.style.display = 'block';
     renderParentWorksView();
-  } else {
-    // Channel: no works tab, but if somehow shown
-    if(teacherView) teacherView.style.display = 'none';
-    if(parentView) parentView.style.display = 'none';
   }
 }
 
@@ -2918,6 +2955,50 @@ function renderParentWorksView(){
 }
 
 function viewWorkByName(title){showToast(title+' · 正式版可在线游玩/观看')}
+
+// =================== Teacher Teaching View (Commission Tab 教学管理) ===================
+function renderTeacherTeachingView(){
+  const container = document.getElementById('teacher-teaching-students');
+  if(!container) return;
+
+  const studentNames = Object.keys(STUDENTS);
+  container.innerHTML = studentNames.map(name=>{
+    const student = STUDENTS[name];
+    const works = savedWorks.filter(w=>w.owner === name);
+    return `
+      <div class="card" style="margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:600">${student.avatar}</div>
+          <div>
+            <div style="font-weight:600;font-size:13px">${name}</div>
+            <div style="font-size:10px;color:#9ca3af">${student.grade} · 作品 ${works.length} 件</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn-secondary btn-sm" onclick="quickGenerateReport('${name}')" style="flex:1">📋 生成报告</button>
+          <button class="btn-secondary btn-sm" onclick="switchTab('works');showToast('查看${name}的作品列表')" style="flex:1">📱 查看作品</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // 快捷报告入口提示
+  container.innerHTML += `
+    <div style="background:#eef2ff;border-radius:12px;padding:12px;margin-top:10px;text-align:center">
+      <div style="font-size:13px;color:#4f46e5;font-weight:600;margin-bottom:4px">💡 快捷批量操作</div>
+      <div style="font-size:11px;color:#6b7280">点击"生成报告"可快速为对应学生生成研学报告，也可前往"报告"Tab进行详细配置。</div>
+    </div>
+  `;
+}
+
+function quickGenerateReport(studentName){
+  document.getElementById('report-student-select').value = studentName;
+  switchTab('report');
+  setTimeout(()=>{
+    const target = document.getElementById('report-teacher-panel');
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  }, 200);
+}
 
 // =================== Mall (Optimized: 文化研学/科技探索/自然博物 三维度筛选) ===================
 function switchMallTab(cat, el){
@@ -3059,7 +3140,8 @@ function switchRole(role){
 
   // Update dropdown selection
   document.querySelectorAll('.role-option').forEach(o=>o.classList.remove('selected'));
-  document.getElementById('role-opt-'+role).classList.add('selected');
+  const optEl = document.getElementById('role-opt-'+role);
+  if(optEl) optEl.classList.add('selected');
 
   // Close dropdown
   document.getElementById('role-dropdown').classList.remove('show');
@@ -3374,8 +3456,6 @@ function renderReportView(){
     if(parentPanel) parentPanel.style.display = 'block';
     couponCards.forEach(c=>c.style.display = '');
     renderParentReportView();
-  } else {
-    // Channel: no report tab
   }
 }
 
@@ -3502,7 +3582,7 @@ function generateReport(){
           <div class="rpb-section-title">📲 分享与下载</div>
           <div class="rpb-btn-row">
             <button class="rpb-btn rpb-btn-download" onclick="showToast('📥 报告已下载到本地')">📥 下载报告</button>
-            <button class="rpb-btn rpb-btn-share" onclick="showToast('📤 报告已转发给家长')">📤 转发家长</button>
+            <button class="rpb-btn rpb-btn-share" onclick="showToast('📤 报告已分享给亲友')">📤 分享给亲友</button>
           </div>
           <div style="text-align:center;font-size:11px;color:#9ca3af;margin-top:6px">家长可通过微信小程序查看完整报告</div>
         </div>
