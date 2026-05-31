@@ -34,6 +34,37 @@ body{
   min-height:44px;
 }
 .page-header .back{cursor:pointer;font-size:18px;color:#4f46e5}
+/* Role Selector */
+.role-selector-wrap{position:relative;flex-shrink:0}
+.role-selector-btn{
+  display:flex;align-items:center;gap:4px;padding:4px 10px;
+  background:#f0f5ff;border:1.5px solid #c7d2fe;border-radius:20px;
+  font-size:12px;font-weight:600;color:#4f46e5;cursor:pointer;
+  transition:all .2s;white-space:nowrap;
+}
+.role-selector-btn:active{transform:scale(.95);background:#eef2ff}
+.role-selector-btn .role-arrow{font-size:9px;transition:transform .2s}
+.role-dropdown{
+  position:absolute;top:calc(100% + 6px);left:0;z-index:50;
+  background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.15);
+  padding:4px;min-width:150px;display:none;
+  animation:roleSlideIn .2s ease;
+}
+@keyframes roleSlideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.role-dropdown.show{display:block}
+.role-option{
+  display:flex;align-items:center;gap:8px;padding:10px 14px;
+  border-radius:10px;cursor:pointer;font-size:13px;color:#374151;
+  transition:all .15s;font-weight:500;
+}
+.role-option:hover{background:#f0f5ff}
+.role-option.selected{background:#eef2ff;color:#4f46e5;font-weight:600}
+.role-option .check-icon{font-size:12px;color:#4f46e5;margin-left:auto;display:none}
+.role-option.selected .check-icon{display:inline}
+/* Nav item hidden state */
+.nav-item.nav-hidden{display:none}
+/* Role-aware screen hiding */
+.screen.role-hidden{display:none!important}
 /* Screens area */
 .screens-area{flex:1;overflow:hidden;position:relative}
 .screen{
@@ -763,6 +794,24 @@ body{
   <div class="phone-frame">
     <div class="notch"></div>
     <div class="status-bar" style="background:#f5f5f5">
+      <div class="role-selector-wrap">
+        <button class="role-selector-btn" id="role-selector-btn" onclick="toggleRoleDropdown(event)">
+          <span id="role-emoji">👨‍🏫</span>
+          <span id="role-name">老师</span>
+          <span class="role-arrow">▼</span>
+        </button>
+        <div class="role-dropdown" id="role-dropdown">
+          <div class="role-option" onclick="switchRole('parent')" id="role-opt-parent">
+            <span>👨‍👩‍👧</span> 家长 <span class="check-icon">✓</span>
+          </div>
+          <div class="role-option selected" onclick="switchRole('teacher')" id="role-opt-teacher">
+            <span>👨‍🏫</span> 老师 <span class="check-icon">✓</span>
+          </div>
+          <div class="role-option" onclick="switchRole('channel')" id="role-opt-channel">
+            <span>🧑‍💼</span> 渠道 <span class="check-icon">✓</span>
+          </div>
+        </div>
+      </div>
       <span style="font-size:13px">9:41</span>
       <span style="font-weight:700;font-size:13px">离泰AI研学</span>
       <span style="font-size:12px">📶 🔋</span>
@@ -851,22 +900,27 @@ body{
 
       <!-- Tab 2: 作品 (Works) -->
       <div class="screen" id="tab-works" data-tab="works">
-        <!-- User card -->
-        <div class="user-card-header">
-          <div class="user-info">
-            <div class="user-avatar">张</div>
-            <div>
-              <div style="font-weight:600;font-size:13px">王小宇</div>
-              <div style="font-size:10px;color:#9ca3af">武侯祠 · 三国文化研学</div>
+        <!-- Parent View: Single student -->
+        <div id="works-parent-view" style="display:none">
+          <div class="user-card-header">
+            <div class="user-info">
+              <div class="user-avatar" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)">王</div>
+              <div>
+                <div style="font-weight:600;font-size:13px">王小宇</div>
+                <div style="font-size:10px;color:#9ca3af">武侯祠 · 三国文化研学</div>
+              </div>
             </div>
+            <span class="badge badge-blue" id="parent-work-count">2件作品</span>
           </div>
-          <span class="badge badge-blue">3件作品</span>
+          <div class="works-list-section">
+            <div class="section-title">📱 我的AI作品</div>
+            <div class="works-grid" id="works-parent-list"></div>
+          </div>
         </div>
 
-        <!-- AI作品列表 -->
-        <div class="works-list-section">
-          <div class="section-title">📱 我的AI作品</div>
-          <div class="works-grid" id="works-list"></div>
+        <!-- Teacher View: Student Groups -->
+        <div id="works-teacher-view">
+          <div id="works-teacher-groups"></div>
         </div>
 
         <!-- 优惠卡片 -->
@@ -884,6 +938,23 @@ body{
 
       <!-- Tab 3: 报告 (Report) — 教师端视角 -->
       <div class="screen" id="tab-report" data-tab="report">
+        <!-- 家长报告视图 -->
+        <div id="report-parent-panel" style="display:none">
+          <div style="text-align:center;padding:40px 20px">
+            <div style="font-size:56px;margin-bottom:12px">📋</div>
+            <div style="font-weight:700;font-size:16px;color:#1f2937;margin-bottom:8px">查看孩子研学报告</div>
+            <div style="font-size:13px;color:#6b7280;line-height:1.6" id="report-parent-hint">
+              老师正在为孩子生成研学报告...
+            </div>
+          </div>
+          <div id="report-parent-content"></div>
+          <div id="report-parent-forward" style="display:none;margin-top:12px">
+            <button class="btn-primary" onclick="showToast('📲 分享链接已复制到剪贴板，快去分享给亲友吧！')" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">
+              📲 转发给亲友
+            </button>
+          </div>
+        </div>
+
         <!-- 教师操作区（生成前显示） -->
         <div class="report-teacher-panel" id="report-teacher-panel">
           <div class="rtp-title">📋 生成研学报告</div>
@@ -892,8 +963,8 @@ body{
             <div class="rtp-label">选择学生</div>
             <select class="rtp-select" id="report-student-select">
               <option value="王小宇" selected>王小宇 ✓</option>
-              <option value="李明轩">李明轩</option>
-              <option value="张思涵">张思涵</option>
+              <option value="刘圆圆">刘圆圆</option>
+              <option value="大乖乖">大乖乖</option>
             </select>
           </div>
 
@@ -1230,7 +1301,7 @@ body{
             <button class="btn-primary" style="margin-top:10px;font-size:14px" onclick="showToast('专属链接已复制，快去分享吧！')">📋 复制我的专属分享链接</button>
           </div>
 
-          <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af">
+          <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af" id="partner-c-switch-hint">
             💼 你是导游/渠道方？<span style="color:#7c3aed;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('b')">切换为合作伙伴</span>
           </div>
         </div>
@@ -1367,7 +1438,7 @@ body{
           <div id="tool-detail" style="display:none"></div>
 
           <!-- Back to C end -->
-          <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af">
+          <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af" id="partner-b-switch-hint">
             👤 查看普通用户视角？<span style="color:#4f46e5;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('c')">切换到C端分销</span>
           </div>
         </div>
@@ -1518,14 +1589,36 @@ body{
 </div>
 
 <script>
+// =================== Role System ===================
+let currentRole = 'teacher';
+
+const ROLES = {
+  parent: { name: '家长', emoji: '👨‍👩‍👧', tabs: ['home','works','report','mall','commission'] },
+  teacher: { name: '老师', emoji: '👨‍🏫', tabs: ['home','works','report','mall'] },
+  channel: { name: '渠道', emoji: '🧑‍💼', tabs: ['mall','commission'] }
+};
+
+const STUDENTS = {
+  '王小宇': { avatar: '王', grade: '五年级', works: 2 },
+  '刘圆圆': { avatar: '刘', grade: '四年级', works: 2 },
+  '大乖乖': { avatar: '大', grade: '三年级', works: 2 }
+};
+
+// Last generated report (global, accessible by parent view)
+let lastGeneratedReport = null;
+
 // =================== State ===================
 let currentType = 'game';
 let currentTab = 'home';
 let currentPage = null; // sub-page name
 let generated = false;
 let savedWorks = [
-  {type:'game', title:'草船借箭射击游戏', icon:'🎮', date:'2026.05.21'},
-  {type:'video', title:'武侯祠建筑巡礼视频', icon:'🎬', date:'2026.05.21'}
+  {type:'game', title:'草船借箭射击游戏', icon:'🎯', date:'2026.05.21', owner:'王小宇'},
+  {type:'video', title:'武侯祠建筑巡礼视频', icon:'🎬', date:'2026.05.21', owner:'王小宇'},
+  {type:'quiz', title:'赤壁之战问答闯关', icon:'📝', date:'2026.05.21', owner:'刘圆圆'},
+  {type:'collect', title:'三国人物收集游戏', icon:'💎', date:'2026.05.21', owner:'刘圆圆'},
+  {type:'dodge', title:'过五关斩六将躲避', icon:'🏃', date:'2026.05.21', owner:'大乖乖'},
+  {type:'quiz', title:'武侯祠知识答题', icon:'📝', date:'2026.05.21', owner:'大乖乖'}
 ];
 let gameAnimation = null;
 let gameState = null;
@@ -2273,7 +2366,8 @@ function saveHomeWork(){
     type: homeCurrentWork.type,
     title: homeCurrentWork.title.substring(0,10)+(homeCurrentWork.title.length>10?'...':''),
     icon: homeCurrentWork.type==='game'?'🎮':'🎬',
-    date: today
+    date: today,
+    owner: '王小宇'
   });
   updateFlow(3);
   switchTab('works');
@@ -2282,7 +2376,22 @@ function saveHomeWork(){
 // 保存每个 Tab 和子页面的滚动位置，切换时恢复
 let scrollPositions = {};
 
-// =================== Tab Navigation (Optimized: display:none switching + scroll restore) ===================
+// =================== Tab Navigation (Optimized: display:none switching + scroll restore + role-aware) ===================
+function applyTabVisibility(){
+  // Show/hide nav items based on current role
+  const role = ROLES[currentRole];
+  const allTabIds = ['home','works','report','mall','commission'];
+  allTabIds.forEach(tabId=>{
+    const navEl = document.getElementById('nav-'+tabId);
+    if(!navEl) return;
+    if(role.tabs.includes(tabId)){
+      navEl.classList.remove('nav-hidden');
+    } else {
+      navEl.classList.add('nav-hidden');
+    }
+  });
+}
+
 function switchTab(tab){
   if(currentPage){ hideSubPage(); }
 
@@ -2295,7 +2404,6 @@ function switchTab(tab){
   }
 
   // 保存当前 Tab 的滚动位置
-  const screensArea = document.getElementById('screens-area');
   const currentScreen = document.querySelector('.screen.active');
   if(currentScreen){
     scrollPositions[currentTab] = currentScreen.scrollTop;
@@ -2318,11 +2426,46 @@ function switchTab(tab){
 
   // 仅在首次或数据变化时重新渲染（避免不必要的 innerHTML 重置）
   if(tab==='works') renderWorks();
-  if(tab==='report') { /* report now uses teacher view */ }
+  if(tab==='report') renderReportView();
+  if(tab==='commission') applyCommissionView();
 
   // Update flow
   const flowMap = {home:1, works:2, report:3, mall:4, commission:5};
   updateFlow(flowMap[tab]||1);
+}
+
+function applyCommissionView(){
+  // Handle partner toggle visibility and default view based on role
+  const toggle = document.getElementById('partner-toggle');
+  const cView = document.getElementById('partner-view-c');
+  const bView = document.getElementById('partner-view-b');
+  const cSwitchHint = document.getElementById('partner-c-switch-hint');
+  const bSwitchHint = document.getElementById('partner-b-switch-hint');
+
+  if(currentRole === 'channel'){
+    // Channel: B-end only, hide toggle
+    if(toggle) toggle.style.display = 'none';
+    if(cView) cView.style.display = 'none';
+    if(bView) bView.style.display = 'block';
+    if(cSwitchHint) cSwitchHint.style.display = 'none';
+    if(bSwitchHint) bSwitchHint.style.display = 'none';
+    partnerRole = 'b';
+    partnerCertified = true; // Channel users are pre-certified
+    updateBView();
+  } else if(currentRole === 'parent'){
+    // Parent: C-end only (share mode), hide toggle
+    if(toggle) toggle.style.display = 'none';
+    if(cView) cView.style.display = 'block';
+    if(bView) bView.style.display = 'none';
+    if(cSwitchHint) cSwitchHint.style.display = 'none';
+    if(bSwitchHint) bSwitchHint.style.display = 'none';
+    partnerRole = 'c';
+  } else {
+    // Other roles (teacher with no commission): restore toggle
+    if(toggle) toggle.style.display = '';
+    if(cSwitchHint) cSwitchHint.style.display = '';
+    if(bSwitchHint) bSwitchHint.style.display = '';
+  }
 }
 
 function showSubPage(name, title){
@@ -2680,7 +2823,8 @@ function saveWork(){
     type:currentType,
     title:prompt.substring(0,10)+(prompt.length>10?'...':''),
     icon:currentType==='game'?'🎮':'🎬',
-    date:today
+    date:today,
+    owner:'王小宇'
   });
   updateFlow(3);
   hideSubPage();
@@ -2688,19 +2832,84 @@ function saveWork(){
   showToast('作品已保存！家长将收到研学报告推送');
 }
 
-// =================== Works Rendering (Enhanced with type tag + date) ===================
+// =================== Works Rendering (Role-Aware: Teacher grouped, Parent filtered) ===================
 function renderWorks(){
-  const list = document.getElementById('works-list');
+  const teacherView = document.getElementById('works-teacher-view');
+  const parentView = document.getElementById('works-parent-view');
+
+  if(currentRole === 'teacher'){
+    // Teacher: show all 3 students grouped
+    if(parentView) parentView.style.display = 'none';
+    if(teacherView) teacherView.style.display = 'block';
+    renderTeacherWorksView();
+  } else if(currentRole === 'parent'){
+    // Parent: only show 王小宇's works
+    if(teacherView) teacherView.style.display = 'none';
+    if(parentView) parentView.style.display = 'block';
+    renderParentWorksView();
+  } else {
+    // Channel: no works tab, but if somehow shown
+    if(teacherView) teacherView.style.display = 'none';
+    if(parentView) parentView.style.display = 'none';
+  }
+}
+
+function renderTeacherWorksView(){
+  const container = document.getElementById('works-teacher-groups');
+  if(!container) return;
+
+  const studentNames = Object.keys(STUDENTS);
+  container.innerHTML = studentNames.map(name=>{
+    const student = STUDENTS[name];
+    const works = savedWorks.filter(w=>w.owner === name);
+    return `
+      <div style="margin-bottom:14px">
+        <div class="user-card-header">
+          <div class="user-info">
+            <div class="user-avatar">${student.avatar}</div>
+            <div>
+              <div style="font-weight:600;font-size:13px">${name}</div>
+              <div style="font-size:10px;color:#9ca3af">${student.grade} · 武侯祠研学</div>
+            </div>
+          </div>
+          <span class="badge badge-blue">${works.length}件作品</span>
+        </div>
+        <div class="works-grid">
+          ${works.map(w=>`
+            <div class="work-card" onclick="viewWorkByName('${w.title}')">
+              <div class="work-cover ${w.type==='video'?'video-cover':'game-cover'}">
+                <span style="font-size:32px">${w.icon}</span>
+              </div>
+              <div class="work-body">
+                <div class="work-name">${w.title}</div>
+                <div class="work-meta">
+                  <span class="work-type-tag ${w.type==='video'?'tag-video':'tag-game'}">${w.type==='video'?'视频':w.type==='quiz'?'问答':w.type==='dodge'?'躲避':w.type==='collect'?'收集':'游戏'}</span>
+                  <span class="work-date">${w.date}</span>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderParentWorksView(){
+  const list = document.getElementById('works-parent-list');
   if(!list) return;
-  list.innerHTML = savedWorks.map((w,i)=>`
-    <div class="work-card" onclick="viewWork(${i})">
-      <div class="work-cover ${w.type==='game'?'game-cover':'video-cover'}">
+  const studentWorks = savedWorks.filter(w=>w.owner === '王小宇');
+  document.getElementById('parent-work-count').textContent = studentWorks.length+'件作品';
+
+  list.innerHTML = studentWorks.map(w=>`
+    <div class="work-card" onclick="viewWorkByName('${w.title}')">
+      <div class="work-cover ${w.type==='video'?'video-cover':'game-cover'}">
         <span style="font-size:32px">${w.icon}</span>
       </div>
       <div class="work-body">
         <div class="work-name">${w.title}</div>
         <div class="work-meta">
-          <span class="work-type-tag ${w.type==='game'?'tag-game':'tag-video'}">${w.type==='game'?'游戏':'视频'}</span>
+          <span class="work-type-tag ${w.type==='video'?'tag-video':'tag-game'}">${w.type==='video'?'视频':w.type==='quiz'?'问答':w.type==='dodge'?'躲避':w.type==='collect'?'收集':'游戏'}</span>
           <span class="work-date">${w.date}</span>
         </div>
       </div>
@@ -2708,25 +2917,7 @@ function renderWorks(){
   `).join('');
 }
 
-function renderReportWorks(){
-  const list = document.getElementById('report-works');
-  if(!list) return;
-  list.innerHTML = savedWorks.map(w=>`
-    <div class="work-card">
-      <div class="work-cover ${w.type==='game'?'game-cover':'video-cover'}" style="height:70px">
-        <span style="font-size:24px">${w.icon}</span>
-      </div>
-      <div class="work-body" style="padding:8px">
-        <div class="work-name" style="font-size:11px">${w.title}</div>
-        <div class="work-meta">
-          <span class="work-type-tag ${w.type==='game'?'tag-game':'tag-video'}">${w.type==='game'?'游戏':'视频'}</span>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function viewWork(i){showToast(savedWorks[i].title+' · 正式版可在线游玩/观看')}
+function viewWorkByName(title){showToast(title+' · 正式版可在线游玩/观看')}
 
 // =================== Mall (Optimized: 文化研学/科技探索/自然博物 三维度筛选) ===================
 function switchMallTab(cat, el){
@@ -2847,9 +3038,59 @@ function showToast(msg){
   setTimeout(()=>{t.style.display='none'},2000);
 }
 
+// =================== Role Switching ===================
+function toggleRoleDropdown(e){
+  e.stopPropagation();
+  const dd = document.getElementById('role-dropdown');
+  dd.classList.toggle('show');
+}
+
+function switchRole(role){
+  if(currentRole === role){
+    document.getElementById('role-dropdown').classList.remove('show');
+    return;
+  }
+  currentRole = role;
+
+  // Update button display
+  const r = ROLES[role];
+  document.getElementById('role-emoji').textContent = r.emoji;
+  document.getElementById('role-name').textContent = r.name;
+
+  // Update dropdown selection
+  document.querySelectorAll('.role-option').forEach(o=>o.classList.remove('selected'));
+  document.getElementById('role-opt-'+role).classList.add('selected');
+
+  // Close dropdown
+  document.getElementById('role-dropdown').classList.remove('show');
+
+  // Apply tab visibility
+  applyTabVisibility();
+
+  // Ensure current tab is valid for this role; if not, switch to first available
+  if(!r.tabs.includes(currentTab)){
+    switchTab(r.tabs[0]);
+  } else {
+    // Refresh current tab content for role-specific rendering
+    switchTab(currentTab);
+  }
+
+  // Reset scroll positions
+  scrollPositions = {};
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', function(e){
+  const dd = document.getElementById('role-dropdown');
+  const btn = document.getElementById('role-selector-btn');
+  if(dd && btn && dd.classList.contains('show') && !btn.contains(e.target) && !dd.contains(e.target)){
+    dd.classList.remove('show');
+  }
+});
+
 // =================== Init ===================
+applyTabVisibility();
 renderWorks();
-renderReportWorks();
 
 // =================== Poster Modal (B端二维码海报) ===================
 function openPosterModal(activityTitle, referrer){
@@ -3112,6 +3353,49 @@ function toggleReportCheckbox(el){
   cb.checked = !cb.checked;
 }
 
+// =================== Report View (Role-Aware) ===================
+function renderReportView(){
+  const teacherPanel = document.getElementById('report-teacher-panel');
+  const parentPanel = document.getElementById('report-parent-panel');
+  const retryLink = document.getElementById('report-retry-link');
+  const previewContainer = document.getElementById('report-preview-container');
+  const couponCards = document.querySelectorAll('#tab-report .coupon-card');
+
+  if(currentRole === 'teacher'){
+    // Teacher: full report generation UI
+    if(parentPanel) parentPanel.style.display = 'none';
+    if(teacherPanel) teacherPanel.style.display = 'block';
+    if(retryLink) retryLink.style.display = (previewContainer && previewContainer.classList.contains('show')) ? 'block' : 'none';
+    couponCards.forEach(c=>c.style.display = '');
+  } else if(currentRole === 'parent'){
+    // Parent: read-only report view
+    if(teacherPanel) teacherPanel.style.display = 'none';
+    if(retryLink) retryLink.style.display = 'none';
+    if(parentPanel) parentPanel.style.display = 'block';
+    couponCards.forEach(c=>c.style.display = '');
+    renderParentReportView();
+  } else {
+    // Channel: no report tab
+  }
+}
+
+function renderParentReportView(){
+  const hint = document.getElementById('report-parent-hint');
+  const content = document.getElementById('report-parent-content');
+  const forwardBtn = document.getElementById('report-parent-forward');
+
+  if(lastGeneratedReport){
+    // Show the generated report (reuse teacher report HTML)
+    hint.style.display = 'none';
+    content.innerHTML = lastGeneratedReport.html;
+    forwardBtn.style.display = 'block';
+  } else {
+    hint.style.display = '';
+    content.innerHTML = '';
+    forwardBtn.style.display = 'none';
+  }
+}
+
 function generateReport(){
   const studentName = document.getElementById('report-student-select').value;
   const keywords = document.getElementById('report-keywords').value.trim();
@@ -3243,16 +3527,34 @@ function generateReport(){
     </div>
   `;
 
+  // Store report globally for parent view access
+  lastGeneratedReport = {
+    studentName: studentName,
+    html: container.innerHTML,
+    timestamp: new Date().toISOString()
+  };
+
   // Scroll to preview
   container.scrollIntoView({behavior:'smooth'});
 }
 
 function resetReport(){
+  // Clear global report
+  lastGeneratedReport = null;
+
+  // Reset teacher panel
   document.getElementById('report-teacher-panel').style.display = 'block';
   document.getElementById('report-retry-link').style.display = 'none';
   const container = document.getElementById('report-preview-container');
   container.classList.remove('show');
   container.innerHTML = '';
+
+  // Reset parent view
+  const parentContent = document.getElementById('report-parent-content');
+  if(parentContent) parentContent.innerHTML = '';
+  const parentHint = document.getElementById('report-parent-hint');
+  if(parentHint) parentHint.style.display = '';
+  document.getElementById('report-parent-forward').style.display = 'none';
 }
 </script>
 
