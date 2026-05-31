@@ -571,6 +571,122 @@ body{
 .collapse-toggle:hover{border-color:#4f46e5;color:#4f46e5}
 .collapse-content{display:none;margin-top:8px}
 .collapse-content.show{display:block}
+/* ========== Creation Page Reorganization ========== */
+.create-game-section{margin-bottom:16px}
+.create-game-title{font-size:17px;font-weight:700;margin-bottom:2px;color:#1f2937;text-align:center}
+.create-game-subtitle{font-size:11px;color:#9ca3af;margin-bottom:12px;text-align:center}
+.game-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
+.game-card{
+  background:#fff;border-radius:14px;padding:14px;cursor:pointer;
+  transition:all .2s;border:2px solid transparent;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);text-align:center
+}
+.game-card:active{transform:scale(.97)}
+.game-card.selected{border-color:#4f46e5;background:#eef2ff}
+.game-card .gc-icon{font-size:36px;margin-bottom:6px}
+.game-card .gc-title{font-size:14px;font-weight:700;color:#1f2937;margin-bottom:3px}
+.game-card .gc-desc{font-size:11px;color:#9ca3af;line-height:1.4}
+.create-divider{
+  height:1px;background:linear-gradient(90deg,transparent,#d1d5db,transparent);
+  margin:18px 0;position:relative
+}
+.create-divider::after{
+  content:'· · ·';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);background:#f5f5f5;padding:0 10px;
+  color:#9ca3af;font-size:11px;letter-spacing:4px
+}
+.create-video-section{margin-top:4px}
+.video-tag-group{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.video-tag-group .v-tag{
+  display:inline-block;padding:6px 14px;background:#f0f5ff;
+  color:#4f46e5;border-radius:20px;font-size:12px;cursor:pointer;
+  transition:all .2s;border:1px solid transparent
+}
+.video-tag-group .v-tag:hover{border-color:#4f46e5;background:#eef2ff}
+.video-tag-group .v-tag:active{background:#4f46e5;color:#fff}
+/* ========== Report Teacher View ========== */
+.report-teacher-panel{
+  background:#fff;border-radius:16px;padding:18px;
+  box-shadow:0 2px 8px rgba(79,70,229,.08);margin-bottom:16px
+}
+.report-teacher-panel .rtp-title{font-size:16px;font-weight:700;color:#1f2937;margin-bottom:14px}
+.report-teacher-panel .rtp-row{margin-bottom:12px}
+.report-teacher-panel .rtp-label{font-size:12px;color:#6b7280;margin-bottom:4px;font-weight:500}
+.report-teacher-panel .rtp-select{
+  width:100%;padding:10px 14px;border:2px solid #e5e7eb;border-radius:10px;
+  font-size:14px;outline:none;background:#fafafa;transition:all .2s;font-family:inherit
+}
+.report-teacher-panel .rtp-select:focus{border-color:#4f46e5}
+.report-teacher-panel .rtp-summary{
+  background:#f3f4f6;border-radius:10px;padding:12px 14px;
+  font-size:13px;color:#374151;line-height:1.7;cursor:default
+}
+.report-teacher-panel .rtp-summary p{margin-bottom:0}
+.rtp-keyword-input{
+  width:100%;padding:10px 14px;border:2px solid #e5e7eb;border-radius:10px;
+  font-size:13px;outline:none;background:#fff;transition:all .2s;font-family:inherit
+}
+.rtp-keyword-input:focus{border-color:#4f46e5}
+.teacher-checkbox-group{display:flex;flex-wrap:wrap;gap:8px}
+.teacher-checkbox-label{
+  display:flex;align-items:center;gap:5px;padding:6px 12px;
+  background:#f8fafc;border:1.5px solid #e5e7eb;border-radius:20px;
+  font-size:12px;cursor:pointer;transition:all .2s;user-select:none
+}
+.teacher-checkbox-label.checked{background:#eef2ff;border-color:#4f46e5;color:#4f46e5}
+.teacher-checkbox-label input{display:none}
+.btn-generate{
+  width:100%;padding:14px;border:none;border-radius:12px;
+  font-size:15px;font-weight:700;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  transition:all .2s;font-family:inherit
+}
+.btn-generate:active{transform:scale(.98)}
+.btn-generate:disabled{opacity:.4;cursor:not-allowed}
+.report-preview-container{display:none}
+.report-preview-container.show{display:block}
+.report-preview-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(79,70,229,.12);
+  border:1px solid #e5e7eb
+}
+.report-preview-header{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff;padding:20px;text-align:center
+}
+.report-preview-header .rph-name{font-size:20px;font-weight:700;margin-bottom:2px}
+.report-preview-header .rph-activity{font-size:12px;opacity:.85}
+.report-preview-body{padding:16px}
+.report-preview-body .rpb-section{margin-bottom:14px}
+.report-preview-body .rpb-section-title{font-weight:700;font-size:14px;color:#1f2937;margin-bottom:8px}
+.report-preview-body .rpb-content{font-size:13px;color:#374151;line-height:1.8}
+.report-preview-body .rpb-score{text-align:center;padding:14px 0}
+.report-preview-body .rpb-score .big-score{font-size:48px;font-weight:800;color:#4f46e5}
+.report-preview-body .rpb-score .score-stars{font-size:22px;margin-bottom:4px}
+.report-preview-body .rpb-radar{
+  background:#f8fafc;border-radius:12px;padding:14px;text-align:center
+}
+.report-preview-body .rpb-radar .radar-row{
+  display:flex;align-items:center;gap:8px;margin-bottom:8px
+}
+.report-preview-body .rpb-radar .radar-label{width:70px;font-size:11px;color:#6b7280;text-align:right}
+.report-preview-body .rpb-radar .radar-bar{
+  flex:1;height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden
+}
+.report-preview-body .rpb-radar .radar-fill{
+  height:100%;background:linear-gradient(90deg,#4f46e5,#7c3aed);border-radius:4px
+}
+.rpb-btn-row{display:flex;gap:10px}
+.rpb-btn{
+  flex:1;padding:12px;border:none;border-radius:12px;
+  font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;
+  text-align:center;font-family:inherit
+}
+.rpb-btn-download{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+.rpb-btn-share{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff}
+.rpb-btn:active{transform:scale(.97)}
+.retry-link{text-align:center;color:#4f46e5;font-size:13px;cursor:pointer;margin-top:12px;font-weight:500}
+.retry-link:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -663,58 +779,69 @@ body{
 
       <!-- Tab 1: 创作 (Home) -->
       <div class="screen active" id="tab-home" data-tab="home">
-        <div style="text-align:center;padding:8px 0">
-          <div style="font-size:36px;margin-bottom:4px">🎓✨</div>
-          <h2 style="font-size:19px;font-weight:700;margin-bottom:2px">AI 研学创作工坊</h2>
-          <p style="font-size:12px;color:#6b7280">选一个创作类型，马上开始</p>
+        <!-- 上半部分：🎮 AI创作游戏 -->
+        <div class="create-game-section">
+          <div class="create-game-title">🎮 AI创作游戏</div>
+          <div class="create-game-subtitle">选一种玩法，挑一个主题，马上开始</div>
+          <div class="game-card-grid">
+            <div class="game-card" onclick="selectCreateType('shooting',this)" data-type="shooting">
+              <div class="gc-icon">🎯</div>
+              <div class="gc-title">三国射击</div>
+              <div class="gc-desc">驾驶草船，迎击曹军箭雨</div>
+            </div>
+            <div class="game-card" onclick="selectCreateType('quiz',this)" data-type="quiz">
+              <div class="gc-icon">📝</div>
+              <div class="gc-title">三国答题</div>
+              <div class="gc-desc">三国知识趣味闯关</div>
+            </div>
+            <div class="game-card" onclick="selectCreateType('dodge',this)" data-type="dodge">
+              <div class="gc-icon">🏃</div>
+              <div class="gc-title">过关躲避</div>
+              <div class="gc-desc">穿越五关，闪避障碍</div>
+            </div>
+            <div class="game-card" onclick="selectCreateType('collect',this)" data-type="collect">
+              <div class="gc-icon">💎</div>
+              <div class="gc-title">寻宝收集</div>
+              <div class="gc-desc">集齐卧龙岗珍贵信物</div>
+            </div>
+          </div>
+          <!-- 热门主题 -->
+          <div class="theme-section" id="theme-section" style="display:none">
+            <div class="theme-section-title">🔥 热门主题快速开始：</div>
+            <div class="theme-grid" id="theme-grid"></div>
+            <button class="collapse-toggle" onclick="toggleCustomInput()" id="custom-toggle">💡 自定义主题（需联网）</button>
+            <div class="collapse-content" id="collapse-custom">
+              <textarea id="custom-prompt-input" class="ai-input" rows="2" placeholder="描述你想要的游戏主题..."></textarea>
+              <button class="btn-primary" onclick="startCustomGenerate()" style="margin-top:8px;font-size:13px">✨ AI 生成（需联网）</button>
+              <div style="font-size:10px;color:#9ca3af;text-align:center;margin-top:4px">即将接入 DeepSeek 云函数，敬请期待</div>
+            </div>
+          </div>
+          <!-- 结果区 -->
+          <div id="home-result-area" style="display:none;margin-top:14px">
+            <div id="home-game-container"></div>
+            <div id="home-quiz-container"></div>
+            <div id="home-video-result"></div>
+            <button class="btn-primary" onclick="saveHomeWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>
+          </div>
         </div>
 
-        <!-- 5 种创作类型 -->
-        <div class="create-type-grid" id="create-type-grid">
-          <div class="create-type-item" onclick="selectCreateType('shooting',this)" data-type="shooting">
-            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="8" width="22" height="16" rx="4" stroke="#4f46e5" stroke-width="1.8"/><line x1="10" y1="8" x2="10" y2="4" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"/><line x1="18" y1="8" x2="18" y2="4" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="16" r="2" fill="#4f46e5"/><circle cx="19" cy="16" r="2" fill="#4f46e5"/><rect x="12" y="14" width="4" height="1.5" rx="0.75" fill="#4f46e5" opacity=".4"/><rect x="13.5" y="20" width="1.5" height="2.5" rx="0.75" fill="#4f46e5" opacity=".4"/></svg></div>
-            <div class="type-label">三国射击</div>
-          </div>
-          <div class="create-type-item" onclick="selectCreateType('quiz',this)" data-type="quiz">
-            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="3" stroke="#4f46e5" stroke-width="1.8"/><line x1="8" y1="10" x2="20" y2="10" stroke="#4f46e5" stroke-width="1.5"/><line x1="8" y1="14" x2="20" y2="14" stroke="#4f46e5" stroke-width="1.5"/><line x1="8" y1="18" x2="15" y2="18" stroke="#4f46e5" stroke-width="1.5"/></svg></div>
-            <div class="type-label">三国答题</div>
-          </div>
-          <div class="create-type-item" onclick="selectCreateType('dodge',this)" data-type="dodge">
-            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><path d="M4 20L14 6l10 14" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="10" y1="20" x2="18" y2="20" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round"/><circle cx="14" cy="22" r="1.5" fill="#4f46e5"/></svg></div>
-            <div class="type-label">过关躲避</div>
-          </div>
-          <div class="create-type-item" onclick="selectCreateType('collect',this)" data-type="collect">
-            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="5" y="6" width="18" height="18" rx="3" stroke="#4f46e5" stroke-width="1.8"/><rect x="9" y="10" width="10" height="10" rx="2" fill="#4f46e5" opacity=".2"/><circle cx="14" cy="15" r="3" fill="#4f46e5"/></svg></div>
-            <div class="type-label">寻宝收集</div>
-          </div>
-          <div class="create-type-item" onclick="selectCreateType('video',this)" data-type="video">
-            <div class="type-icon"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="18" rx="3" stroke="#4f46e5" stroke-width="1.8"/><polygon points="11,9 11,19 20,14" fill="#4f46e5" stroke="#4f46e5" stroke-width="0.8" stroke-linejoin="round"/></svg></div>
-            <div class="type-label">AI视频</div>
-          </div>
-        </div>
+        <!-- 视觉分隔 -->
+        <div class="create-divider"></div>
 
-        <!-- 热门主题 -->
-        <div class="theme-section" id="theme-section" style="display:none">
-          <div class="theme-section-title">🔥 热门主题快速开始：</div>
-          <div class="theme-grid" id="theme-grid"></div>
-          <!-- 自定义主题（折叠区） -->
-          <button class="collapse-toggle" onclick="toggleCustomInput()" id="custom-toggle">💡 自定义主题（需联网）</button>
-          <div class="collapse-content" id="collapse-custom">
-            <textarea id="custom-prompt-input" class="ai-input" rows="2" placeholder="描述你想要的游戏主题..."></textarea>
-            <button class="btn-primary" onclick="startCustomGenerate()" style="margin-top:8px;font-size:13px">✨ AI 生成（需联网）</button>
-            <div style="font-size:10px;color:#9ca3af;text-align:center;margin-top:4px">即将接入 DeepSeek 云函数，敬请期待</div>
+        <!-- 下半部分：🎬 AI创作视频 -->
+        <div class="create-video-section">
+          <div class="create-game-title">🎬 AI创作视频</div>
+          <div class="create-game-subtitle">输入研学主题，AI自动生成30秒知识短视频</div>
+          <input class="ai-input" id="home-video-input" placeholder="输入研学主题，如：诸葛亮北伐故事..." style="margin-bottom:10px">
+          <div class="video-tag-group">
+            <span class="v-tag" onclick="quickVideoTheme('草船借箭动画')">草船借箭视频</span>
+            <span class="v-tag" onclick="quickVideoTheme('赤壁之战动画')">赤壁之战动画</span>
+            <span class="v-tag" onclick="quickVideoTheme('武侯祠巡礼')">武侯祠巡礼</span>
+            <span class="v-tag" onclick="quickVideoTheme('三顾茅庐故事')">三顾茅庐故事</span>
+            <span class="v-tag" onclick="quickVideoTheme('空城计动画')">空城计动画</span>
           </div>
-        </div>
-
-        <!-- 视频预览区 -->
-        <div id="home-video-area" style="display:none"></div>
-
-        <!-- 结果区 -->
-        <div id="home-result-area" style="display:none;margin-top:14px">
-          <div id="home-game-container"></div>
-          <div id="home-quiz-container"></div>
-          <div id="home-video-result"></div>
-          <button class="btn-primary" onclick="saveHomeWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>
+          <button class="btn-primary" onclick="generateHomeVideo()" style="background:linear-gradient(135deg,#7c3aed,#6d28d9)">🎬 生成AI视频</button>
+          <div id="home-video-output" style="margin-top:10px"></div>
         </div>
 
         <div style="text-align:center;margin-top:18px">
@@ -729,7 +856,7 @@ body{
           <div class="user-info">
             <div class="user-avatar">张</div>
             <div>
-              <div style="font-weight:600;font-size:13px">张小宇</div>
+              <div style="font-weight:600;font-size:13px">王小宇</div>
               <div style="font-size:10px;color:#9ca3af">武侯祠 · 三国文化研学</div>
             </div>
           </div>
@@ -755,40 +882,64 @@ body{
         </div>
       </div>
 
-      <!-- Tab 3: 报告 (Report) -->
+      <!-- Tab 3: 报告 (Report) — 教师端视角 -->
       <div class="screen" id="tab-report" data-tab="report">
-        <div class="report-header">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <div>
-              <h3 style="font-size:18px;margin-bottom:4px">张小宇 · 研学报告</h3>
-              <div style="font-size:11px;opacity:.8">武侯祠 · 三国文化研学 | 2026.05.21</div>
+        <!-- 教师操作区（生成前显示） -->
+        <div class="report-teacher-panel" id="report-teacher-panel">
+          <div class="rtp-title">📋 生成研学报告</div>
+
+          <div class="rtp-row">
+            <div class="rtp-label">选择学生</div>
+            <select class="rtp-select" id="report-student-select">
+              <option value="王小宇" selected>王小宇 ✓</option>
+              <option value="李明轩">李明轩</option>
+              <option value="张思涵">张思涵</option>
+            </select>
+          </div>
+
+          <div class="rtp-row">
+            <div class="rtp-label">研学活动 <span style="font-size:10px;color:#9ca3af;font-weight:400">（自动关联）</span></div>
+            <select class="rtp-select" id="report-activity-select" disabled>
+              <option selected>武侯祠 · 三国文化研学 | 2026.05.21</option>
+            </select>
+          </div>
+
+          <div class="rtp-row">
+            <div class="rtp-label">今日学习内容摘要 <span style="font-size:10px;color:#9ca3af;font-weight:400">（AI自动生成）</span></div>
+            <div class="rtp-summary" id="report-summary">
+              <p>学生走访<b>成都武侯祠</b>，系统学习了三国历史文化，深入了解诸葛亮生平、空城计、草船借箭等经典故事。在AI创作环节，学生使用AI工具将当天所学知识转化为互动游戏和短视频作品，完成了草船借箭射击游戏和武侯祠建筑巡礼视频两件AI作品。</p>
             </div>
-            <span class="report-badge">AI报告</span>
           </div>
-        </div>
 
-        <div class="report-card">
-          <div style="font-weight:600;font-size:14px;margin-bottom:8px">📋 今日学习内容</div>
-          <div style="font-size:13px;color:#374151;line-height:1.8">
-            孩子走访<b>成都武侯祠</b>，系统学习了三国历史文化，深入了解诸葛亮生平、空城计、草船借箭等经典故事。在AI创作环节，孩子用AI工具将当天所学知识转化为互动游戏和短视频作品。
+          <div class="rtp-row">
+            <div class="rtp-label">教师关键词/亮点 <span style="font-size:10px;color:#9ca3af;font-weight:400">（可选）</span></div>
+            <input class="rtp-keyword-input" id="report-keywords" placeholder="如：积极讨论、团队协作、创意突出（用逗号分隔）">
           </div>
-        </div>
 
-        <div class="report-card" style="border-left-color:#7c3aed">
-          <div style="font-weight:600;font-size:14px;margin-bottom:8px">🎨 今日AI作品（2件）</div>
-          <div class="works-grid" id="report-works"></div>
-        </div>
-
-        <div class="report-card" style="border-left-color:#10b981">
-          <div style="font-weight:600;font-size:14px;margin-bottom:8px">⭐ 今日评价</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <span class="tag" style="cursor:default">积极参与讨论</span>
-            <span class="tag" style="cursor:default">团队协作优秀</span>
-            <span class="tag" style="cursor:default">AI创意能力突出</span>
-            <span class="tag" style="cursor:default">知识转化力强</span>
+          <div class="rtp-row">
+            <div class="rtp-label">快速评语标签（勾选）</div>
+            <div class="teacher-checkbox-group" id="report-checkboxes">
+              <label class="teacher-checkbox-label" onclick="toggleReportCheckbox(this)"><input type="checkbox" value="积极参与讨论">⭐ 积极参与讨论</label>
+              <label class="teacher-checkbox-label" onclick="toggleReportCheckbox(this)"><input type="checkbox" value="团队协作优秀">⭐ 团队协作优秀</label>
+              <label class="teacher-checkbox-label" onclick="toggleReportCheckbox(this)"><input type="checkbox" value="AI创意能力突出">⭐ AI创意能力突出</label>
+              <label class="teacher-checkbox-label" onclick="toggleReportCheckbox(this)"><input type="checkbox" value="知识转化力强">⭐ 知识转化力强</label>
+              <label class="teacher-checkbox-label" onclick="toggleReportCheckbox(this)"><input type="checkbox" value="专注认真">⭐ 专注认真</label>
+              <label class="teacher-checkbox-label" onclick="toggleReportCheckbox(this)"><input type="checkbox" value="乐于分享">⭐ 乐于分享</label>
+            </div>
           </div>
+
+          <button class="btn-generate" onclick="generateReport()" id="btn-generate-report">✨ 生成AI报告</button>
         </div>
 
+        <!-- 重新生成链接（生成后显示） -->
+        <div style="text-align:center;margin-bottom:12px;display:none" id="report-retry-link">
+          <span class="retry-link" onclick="resetReport()">✏️ 重新生成报告</span>
+        </div>
+
+        <!-- 报告预览区（生成后显示） -->
+        <div class="report-preview-container" id="report-preview-container"></div>
+
+        <!-- 底部复购推荐（始终显示） -->
         <div class="coupon-card" onclick="showMallDetail('caotang')">
           <div>
             <div style="font-weight:600;font-size:13px">杜甫草堂 · 诗圣之旅</div>
@@ -1459,7 +1610,7 @@ function selectCreateType(type, el){
   document.getElementById('home-game-container').innerHTML = '';
   document.getElementById('home-quiz-container').innerHTML = '';
   document.getElementById('home-video-result').innerHTML = '';
-  document.getElementById('home-video-area').style.display = 'none';
+  document.getElementById('home-video-output').innerHTML = '';
   document.getElementById('collapse-custom').classList.remove('show');
   document.getElementById('custom-toggle').textContent = '💡 自定义主题（需联网）';
   if(homeQuizTimer){clearTimeout(homeQuizTimer);homeQuizTimer=null;}
@@ -1467,8 +1618,8 @@ function selectCreateType(type, el){
   homeGenerated = false;
   homeCurrentWork = null;
 
-  // Highlight selected type
-  document.querySelectorAll('.create-type-item').forEach(item=>item.classList.remove('selected'));
+  // Highlight selected game card
+  document.querySelectorAll('.game-card').forEach(item=>item.classList.remove('selected'));
   el.classList.add('selected');
 
   // Show theme section
@@ -1481,11 +1632,6 @@ function selectCreateType(type, el){
   themeGrid.innerHTML = themes.map(t=>`
     <span class="theme-chip" onclick="loadPresetTheme('${t.key}')" title="${t.desc}">${t.label}</span>
   `).join('');
-
-  // Special: video type shows preview card
-  if(type === 'video'){
-    renderHomeVideoPreview();
-  }
 }
 
 function renderHomeVideoPreview(){
@@ -2172,7 +2318,7 @@ function switchTab(tab){
 
   // 仅在首次或数据变化时重新渲染（避免不必要的 innerHTML 重置）
   if(tab==='works') renderWorks();
-  if(tab==='report') renderReportWorks();
+  if(tab==='report') { /* report now uses teacher view */ }
 
   // Update flow
   const flowMap = {home:1, works:2, report:3, mall:4, commission:5};
@@ -2650,7 +2796,7 @@ function buyNow(key){
     <div class="order-card">
       <div style="font-weight:600;font-size:15px;margin-bottom:10px">📋 订单确认</div>
       <div class="o-row"><span>活动</span><span>${p.title}</span></div>
-      <div class="o-row"><span>学生</span><span>张小宇 · 10岁</span></div>
+      <div class="o-row"><span>学生</span><span>王小宇 · 10岁</span></div>
       <div class="o-row"><span>日期</span><span>2026年5月24日（周六）</span></div>
       <div class="o-row"><span>推荐人</span><span style="color:#059669">李姐（认证销售）</span></div>
       <div style="border-top:1px dashed #e5e7eb;margin:8px 0"></div>
@@ -2910,6 +3056,203 @@ function openWithdrawModal(){
     modal.querySelector('.btn-primary').textContent = '好的';
     modal.querySelector('.btn-primary').onclick = closeModal;
   };
+}
+// =================== Home Video Quick Generation ===================
+function quickVideoTheme(theme){
+  const input = document.getElementById('home-video-input');
+  if(input) input.value = theme;
+}
+
+function generateHomeVideo(){
+  const input = document.getElementById('home-video-input');
+  const theme = (input && input.value.trim()) || '三国故事';
+  const output = document.getElementById('home-video-output');
+  homeGenerated = true;
+  homeCurrentWork = {type:'video', title:theme};
+  updateFlow(2);
+
+  // Show loading
+  output.innerHTML = '<div style="text-align:center;padding:20px"><div class="loading-dots"><span></span><span></span><span></span></div><div style="font-size:11px;color:#6b7280;margin-top:8px">AI 正在生成视频...</div></div>';
+
+  // Simulate video generation
+  setTimeout(()=>{
+    output.innerHTML = `<div class="video-preview" style="background:linear-gradient(135deg,#1e1b4b,#312e81,#4c1d95);height:220px">
+      <div style="position:absolute;top:8%;left:8%;font-size:50px;opacity:.25">🏯</div>
+      <div style="position:absolute;top:30%;right:15%;font-size:36px;opacity:.2">⚔️</div>
+      <div style="position:absolute;bottom:20%;left:20%;font-size:60px;opacity:.12">🐴</div>
+      <div style="position:relative;z-index:2;text-align:center">
+        <div class="play-btn" onclick="simPlayHomeVideoV2(this,'${theme.replace(/'/g,"\\'")}')" style="margin-bottom:10px"></div>
+        <div style="color:#fff;font-size:13px;font-weight:600">${theme.substring(0,14)}...</div>
+        <div style="color:#93c5fd;font-size:10px;margin-top:3px">⏱ 30秒 · AI生成</div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="saveHomeWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>`;
+  }, 2000);
+}
+
+function simPlayHomeVideoV2(el, theme){
+  const p = el.parentElement.parentElement;
+  el.style.opacity='0';
+  setTimeout(()=>{ p.innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000"><div style="text-align:center;color:#fff"><div style="font-size:36px">🎬</div><div style="font-size:13px;margin-top:6px">AI 生成中...</div><div style="font-size:10px;color:#93c5fd;margin-top:3px">正在合成画面与音效</div></div></div>`; },300);
+  setTimeout(()=>{
+    p.innerHTML = `<div style="position:absolute;inset:0;background:#000;display:flex;align-items:center;justify-content:center">
+      <div class="vid-frame" style="background:linear-gradient(135deg,#312e81,#4c1d95);display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center"><div style="font-size:28px">🏯</div><div style="color:#fff;font-size:11px;margin-top:6px;opacity:.8">${theme.substring(0,14)}...</div></div>
+      </div>
+      <div class="play-btn" style="z-index:2"></div>
+      <div style="position:absolute;bottom:8px;left:12px;color:#fff;font-size:10px;z-index:3;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px">00:00 / 00:30</div>
+    </div>`;
+  }, 3300);
+}
+
+// =================== Report Generation (Teacher View) ===================
+function toggleReportCheckbox(el){
+  el.classList.toggle('checked');
+  const cb = el.querySelector('input');
+  cb.checked = !cb.checked;
+}
+
+function generateReport(){
+  const studentName = document.getElementById('report-student-select').value;
+  const keywords = document.getElementById('report-keywords').value.trim();
+  const checkedLabels = document.querySelectorAll('#report-checkboxes .teacher-checkbox-label.checked');
+  const selectedTags = Array.from(checkedLabels).map(l=>l.querySelector('input').value);
+
+  // Hide teacher panel, show retry link
+  document.getElementById('report-teacher-panel').style.display = 'none';
+  document.getElementById('report-retry-link').style.display = 'block';
+
+  // Build teacher evaluation text
+  let evalText = '';
+  if(keywords){
+    evalText = `该生表现突出，特别是在以下方面：${keywords}。`;
+  }
+  if(selectedTags.length > 0){
+    evalText += ' 综合评价标签：' + selectedTags.join('、') + '。';
+  }
+  if(!evalText){
+    evalText = '该生今日研学表现良好，积极参与各项活动。';
+  }
+
+  // Build tag display
+  const tagsDisplay = selectedTags.length > 0
+    ? selectedTags.map(t=>`<span class="tag" style="margin:3px">⭐ ${t}</span>`).join('')
+    : '<span class="tag" style="margin:3px">积极参与讨论</span><span class="tag" style="margin:3px">团队协作优秀</span><span class="tag" style="margin:3px">AI创意能力突出</span><span class="tag" style="margin:3px">知识转化力强</span>';
+
+  // Build AI works
+  const worksHTML = savedWorks.map(w=>`
+    <div class="work-card" style="margin-bottom:8px">
+      <div class="work-cover ${w.type==='game'?'game-cover':'video-cover'}" style="height:70px">
+        <span style="font-size:24px">${w.icon}</span>
+      </div>
+      <div class="work-body" style="padding:8px">
+        <div class="work-name" style="font-size:11px">${w.title}</div>
+        <div class="work-meta">
+          <span class="work-type-tag ${w.type==='game'?'tag-game':'tag-video'}">${w.type==='game'?'游戏':'视频'}</span>
+          <span class="work-date">${w.date}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // AI comprehensive evaluation
+  const aiEval = [
+    '该学生在本次研学活动中展现了较强的学习能力和创造力。通过实地走访武侯祠，对三国历史文化有了深入理解，并能够运用AI工具将所学知识转化为互动游戏和短视频作品，体现了良好的知识迁移能力和创新思维。',
+    '建议继续关注三国历史脉络的学习，尤其是赤壁之战后的三国鼎立格局演变。同时，可尝试更复杂的AI创作工具，进一步提升数字创作能力。下一阶段推荐参与杜甫草堂·诗圣文化之旅，在AI诗词创作方面拓展新技能。'
+  ];
+
+  const container = document.getElementById('report-preview-container');
+  container.classList.add('show');
+  container.innerHTML = `
+    <div class="report-preview-card">
+      <div class="report-preview-header">
+        <div class="rph-name">${studentName} · 研学报告</div>
+        <div class="rph-activity">武侯祠 · 三国文化研学 | 2026.05.21</div>
+      </div>
+      <div class="report-preview-body">
+        <!-- 学习内容 -->
+        <div class="rpb-section">
+          <div class="rpb-section-title">📚 今日学习内容</div>
+          <div class="rpb-content">
+            学生走访<b>成都武侯祠</b>，系统学习了三国历史文化，深入了解诸葛亮生平、空城计、草船借箭等经典故事。在AI创作环节，学生使用AI工具将当天所学知识转化为互动游戏和短视频作品，完成了${savedWorks.length}件AI作品，展现了出色的知识理解与应用能力。
+          </div>
+        </div>
+
+        <!-- AI作品 -->
+        <div class="rpb-section">
+          <div class="rpb-section-title">🎨 今日AI作品</div>
+          ${worksHTML}
+        </div>
+
+        <!-- 教师评价 -->
+        <div class="rpb-section">
+          <div class="rpb-section-title">👨‍🏫 教师评价</div>
+          <div class="rpb-content">${evalText}</div>
+          <div style="display:flex;flex-wrap:wrap;margin-top:8px">${tagsDisplay}</div>
+        </div>
+
+        <!-- AI综合评价 -->
+        <div class="rpb-section">
+          <div class="rpb-section-title">🤖 AI综合评价</div>
+          <div class="rpb-score">
+            <div class="score-stars">⭐⭐⭐⭐</div>
+            <div class="big-score">8.6</div>
+            <div style="font-size:12px;color:#9ca3af">综合评分</div>
+          </div>
+          <div class="rpb-radar">
+            <div style="font-weight:600;font-size:13px;margin-bottom:10px;color:#1f2937">📊 能力雷达图</div>
+            <div class="radar-row"><span class="radar-label">知识理解</span><div class="radar-bar"><div class="radar-fill" style="width:90%"></div></div><span style="font-size:10px;color:#4f46e5;font-weight:600">9.0</span></div>
+            <div class="radar-row"><span class="radar-label">AI创造力</span><div class="radar-bar"><div class="radar-fill" style="width:85%"></div></div><span style="font-size:10px;color:#4f46e5;font-weight:600">8.5</span></div>
+            <div class="radar-row"><span class="radar-label">团队协作</span><div class="radar-bar"><div class="radar-fill" style="width:78%"></div></div><span style="font-size:10px;color:#4f46e5;font-weight:600">7.8</span></div>
+            <div class="radar-row"><span class="radar-label">参与度</span><div class="radar-bar"><div class="radar-fill" style="width:92%"></div></div><span style="font-size:10px;color:#4f46e5;font-weight:600">9.2</span></div>
+            <div class="radar-row"><span class="radar-label">表达能力</span><div class="radar-bar"><div class="radar-fill" style="width:80%"></div></div><span style="font-size:10px;color:#4f46e5;font-weight:600">8.0</span></div>
+          </div>
+          <div class="rpb-content" style="margin-top:10px">
+            <b>📝 AI学习建议：</b><br>
+            ${aiEval[1]}
+          </div>
+        </div>
+
+        <!-- 分享与下载 -->
+        <div class="rpb-section">
+          <div class="rpb-section-title">📲 分享与下载</div>
+          <div class="rpb-btn-row">
+            <button class="rpb-btn rpb-btn-download" onclick="showToast('📥 报告已下载到本地')">📥 下载报告</button>
+            <button class="rpb-btn rpb-btn-share" onclick="showToast('📤 报告已转发给家长')">📤 转发家长</button>
+          </div>
+          <div style="text-align:center;font-size:11px;color:#9ca3af;margin-top:6px">家长可通过微信小程序查看完整报告</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 下次研学推荐 -->
+    <div style="margin-top:12px">
+      <div style="font-weight:600;font-size:14px;margin-bottom:8px;color:#1f2937">🎁 下次研学推荐</div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:12px;padding:12px;cursor:pointer" onclick="showMallDetail('caotang')">
+          <div style="font-size:28px;text-align:center;margin-bottom:4px">🏯</div>
+          <div style="font-size:11px;font-weight:600;color:#1f2937;text-align:center">杜甫草堂</div>
+          <div style="font-size:10px;color:#9ca3af;text-align:center">诗圣文化之旅</div>
+        </div>
+        <div style="flex:1;background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-radius:12px;padding:12px;cursor:pointer" onclick="showMallDetail('samsung')">
+          <div style="font-size:28px;text-align:center;margin-bottom:4px">🗿</div>
+          <div style="font-size:11px;font-weight:600;color:#1f2937;text-align:center">三星堆</div>
+          <div style="font-size:10px;color:#9ca3af;text-align:center">古蜀文明探秘</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Scroll to preview
+  container.scrollIntoView({behavior:'smooth'});
+}
+
+function resetReport(){
+  document.getElementById('report-teacher-panel').style.display = 'block';
+  document.getElementById('report-retry-link').style.display = 'none';
+  const container = document.getElementById('report-preview-container');
+  container.classList.remove('show');
+  container.innerHTML = '';
 }
 </script>
 
