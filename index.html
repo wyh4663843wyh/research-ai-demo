@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>绂绘嘲 路 AI鐮斿 浜у搧婕旂ず</title>
+<title>离泰 · AI研学 产品演示</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
@@ -493,9 +493,9 @@ body{
 <div class="poster-modal-overlay" id="poster-modal">
   <div class="poster-modal">
     <div class="poster-img">
-      <div class="poster-logo">绂绘嘲AI鐮斿</div>
-      <div class="poster-title" id="poster-activity-title">姝︿警绁?路 涓夊浗鏂囧寲鐮斿</div>
-      <div class="poster-sub">鎵爜鎶ュ悕 路 绔嬩韩涓撳睘浼樻儬浠?/div>
+      <div class="poster-logo">离泰AI研学</div>
+      <div class="poster-title" id="poster-activity-title">武侯祠 · 三国文化研学</div>
+      <div class="poster-sub">扫码报名 · 立享专属优惠价</div>
       <div class="poster-qr-wrap">
         <div class="poster-qr-inner">
           <!-- Simulated QR code pattern -->
@@ -542,13 +542,13 @@ body{
         </div>
       </div>
       <div class="poster-info">
-        鎺ㄨ崘浜猴細<b id="poster-referrer">鍒樺</b> 路 涓撳睘閾炬帴缁戝畾<br>
-        闀挎寜璇嗗埆浜岀淮鐮?鈫?绔嬪嵆鎶ュ悕
+        推荐人：<b id="poster-referrer">刘导</b> · 专属链接绑定<br>
+        长按识别二维码 → 立即报名
       </div>
     </div>
     <div class="poster-actions">
-      <button class="btn-save" onclick="closePosterModal()">鍏抽棴</button>
-      <button class="btn-share" onclick="showToast('娴锋姤宸蹭繚瀛樺埌鐩稿唽');closePosterModal()">馃捑 淇濆瓨娴锋姤</button>
+      <button class="btn-save" onclick="closePosterModal()">关闭</button>
+      <button class="btn-share" onclick="showToast('海报已保存到相册');closePosterModal()">💾 保存海报</button>
     </div>
   </div>
 </div>
@@ -560,25 +560,25 @@ body{
     <div class="notch"></div>
     <div class="status-bar" style="background:#f5f5f5">
       <span style="font-size:13px">9:41</span>
-      <span style="font-weight:700;font-size:13px">绂绘嘲AI鐮斿</span>
-      <span style="font-size:12px">馃摱 馃攱</span>
+      <span style="font-weight:700;font-size:13px">离泰AI研学</span>
+      <span style="font-size:12px">📶 🔋</span>
     </div>
 
     <!-- Page Headers (contextual) -->
     <div class="page-header" id="page-header" style="display:none">
-      <span class="back" onclick="goBack()">鈫?/span>
-      <span id="page-title">鏍囬</span>
+      <span class="back" onclick="goBack()">←</span>
+      <span id="page-title">标题</span>
     </div>
 
     <!-- Screens -->
     <div class="screens-area" id="screens-area">
 
-      <!-- Tab 1: 鍒涗綔 (Home) -->
+      <!-- Tab 1: 创作 (Home) -->
       <div class="screen active" id="tab-home" data-tab="home">
         <div style="text-align:center;padding:12px 0">
-          <div style="font-size:44px;margin-bottom:8px">馃帗鉁?/div>
-          <h2 style="font-size:20px;font-weight:700;margin-bottom:2px">AI 鐮斿鍒涗綔宸ュ潑</h2>
-          <p style="font-size:13px;color:#6b7280">鐢ㄤ粖澶╁鍒扮殑鐭ヨ瘑锛屽垱閫犱綘鐨勪綔鍝?/p>
+          <div style="font-size:44px;margin-bottom:8px">🎓✨</div>
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:2px">AI 研学创作工坊</h2>
+          <p style="font-size:13px;color:#6b7280">用今天学到的知识，创造你的作品</p>
         </div>
 
         <div style="display:flex;gap:10px;margin:16px 0">
@@ -595,8 +595,8 @@ body{
                 <rect x="19" y="27" width="2" height="4" rx="1" fill="#4f46e5" opacity=".4"/>
               </svg>
             </div>
-            <div style="font-weight:600;font-size:14px">AI 鍒涗綔娓告垙</div>
-            <div style="font-size:11px;color:#9ca3af;margin-top:2px">涓€鍙ヨ瘽鍙樺彲鐜╂父鎴?/div>
+            <div style="font-weight:600;font-size:14px">AI 创作游戏</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:2px">一句话变可玩游戏</div>
           </div>
           <div class="card" style="flex:1;text-align:center;cursor:pointer" onclick="selectType('video',this)">
             <!-- SVG video/film icon -->
@@ -608,258 +608,260 @@ body{
                 <line x1="4" y1="26" x2="12" y2="26" stroke="#4f46e5" stroke-width="1.5" opacity=".4"/>
               </svg>
             </div>
-            <div style="font-weight:600;font-size:14px">AI 鍒涗綔瑙嗛</div>
-            <div style="font-size:11px;color:#9ca3af;margin-top:2px">杈撳叆涓婚鐢熻棰?/div>
+            <div style="font-weight:600;font-size:14px">AI 创作视频</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:2px">输入主题生视频</div>
           </div>
         </div>
 
         <div style="background:#eef2ff;border-radius:12px;padding:12px;">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
-            <span style="font-size:18px">馃挕</span>
-            <span style="font-size:12px;font-weight:600;color:#4f46e5">浠婂ぉ瀛︿簡浠€涔堬紵璇曠潃鍒涗綔鍑烘潵</span>
+            <span style="font-size:18px">💡</span>
+            <span style="font-size:12px;font-weight:600;color:#4f46e5">今天学了什么？试着创作出来</span>
           </div>
           <div style="font-size:12px;color:#6b7280;line-height:1.6">
-            瀛﹀畬涓夊浗鏁呬簨 鈫?鐢ˋI鍋?鑽夎埞鍊熺"灏勫嚮娓告垙<br>
-            鐪嬪畬姝︿警绁犲缓绛?鈫?鐢ˋI鐢熸垚寤虹瓚宸＄ぜ鐭棰?          </div>
+            学完三国故事 → 用AI做"草船借箭"射击游戏<br>
+            看完武侯祠建筑 → 用AI生成建筑巡礼短视频
+          </div>
         </div>
 
         <div style="margin-top:16px">
-          <button class="btn-primary" onclick="goCreate()" id="btn-start" disabled style="opacity:.4">閫夋嫨鍒涗綔绫诲瀷寮€濮?/button>
+          <button class="btn-primary" onclick="goCreate()" id="btn-start" disabled style="opacity:.4">选择创作类型开始</button>
         </div>
 
         <div style="text-align:center;margin-top:20px">
-          <div style="font-size:12px;color:#9ca3af">宸叉湁 <b style="color:#4f46e5">1,286</b> 浠跺鐢烝I浣滃搧</div>
+          <div style="font-size:12px;color:#9ca3af">已有 <b style="color:#4f46e5">1,286</b> 件学生AI作品</div>
         </div>
       </div>
 
-      <!-- Tab 2: 浣滃搧 (Works) -->
+      <!-- Tab 2: 作品 (Works) -->
       <div class="screen" id="tab-works" data-tab="works">
         <!-- User card -->
         <div class="user-card-header">
           <div class="user-info">
-            <div class="user-avatar">寮?/div>
+            <div class="user-avatar">张</div>
             <div>
-              <div style="font-weight:600;font-size:13px">寮犲皬瀹?/div>
-              <div style="font-size:10px;color:#9ca3af">姝︿警绁?路 涓夊浗鏂囧寲鐮斿</div>
+              <div style="font-weight:600;font-size:13px">张小宇</div>
+              <div style="font-size:10px;color:#9ca3af">武侯祠 · 三国文化研学</div>
             </div>
           </div>
-          <span class="badge badge-blue">3浠朵綔鍝?/span>
+          <span class="badge badge-blue">3件作品</span>
         </div>
 
-        <!-- AI浣滃搧鍒楄〃 -->
+        <!-- AI作品列表 -->
         <div class="works-list-section">
-          <div class="section-title">馃摫 鎴戠殑AI浣滃搧</div>
+          <div class="section-title">📱 我的AI作品</div>
           <div class="works-grid" id="works-list"></div>
         </div>
 
-        <!-- 浼樻儬鍗＄墖 -->
+        <!-- 优惠卡片 -->
         <div style="background:#fff;border-radius:12px;padding:12px;margin-top:4px;border:1px solid #fef3c7;display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="showMallDetail('caotang')">
           <div>
-            <div style="font-weight:600;font-size:13px">馃巵 鍒涗綔杈句汉涓撳睘浼樻儬</div>
-            <div style="font-size:11px;color:#92400e">瀹屾垚浠婃棩浣滃搧锛岃В閿佷笓灞炰环</div>
+            <div style="font-weight:600;font-size:13px">🎁 创作达人专属优惠</div>
+            <div style="font-size:11px;color:#92400e">完成今日作品，解锁专属价</div>
           </div>
           <div style="text-align:right">
-            <div style="font-size:18px;font-weight:700;color:#d97706">楼169</div>
-            <div style="font-size:10px;color:#92400e;text-decoration:line-through">楼299</div>
+            <div style="font-size:18px;font-weight:700;color:#d97706">¥169</div>
+            <div style="font-size:10px;color:#92400e;text-decoration:line-through">¥299</div>
           </div>
         </div>
       </div>
 
-      <!-- Tab 3: 鎶ュ憡 (Report) -->
+      <!-- Tab 3: 报告 (Report) -->
       <div class="screen" id="tab-report" data-tab="report">
         <div class="report-header">
           <div style="display:flex;justify-content:space-between;align-items:flex-start">
             <div>
-              <h3 style="font-size:18px;margin-bottom:4px">寮犲皬瀹?路 鐮斿鎶ュ憡</h3>
-              <div style="font-size:11px;opacity:.8">姝︿警绁?路 涓夊浗鏂囧寲鐮斿 | 2026.05.21</div>
+              <h3 style="font-size:18px;margin-bottom:4px">张小宇 · 研学报告</h3>
+              <div style="font-size:11px;opacity:.8">武侯祠 · 三国文化研学 | 2026.05.21</div>
             </div>
-            <span class="report-badge">AI鎶ュ憡</span>
+            <span class="report-badge">AI报告</span>
           </div>
         </div>
 
         <div class="report-card">
-          <div style="font-weight:600;font-size:14px;margin-bottom:8px">馃搵 浠婃棩瀛︿範鍐呭</div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">📋 今日学习内容</div>
           <div style="font-size:13px;color:#374151;line-height:1.8">
-            瀛╁瓙璧拌<b>鎴愰兘姝︿警绁?/b>锛岀郴缁熷涔犱簡涓夊浗鍘嗗彶鏂囧寲锛屾繁鍏ヤ簡瑙ｈ钁涗寒鐢熷钩銆佺┖鍩庤銆佽崏鑸瑰€熺绛夌粡鍏告晠浜嬨€傚湪AI鍒涗綔鐜妭锛屽瀛愮敤AI宸ュ叿灏嗗綋澶╂墍瀛︾煡璇嗚浆鍖栦负浜掑姩娓告垙鍜岀煭瑙嗛浣滃搧銆?          </div>
+            孩子走访<b>成都武侯祠</b>，系统学习了三国历史文化，深入了解诸葛亮生平、空城计、草船借箭等经典故事。在AI创作环节，孩子用AI工具将当天所学知识转化为互动游戏和短视频作品。
+          </div>
         </div>
 
         <div class="report-card" style="border-left-color:#7c3aed">
-          <div style="font-weight:600;font-size:14px;margin-bottom:8px">馃帹 浠婃棩AI浣滃搧锛?浠讹級</div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">🎨 今日AI作品（2件）</div>
           <div class="works-grid" id="report-works"></div>
         </div>
 
         <div class="report-card" style="border-left-color:#10b981">
-          <div style="font-weight:600;font-size:14px;margin-bottom:8px">猸?浠婃棩璇勪环</div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">⭐ 今日评价</div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <span class="tag" style="cursor:default">绉瀬鍙備笌璁ㄨ</span>
-            <span class="tag" style="cursor:default">鍥㈤槦鍗忎綔浼樼</span>
-            <span class="tag" style="cursor:default">AI鍒涙剰鑳藉姏绐佸嚭</span>
-            <span class="tag" style="cursor:default">鐭ヨ瘑杞寲鍔涘己</span>
+            <span class="tag" style="cursor:default">积极参与讨论</span>
+            <span class="tag" style="cursor:default">团队协作优秀</span>
+            <span class="tag" style="cursor:default">AI创意能力突出</span>
+            <span class="tag" style="cursor:default">知识转化力强</span>
           </div>
         </div>
 
         <div class="coupon-card" onclick="showMallDetail('caotang')">
           <div>
-            <div style="font-weight:600;font-size:13px">鏉滅敨鑽夊爞 路 璇楀湥涔嬫梾</div>
-            <div style="font-size:10px;color:#92400e">瀛﹀畬涓夊浗锛屽啀鎺㈣瘲鍦?路 鏈懆鏈嚭鍙戝墿8甯?/div>
+            <div style="font-weight:600;font-size:13px">杜甫草堂 · 诗圣之旅</div>
+            <div style="font-size:10px;color:#92400e">学完三国，再探诗圣 · 本周末出发剩8席</div>
           </div>
           <div style="text-align:right">
-            <div class="price">楼169</div>
-            <div class="original">楼299</div>
+            <div class="price">¥169</div>
+            <div class="original">¥299</div>
           </div>
         </div>
 
         <div class="coupon-card" onclick="showMallDetail('samsung')" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-color:#a78bfa">
           <div>
-            <div style="font-weight:600;font-size:13px">涓夋槦鍫?路 鍙よ渶鎺㈢</div>
-            <div style="font-size:10px;color:#6d28d9">鏂伴鐗瑰睍寮€鏀?路 涓嬪懆鍏彂鍥?/div>
+            <div style="font-weight:600;font-size:13px">三星堆 · 古蜀探秘</div>
+            <div style="font-size:10px;color:#6d28d9">新馆特展开放 · 下周六发团</div>
           </div>
           <div style="text-align:right">
-            <div class="price" style="color:#7c3aed">楼219</div>
-            <div class="original" style="color:#6d28d9">楼369</div>
+            <div class="price" style="color:#7c3aed">¥219</div>
+            <div class="original" style="color:#6d28d9">¥369</div>
           </div>
         </div>
       </div>
 
-      <!-- Tab 4: 鍟嗗煄 (Mall) -->
+      <!-- Tab 4: 商城 (Mall) -->
       <div class="screen" id="tab-mall" data-tab="mall">
         <div style="margin-bottom:12px">
           <div class="toggle-group" id="mall-filters">
-            <button class="toggle-btn active" onclick="switchMallTab('all', this)">鍏ㄩ儴</button>
-            <button class="toggle-btn" onclick="switchMallTab('culture', this)">鏂囧寲鐮斿</button>
-            <button class="toggle-btn" onclick="switchMallTab('tech', this)">绉戞妧鎺㈢储</button>
-            <button class="toggle-btn" onclick="switchMallTab('nature', this)">鑷劧鍗氱墿</button>
+            <button class="toggle-btn active" onclick="switchMallTab('all', this)">全部</button>
+            <button class="toggle-btn" onclick="switchMallTab('culture', this)">文化研学</button>
+            <button class="toggle-btn" onclick="switchMallTab('tech', this)">科技探索</button>
+            <button class="toggle-btn" onclick="switchMallTab('nature', this)">自然博物</button>
           </div>
         </div>
 
         <div id="mall-list">
-          <!-- 鏂囧寲鐮斿: 鏉滅敨鑽夊爞 -->
+          <!-- 文化研学: 杜甫草堂 -->
           <div class="mall-item" data-mall-cat="culture" onclick="showMallDetail('caotang')">
             <div class="cover" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">
               <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                 <rect width="360" height="140" fill="url(#g-caotang)"/>
                 <defs><linearGradient id="g-caotang" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#dcfce7"/><stop offset="100%" stop-color="#bbf7d0"/></linearGradient></defs>
-                <!-- 涓浗浼犵粺寤虹瓚 - 鑽夊爞 -->
+                <!-- 中国传统建筑 - 草堂 -->
                 <rect x="120" y="30" width="120" height="80" rx="4" fill="#166534" opacity="0.3"/>
                 <polygon points="115,32 180,8 245,32" fill="#166534" opacity="0.25"/>
                 <rect x="130" y="45" width="20" height="30" rx="2" fill="#166534" opacity="0.2"/>
                 <rect x="210" y="45" width="20" height="30" rx="2" fill="#166534" opacity="0.2"/>
                 <rect x="155" y="55" width="50" height="55" rx="2" fill="#166534" opacity="0.15"/>
                 <circle cx="180" cy="25" r="12" fill="#fbbf24" opacity="0.4"/>
-                <!-- 绔瑰瓙 -->
+                <!-- 竹子 -->
                 <line x1="50" y1="20" x2="50" y2="140" stroke="#166534" stroke-width="3" opacity="0.2"/>
                 <line x1="310" y1="20" x2="310" y2="140" stroke="#166534" stroke-width="3" opacity="0.2"/>
               </svg>
-              <span class="cover-emoji">馃彲</span>
-              <span class="cover-tag">馃敟 鐑棬</span>
+              <span class="cover-emoji">🏯</span>
+              <span class="cover-tag">🔥 热门</span>
             </div>
             <div class="body">
-              <div class="title">鏉滅敨鑽夊爞 路 璇楀湥鏂囧寲涔嬫梾</div>
-              <div class="sub">閫傜敤骞撮緞 8-15宀?路 鍗婃棩鐮斿 路 AI鍒涗綔宸ュ潑</div>
+              <div class="title">杜甫草堂 · 诗圣文化之旅</div>
+              <div class="sub">适用年龄 8-15岁 · 半日研学 · AI创作工坊</div>
               <div class="bottom">
-                <div class="m-price"><span class="unit">楼</span>169<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">楼299</span></div>
-                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('caotang')">绔嬪嵆鎶ュ悕</button>
+                <div class="m-price"><span class="unit">¥</span>169<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥299</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('caotang')">立即报名</button>
               </div>
             </div>
           </div>
 
-          <!-- 鏂囧寲鐮斿: 涓夋槦鍫?-->
+          <!-- 文化研学: 三星堆 -->
           <div class="mall-item" data-mall-cat="culture" onclick="showMallDetail('samsung')">
             <div class="cover" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);position:relative">
               <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                 <rect width="360" height="140" fill="url(#g-samsung)"/>
                 <defs><linearGradient id="g-samsung" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ede9fe"/><stop offset="100%" stop-color="#ddd6fe"/></linearGradient></defs>
-                <!-- 闈掗摐闈㈠叿杞粨 -->
+                <!-- 青铜面具轮廓 -->
                 <ellipse cx="180" cy="60" rx="50" ry="45" fill="#7c3aed" opacity="0.2"/>
                 <ellipse cx="150" cy="45" rx="15" ry="10" fill="#7c3aed" opacity="0.25"/>
                 <ellipse cx="210" cy="45" rx="15" ry="10" fill="#7c3aed" opacity="0.25"/>
                 <rect x="155" y="65" width="50" height="30" rx="10" fill="#7c3aed" opacity="0.15"/>
                 <ellipse cx="170" cy="58" rx="8" ry="6" fill="#7c3aed" opacity="0.3"/>
                 <ellipse cx="190" cy="58" rx="8" ry="6" fill="#7c3aed" opacity="0.3"/>
-                <!-- 瑁呴グ绾挎潯 -->
+                <!-- 装饰线条 -->
                 <path d="M140,100 L160,115 L200,115 L220,100" stroke="#7c3aed" stroke-width="2" opacity="0.2" fill="none"/>
               </svg>
-              <span class="cover-emoji">馃椏</span>
-              <span class="cover-tag" style="background:#7c3aed">馃啎 涓婃柊</span>
+              <span class="cover-emoji">🗿</span>
+              <span class="cover-tag" style="background:#7c3aed">🆕 上新</span>
             </div>
             <div class="body">
-              <div class="title">涓夋槦鍫?路 鍙よ渶鏂囨槑鎺㈢</div>
-              <div class="sub">閫傜敤骞撮緞 10-16宀?路 鍏ㄦ棩鐮斿 路 AI鍒涗綔+鑰冨彜浣撻獙</div>
+              <div class="title">三星堆 · 古蜀文明探秘</div>
+              <div class="sub">适用年龄 10-16岁 · 全日研学 · AI创作+考古体验</div>
               <div class="bottom">
-                <div class="m-price"><span class="unit">楼</span>219<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">楼369</span></div>
-                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('samsung')">绔嬪嵆鎶ュ悕</button>
+                <div class="m-price"><span class="unit">¥</span>219<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥369</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('samsung')">立即报名</button>
               </div>
             </div>
           </div>
 
-          <!-- 鏂囧寲鐮斿: 姝︿警绁?-->
+          <!-- 文化研学: 武侯祠 -->
           <div class="mall-item" data-mall-cat="culture" onclick="showMallDetail('wuhouci')">
             <div class="cover" style="background:linear-gradient(135deg,#fef3c7,#fde68a);position:relative">
               <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                 <rect width="360" height="140" fill="url(#g-wuhou)"/>
                 <defs><linearGradient id="g-wuhou" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fef3c7"/><stop offset="100%" stop-color="#fde68a"/></linearGradient></defs>
-                <!-- 鍙ゅ缓绛?姝︿警绁? -->
+                <!-- 古建筑(武侯祠) -->
                 <rect x="90" y="25" width="180" height="95" rx="3" fill="#d97706" opacity="0.25"/>
                 <polygon points="80,28 180,5 280,28" fill="#d97706" opacity="0.3"/>
                 <rect x="130" y="50" width="30" height="45" rx="2" fill="#d97706" opacity="0.18"/>
                 <rect x="200" y="50" width="30" height="45" rx="2" fill="#d97706" opacity="0.18"/>
                 <circle cx="180" cy="20" r="10" fill="#fbbf24" opacity="0.4"/>
-                <!-- 鍙ゆ澗 -->
+                <!-- 古松 -->
                 <polygon points="55,50 40,100 70,100" fill="#92400e" opacity="0.2"/>
                 <polygon points="305,55 290,100 320,100" fill="#92400e" opacity="0.2"/>
               </svg>
-              <span class="cover-emoji">鈿旓笍</span>
+              <span class="cover-emoji">⚔️</span>
             </div>
             <div class="body">
-              <div class="title">姝︿警绁?路 涓夊浗浜夐湼AI鐮斿</div>
-              <div class="sub">閫傜敤骞撮緞 8-14宀?路 鍗婃棩鐮斿 路 AI娓告垙鍒涗綔</div>
+              <div class="title">武侯祠 · 三国争霸AI研学</div>
+              <div class="sub">适用年龄 8-14岁 · 半日研学 · AI游戏创作</div>
               <div class="bottom">
-                <div class="m-price"><span class="unit">楼</span>149<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">楼259</span></div>
-                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('wuhouci')">绔嬪嵆鎶ュ悕</button>
+                <div class="m-price"><span class="unit">¥</span>149<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥259</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('wuhouci')">立即报名</button>
               </div>
             </div>
           </div>
 
-          <!-- 绉戞妧鎺㈢储: 鑸ぉ绉戞妧棣?-->
+          <!-- 科技探索: 航天科技馆 -->
           <div class="mall-item" data-mall-cat="tech" onclick="showMallDetail('space')">
             <div class="cover" style="background:linear-gradient(135deg,#1e1b4b,#312e81);position:relative">
               <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                 <rect width="360" height="140" fill="url(#g-space)"/>
                 <defs><linearGradient id="g-space" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e1b4b"/><stop offset="100%" stop-color="#312e81"/></linearGradient></defs>
-                <!-- 鏄熸槦 -->
+                <!-- 星星 -->
                 <circle cx="50" cy="30" r="2" fill="white" opacity="0.6"/>
                 <circle cx="120" cy="20" r="1.5" fill="white" opacity="0.4"/>
                 <circle cx="280" cy="35" r="2" fill="white" opacity="0.5"/>
                 <circle cx="330" cy="15" r="1.5" fill="white" opacity="0.3"/>
-                <!-- 鐏 -->
+                <!-- 火箭 -->
                 <rect x="170" y="25" width="16" height="60" rx="8" fill="white" opacity="0.4"/>
                 <polygon points="178,15 170,30 186,30" fill="#ef4444" opacity="0.5"/>
                 <rect x="164" y="80" width="6" height="20" rx="3" fill="white" opacity="0.3"/>
                 <rect x="186" y="80" width="6" height="20" rx="3" fill="white" opacity="0.3"/>
-                <!-- 鏄熺悆 -->
+                <!-- 星球 -->
                 <circle cx="100" cy="90" r="25" fill="#a78bfa" opacity="0.2"/>
                 <circle cx="280" cy="95" r="18" fill="#c4b5fd" opacity="0.15"/>
               </svg>
-              <span class="cover-emoji">馃殌</span>
-              <span class="cover-tag" style="background:#7c3aed">馃啎 涓婃柊</span>
+              <span class="cover-emoji">🚀</span>
+              <span class="cover-tag" style="background:#7c3aed">🆕 上新</span>
             </div>
             <div class="body">
-              <div class="title">鑸ぉ绉戞妧棣?路 鏄熼檯AI鎺㈢储</div>
-              <div class="sub">閫傜敤骞撮緞 8-14宀?路 鍏ㄦ棩鐮斿 路 AI鍔ㄧ敾鍒涗綔</div>
+              <div class="title">航天科技馆 · 星际AI探索</div>
+              <div class="sub">适用年龄 8-14岁 · 全日研学 · AI动画创作</div>
               <div class="bottom">
-                <div class="m-price"><span class="unit">楼</span>189<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">楼329</span></div>
-                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('space')">绔嬪嵆鎶ュ悕</button>
+                <div class="m-price"><span class="unit">¥</span>189<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥329</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('space')">立即报名</button>
               </div>
             </div>
           </div>
 
-          <!-- 鑷劧鍗氱墿: 鎴愰兘鑷劧鍗氱墿棣?-->
+          <!-- 自然博物: 成都自然博物馆 -->
           <div class="mall-item" data-mall-cat="nature" onclick="showMallDetail('nature')">
             <div class="cover" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);position:relative">
               <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                 <rect width="360" height="140" fill="url(#g-nature)"/>
                 <defs><linearGradient id="g-nature" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#dbeafe"/><stop offset="100%" stop-color="#bfdbfe"/></linearGradient></defs>
-                <!-- 鎭愰緳楠ㄦ灦杞粨 -->
+                <!-- 恐龙骨架轮廓 -->
                 <ellipse cx="140" cy="60" rx="25" ry="15" fill="#2563eb" opacity="0.15"/>
                 <ellipse cx="200" cy="55" rx="35" ry="20" fill="#2563eb" opacity="0.12"/>
                 <ellipse cx="260" cy="65" rx="20" ry="18" fill="#2563eb" opacity="0.1"/>
@@ -868,32 +870,32 @@ body{
                 <line x1="160" y1="70" x2="170" y2="105" stroke="#2563eb" stroke-width="2.5" opacity="0.2"/>
                 <line x1="180" y1="72" x2="185" y2="108" stroke="#2563eb" stroke-width="2.5" opacity="0.2"/>
                 <line x1="200" y1="70" x2="195" y2="105" stroke="#2563eb" stroke-width="2.5" opacity="0.2"/>
-                <!-- 鏍戝彾瑁呴グ -->
+                <!-- 树叶装饰 -->
                 <ellipse cx="50" cy="50" rx="12" ry="6" fill="#059669" opacity="0.2" transform="rotate(-20 50 50)"/>
                 <ellipse cx="320" cy="40" rx="10" ry="5" fill="#059669" opacity="0.15" transform="rotate(15 320 40)"/>
               </svg>
-              <span class="cover-emoji">馃</span>
+              <span class="cover-emoji">🦋</span>
             </div>
             <div class="body">
-              <div class="title">鎴愰兘鑷劧鍗氱墿棣?路 鎭愰緳涓嶢I</div>
-              <div class="sub">閫傜敤骞撮緞 6-12宀?路 鍗婃棩鐮斿 路 AI瑙嗛鍒涗綔</div>
+              <div class="title">成都自然博物馆 · 恐龙与AI</div>
+              <div class="sub">适用年龄 6-12岁 · 半日研学 · AI视频创作</div>
               <div class="bottom">
-                <div class="m-price"><span class="unit">楼</span>139<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">楼219</span></div>
-                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('nature')">绔嬪嵆鎶ュ悕</button>
+                <div class="m-price"><span class="unit">¥</span>139<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥219</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('nature')">立即报名</button>
               </div>
             </div>
           </div>
 
-          <!-- 鑷劧鍗氱墿: 澶х唺鐚熀鍦?-->
+          <!-- 自然博物: 大熊猫基地 -->
           <div class="mall-item" data-mall-cat="nature" onclick="showMallDetail('panda')">
             <div class="cover" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);position:relative">
               <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                 <rect width="360" height="140" fill="url(#g-panda)"/>
                 <defs><linearGradient id="g-panda" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ecfdf5"/><stop offset="100%" stop-color="#d1fae5"/></linearGradient></defs>
-                <!-- 绔瑰瓙 -->
+                <!-- 竹子 -->
                 <line x1="60" y1="20" x2="60" y2="140" stroke="#059669" stroke-width="4" opacity="0.2"/>
                 <line x1="300" y1="15" x2="300" y2="140" stroke="#059669" stroke-width="4" opacity="0.2"/>
-                <!-- 鐔婄尗杞粨 -->
+                <!-- 熊猫轮廓 -->
                 <ellipse cx="180" cy="75" rx="35" ry="30" fill="white" opacity="0.6"/>
                 <circle cx="160" cy="60" r="10" fill="#1f2937" opacity="0.5"/>
                 <circle cx="200" cy="60" r="10" fill="#1f2937" opacity="0.5"/>
@@ -901,124 +903,124 @@ body{
                 <ellipse cx="155" cy="88" rx="12" ry="8" fill="#1f2937" opacity="0.5"/>
                 <ellipse cx="205" cy="88" rx="12" ry="8" fill="#1f2937" opacity="0.5"/>
               </svg>
-              <span class="cover-emoji">馃惣</span>
+              <span class="cover-emoji">🐼</span>
             </div>
             <div class="body">
-              <div class="title">澶х唺鐚熀鍦?路 鐢熸€佷笌AI</div>
-              <div class="sub">閫傜敤骞撮緞 6-12宀?路 鍗婃棩鐮斿 路 AI瑙嗛鍒涗綔</div>
+              <div class="title">大熊猫基地 · 生态与AI</div>
+              <div class="sub">适用年龄 6-12岁 · 半日研学 · AI视频创作</div>
               <div class="bottom">
-                <div class="m-price"><span class="unit">楼</span>159<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">楼269</span></div>
-                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('panda')">绔嬪嵆鎶ュ悕</button>
+                <div class="m-price"><span class="unit">¥</span>159<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥269</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('panda')">立即报名</button>
               </div>
             </div>
           </div>
 
-          <!-- 绉戞妧鎺㈢储: 鍥涘窛绉戞妧棣?-->
+          <!-- 科技探索: 四川科技馆 -->
           <div class="mall-item" data-mall-cat="tech" onclick="showMallDetail('scitech')">
             <div class="cover" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);position:relative">
               <svg viewBox="0 0 360 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                 <rect width="360" height="140" fill="url(#g-scitech)"/>
                 <defs><linearGradient id="g-scitech" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fef2f2"/><stop offset="100%" stop-color="#fee2e2"/></linearGradient></defs>
-                <!-- 鍘熷瓙/绉戞妧鍥炬爣 -->
+                <!-- 原子/科技图标 -->
                 <circle cx="130" cy="50" r="20" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.3"/>
                 <circle cx="180" cy="50" r="20" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.3"/>
                 <circle cx="230" cy="50" r="20" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.3"/>
                 <circle cx="180" cy="70" r="6" fill="#ef4444" opacity="0.4"/>
-                <!-- 榻胯疆 -->
+                <!-- 齿轮 -->
                 <circle cx="100" cy="95" r="18" fill="none" stroke="#ea580c" stroke-width="2" opacity="0.25"/>
                 <circle cx="260" cy="95" r="18" fill="none" stroke="#ea580c" stroke-width="2" opacity="0.25"/>
               </svg>
-              <span class="cover-emoji">馃敩</span>
+              <span class="cover-emoji">🔬</span>
             </div>
             <div class="body">
-              <div class="title">鍥涘窛绉戞妧棣?路 AI瀹為獙瀹?/div>
-              <div class="sub">閫傜敤骞撮緞 8-14宀?路 鍗婃棩鐮斿 路 AI鏈哄櫒浜轰綋楠?/div>
+              <div class="title">四川科技馆 · AI实验室</div>
+              <div class="sub">适用年龄 8-14岁 · 半日研学 · AI机器人体验</div>
               <div class="bottom">
-                <div class="m-price"><span class="unit">楼</span>129<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">楼239</span></div>
-                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('scitech')">绔嬪嵆鎶ュ悕</button>
+                <div class="m-price"><span class="unit">¥</span>129<span style="font-size:11px;color:#9ca3af;font-weight:400;text-decoration:line-through;margin-left:6px">¥239</span></div>
+                <button class="btn-secondary btn-sm" onclick="event.stopPropagation();buyNow('scitech')">立即报名</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Tab 5: 鍒嗛攢 (Commission) -->
+      <!-- Tab 5: 分销 (Commission) -->
       <div class="screen" id="tab-commission" data-tab="commission">
         <!-- Role Toggle -->
         <div class="partner-toggle" id="partner-toggle">
           <button class="partner-toggle-btn active" onclick="switchPartnerRole('c')" id="role-c">
-            馃 鎴戞槸鏅€氱敤鎴?<span class="badge-dot c"></span>
+            🧑 我是普通用户 <span class="badge-dot c"></span>
           </button>
           <button class="partner-toggle-btn" onclick="switchPartnerRole('b')" id="role-b">
-            馃彚 鎴戞槸鍚堜綔浼欎即 <span class="badge-dot b"></span>
+            🏢 我是合作伙伴 <span class="badge-dot b"></span>
           </button>
         </div>
 
-        <!-- ===== C绔鍥?===== -->
+        <!-- ===== C端视图 ===== -->
         <div id="partner-view-c">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-            <div style="width:36px;height:36px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">鏉?/div>
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#059669,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">李</div>
             <div>
-              <div style="font-weight:600;font-size:14px">鏉庡锛堣璇侀攢鍞級</div>
-              <div style="font-size:10px;color:#9ca3af">绱鏈嶅姟 47涓搴?路 浣ｉ噾 楼4,230</div>
+              <div style="font-weight:600;font-size:14px">李姐（认证销售）</div>
+              <div style="font-size:10px;color:#9ca3af">累计服务 47个家庭 · 佣金 ¥4,230</div>
             </div>
           </div>
 
           <div class="commission-card">
-            <div class="comm-label">鏈湀绱浣ｉ噾锛?鏈堬級</div>
-            <div class="comm-amount">楼1,260</div>
-            <div style="font-size:12px;color:#059669;margin-top:4px">宸插畬鎴?6鍗?路 寰呯粨绠?2鍗?楼340</div>
+            <div class="comm-label">本月累计佣金（5月）</div>
+            <div class="comm-amount">¥1,260</div>
+            <div style="font-size:12px;color:#059669;margin-top:4px">已完成 6单 · 待结算 2单 ¥340</div>
           </div>
 
           <div class="stats-row">
-            <div class="stat-card"><div class="stat-num">47</div><div class="stat-label">绱璁㈠崟</div></div>
-            <div class="stat-card"><div class="stat-num">楼90</div><div class="stat-label">骞冲潎浣ｉ噾/鍗?/div></div>
-            <div class="stat-card"><div class="stat-num">89%</div><div class="stat-label">鎴愪氦鐜?/div></div>
+            <div class="stat-card"><div class="stat-num">47</div><div class="stat-label">累计订单</div></div>
+            <div class="stat-card"><div class="stat-num">¥90</div><div class="stat-label">平均佣金/单</div></div>
+            <div class="stat-card"><div class="stat-num">89%</div><div class="stat-label">成交率</div></div>
           </div>
 
-          <div style="font-weight:600;font-size:14px;margin-bottom:8px">馃搵 杩戞湡浣ｉ噾鏄庣粏</div>
-          <div class="order-item" style="opacity:1"><div class="o-icon">馃彲</div><div class="o-info"><div class="o-name">鑽夊爞璇楅煹鐮斿 路 鐜嬪厛鐢?/div><div class="o-time">5鏈?1鏃?14:30 路 宸叉垚浜?/div></div><div class="o-comm">+楼80</div></div>
-          <div class="order-item" style="opacity:1"><div class="o-icon">馃椏</div><div class="o-info"><div class="o-name">涓夋槦鍫嗘帰绉?路 闄堝コ澹?/div><div class="o-time">5鏈?0鏃?10:15 路 宸叉垚浜?/div></div><div class="o-comm">+楼105</div></div>
-          <div class="order-item" style="opacity:1"><div class="o-icon">鈿旓笍</div><div class="o-info"><div class="o-name">姝︿警绁犱笁鍥?路 鍒樺コ澹?/div><div class="o-time">5鏈?9鏃?16:42 路 宸叉垚浜?/div></div><div class="o-comm">+楼75</div></div>
-          <div class="order-item" style="opacity:.6"><div class="o-icon">馃</div><div class="o-info"><div class="o-name">鑷劧鍗氱墿棣?路 寮犲厛鐢?/div><div class="o-time">5鏈?1鏃?11:00 路 寰呯‘璁?/div></div><span class="badge badge-orange">寰呯粨绠?楼70</span></div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">📋 近期佣金明细</div>
+          <div class="order-item" style="opacity:1"><div class="o-icon">🏯</div><div class="o-info"><div class="o-name">草堂诗韵研学 · 王先生</div><div class="o-time">5月21日 14:30 · 已成交</div></div><div class="o-comm">+¥80</div></div>
+          <div class="order-item" style="opacity:1"><div class="o-icon">🗿</div><div class="o-info"><div class="o-name">三星堆探秘 · 陈女士</div><div class="o-time">5月20日 10:15 · 已成交</div></div><div class="o-comm">+¥105</div></div>
+          <div class="order-item" style="opacity:1"><div class="o-icon">⚔️</div><div class="o-info"><div class="o-name">武侯祠三国 · 刘女士</div><div class="o-time">5月19日 16:42 · 已成交</div></div><div class="o-comm">+¥75</div></div>
+          <div class="order-item" style="opacity:.6"><div class="o-icon">🦋</div><div class="o-info"><div class="o-name">自然博物馆 · 张先生</div><div class="o-time">5月21日 11:00 · 待确认</div></div><span class="badge badge-orange">待结算 ¥70</span></div>
 
           <div style="margin-top:16px;background:#eef2ff;border-radius:12px;padding:12px;text-align:center">
-            <div style="font-size:13px;color:#4f46e5;font-weight:600;margin-bottom:4px">馃挕 鍒嗕韩浣犵殑涓撳睘閾炬帴缁欏闀匡紝涓嬪崟鍗宠禋浣ｉ噾</div>
-            <div style="font-size:11px;color:#6b7280">姣忔垚鍔熸帹鑽愪竴涓爺瀛︽椿鍔紝鍙幏璁㈠崟閲戦绾?%-8%浣ｉ噾</div>
-            <button class="btn-primary" style="margin-top:10px;font-size:14px" onclick="showToast('涓撳睘閾炬帴宸插鍒讹紝蹇幓鍒嗕韩鍚э紒')">馃搵 澶嶅埗鎴戠殑涓撳睘鍒嗕韩閾炬帴</button>
+            <div style="font-size:13px;color:#4f46e5;font-weight:600;margin-bottom:4px">💡 分享你的专属链接给家长，下单即赚佣金</div>
+            <div style="font-size:11px;color:#6b7280">每成功推荐一个研学活动，可获订单金额约5%-8%佣金</div>
+            <button class="btn-primary" style="margin-top:10px;font-size:14px" onclick="showToast('专属链接已复制，快去分享吧！')">📋 复制我的专属分享链接</button>
           </div>
 
           <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af">
-            馃捈 浣犳槸瀵兼父/娓犻亾鏂癸紵<span style="color:#7c3aed;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('b')">鍒囨崲涓哄悎浣滀紮浼?/span>
+            💼 你是导游/渠道方？<span style="color:#7c3aed;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('b')">切换为合作伙伴</span>
           </div>
         </div>
 
-        <!-- ===== B绔鍥?===== -->
+        <!-- ===== B端视图 ===== -->
         <div id="partner-view-b" style="display:none">
           <!-- Not certified yet -->
           <div id="partner-not-certified">
             <div style="text-align:center;padding:16px 0">
-              <div style="font-size:48px;margin-bottom:8px">馃彣</div>
-              <div style="font-weight:600;font-size:16px;margin-bottom:4px">鎴愪负鍚堜綔浼欎即</div>
-              <div style="font-size:12px;color:#6b7280">璁よ瘉鍚庡彲鑾峰彇涓撳睘宸ュ叿鍜屾洿楂樹剑閲?/div>
+              <div style="font-size:48px;margin-bottom:8px">🏨</div>
+              <div style="font-weight:600;font-size:16px;margin-bottom:4px">成为合作伙伴</div>
+              <div style="font-size:12px;color:#6b7280">认证后可获取专属工具和更高佣金</div>
             </div>
 
             <div class="cert-form">
-              <div class="field-label">濮撳悕</div>
-              <input type="text" id="cert-name" placeholder="璇疯緭鍏ョ湡瀹炲鍚?>
-              <div class="field-label">鎵嬫満鍙?/div>
-              <input type="text" id="cert-phone" placeholder="璇疯緭鍏ユ墜鏈哄彿">
-              <div class="field-label">韬唤绫诲瀷</div>
+              <div class="field-label">姓名</div>
+              <input type="text" id="cert-name" placeholder="请输入真实姓名">
+              <div class="field-label">手机号</div>
+              <input type="text" id="cert-phone" placeholder="请输入手机号">
+              <div class="field-label">身份类型</div>
               <select id="cert-type">
-                <option value="guide">瀵兼父/棰嗛槦</option>
-                <option value="agency">鐮斿鏈烘瀯/鏃呰绀?/option>
-                <option value="teacher">瀛︽牎/鏁欒偛鏈烘瀯</option>
-                <option value="other">鍏朵粬娓犻亾鏂?/option>
+                <option value="guide">导游/领队</option>
+                <option value="agency">研学机构/旅行社</option>
+                <option value="teacher">学校/教育机构</option>
+                <option value="other">其他渠道方</option>
               </select>
-              <div class="field-label">璇佹槑鏉愭枡锛堝娓歌瘉/钀ヤ笟鎵х収/鍚嶇墖 鎴浘锛?/div>
-              <input type="text" id="cert-file" placeholder="馃搸 鐐瑰嚮涓婁紶鎴栨弿杩拌瘉鏄庝俊鎭? style="padding:10px 12px;border:2px dashed #d1d5db;border-radius:10px;cursor:pointer;background:#fafafa;font-size:13px;color:#6b7280" onclick="this.value='瀵兼父璇乢LJG2025068'">
-              <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-top:8px" onclick="submitCertification()">鎻愪氦璁よ瘉鐢宠</button>
-              <div style="font-size:10px;color:#9ca3af;margin-top:6px;text-align:center">瀹℃牳閫氬父1-3涓伐浣滄棩锛岄€氳繃鍚庡彲浜彈闃舵浣ｉ噾</div>
+              <div class="field-label">证明材料（导游证/营业执照/名片 截图）</div>
+              <input type="text" id="cert-file" placeholder="📎 点击上传或描述证明信息" style="padding:10px 12px;border:2px dashed #d1d5db;border-radius:10px;cursor:pointer;background:#fafafa;font-size:13px;color:#6b7280" onclick="this.value='导游证_LJG2025068'">
+              <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-top:8px" onclick="submitCertification()">提交认证申请</button>
+              <div style="font-size:10px;color:#9ca3af;margin-top:6px;text-align:center">审核通常1-3个工作日，通过后可享受阶梯佣金</div>
             </div>
           </div>
 
@@ -1026,97 +1028,97 @@ body{
           <div id="partner-certified" style="display:none">
             <!-- Partner info + tier -->
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-              <div style="width:40px;height:40px;background:linear-gradient(135deg,#7c3aed,#a78bfa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600" id="partner-avatar">鍒?/div>
+              <div style="width:40px;height:40px;background:linear-gradient(135deg,#7c3aed,#a78bfa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600" id="partner-avatar">刘</div>
               <div>
-                <div style="font-weight:600;font-size:14px" id="partner-name-display">鍒樺</div>
-                <div style="font-size:10px;color:#9ca3af" id="partner-tier-label"><span class="tier-badge silver">閾剁墝浼欎即</span> 绱甯﹀ 86浜?/div>
+                <div style="font-weight:600;font-size:14px" id="partner-name-display">刘导</div>
+                <div style="font-size:10px;color:#9ca3af" id="partner-tier-label"><span class="tier-badge silver">银牌伙伴</span> 累计带客 86人</div>
               </div>
             </div>
 
             <!-- Commission overview -->
             <div class="commission-card" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
-              <div class="comm-label" style="color:#7c3aed">鏈湀绱浣ｉ噾锛?鏈堬級</div>
-              <div class="comm-amount" style="color:#5b21b6" id="partner-monthly">楼8,450</div>
-              <div style="font-size:12px;color:#7c3aed;margin-top:4px">宸插畬鎴?34鍗?路 寰呯粨绠?5鍗?楼1,120 路 闃舵 12%</div>
+              <div class="comm-label" style="color:#7c3aed">本月累计佣金（5月）</div>
+              <div class="comm-amount" style="color:#5b21b6" id="partner-monthly">¥8,450</div>
+              <div style="font-size:12px;color:#7c3aed;margin-top:4px">已完成 34单 · 待结算 5单 ¥1,120 · 阶梯 12%</div>
             </div>
 
             <!-- Stats -->
             <div class="stats-row">
-              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">86</div><div class="stat-label">绱瀹㈡埛</div></div>
-              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">72%</div><div class="stat-label">杞寲鐜?/div></div>
-              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">12%</div><div class="stat-label">褰撳墠浣ｉ噾闃舵</div></div>
+              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">86</div><div class="stat-label">累计客户</div></div>
+              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">72%</div><div class="stat-label">转化率</div></div>
+              <div class="stat-card"><div class="stat-num" style="color:#7c3aed">12%</div><div class="stat-label">当前佣金阶梯</div></div>
             </div>
 
             <!-- Tools section -->
-            <div style="font-weight:600;font-size:14px;margin-bottom:8px;margin-top:6px">馃敡 涓撳睘宸ュ叿</div>
+            <div style="font-weight:600;font-size:14px;margin-bottom:8px;margin-top:6px">🔧 专属工具</div>
             <div class="tool-card" onclick="showToolDetail('qr')">
-              <div class="tool-icon">馃摫</div>
-              <div class="tool-info"><div class="tool-name">涓撳睘浜岀淮鐮?/ 娴锋姤</div><div class="tool-desc">鎵爜鍗崇粦锛屾垚浜よ嚜鍔ㄨ拷韪潵婧?/div></div>
-              <span class="tool-arrow">鈥?/span>
+              <div class="tool-icon">📱</div>
+              <div class="tool-info"><div class="tool-name">专属二维码 / 海报</div><div class="tool-desc">扫码即绑，成交自动追踪来源</div></div>
+              <span class="tool-arrow">›</span>
             </div>
             <div class="tool-card" onclick="showToolDetail('invite')">
-              <div class="tool-icon">馃摠</div>
-              <div class="tool-info"><div class="tool-name">鎵归噺閭€璇?/div><div class="tool-desc">涓€閿敓鎴愰個璇凤紝鍒嗕韩鍒板闀跨兢/鏈嬪弸鍦?/div></div>
-              <span class="tool-arrow">鈥?/span>
+              <div class="tool-icon">📨</div>
+              <div class="tool-info"><div class="tool-name">批量邀请</div><div class="tool-desc">一键生成邀请，分享到家长群/朋友圈</div></div>
+              <span class="tool-arrow">›</span>
             </div>
             <div class="tool-card" onclick="showToolDetail('clients')">
-              <div class="tool-icon">馃懃</div>
-              <div class="tool-info"><div class="tool-name">鎴戠殑瀹㈡埛</div><div class="tool-desc">绠＄悊瀹㈡埛鍚嶅崟锛岃窡韪浆鍖栫姸鎬?/div></div>
-              <span class="tool-arrow">鈥?/span>
+              <div class="tool-icon">👥</div>
+              <div class="tool-info"><div class="tool-name">我的客户</div><div class="tool-desc">管理客户名单，跟踪转化状态</div></div>
+              <span class="tool-arrow">›</span>
             </div>
 
             <!-- Projects section -->
-            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">馃搨 鎴戠殑椤圭洰</div>
+            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">📂 我的项目</div>
             <div class="filter-pills" id="project-filters">
-              <span class="filter-pill active" onclick="filterProjects('all',this)">鍏ㄩ儴</span>
-              <span class="filter-pill" onclick="filterProjects('active',this)">杩涜涓?/span>
-              <span class="filter-pill" onclick="filterProjects('done',this)">宸茬粨鏉?/span>
+              <span class="filter-pill active" onclick="filterProjects('all',this)">全部</span>
+              <span class="filter-pill" onclick="filterProjects('active',this)">进行中</span>
+              <span class="filter-pill" onclick="filterProjects('done',this)">已结束</span>
             </div>
             <div id="project-list">
               <div class="project-card" data-status="active">
-                <div class="pj-header"><div class="pj-name">馃幆 5鏈堟渚鐮斿鍥?/div><div class="pj-date">2026.05.18 - 05.30</div></div>
-                <div class="pj-stats"><span>甯︽潵瀹㈡埛 <b>28浜?/b></span><span>宸蹭粯璐?<b>19浜?/b></span><span>浣ｉ噾 <b>楼4,200</b></span></div>
+                <div class="pj-header"><div class="pj-name">🎯 5月武侯祠研学团</div><div class="pj-date">2026.05.18 - 05.30</div></div>
+                <div class="pj-stats"><span>带来客户 <b>28人</b></span><span>已付费 <b>19人</b></span><span>佣金 <b>¥4,200</b></span></div>
               </div>
               <div class="project-card" data-status="active">
-                <div class="pj-header"><div class="pj-name">馃彌 涓夋槦鍫嗗懆鏈帰绌?/div><div class="pj-date">2026.05.12 - 06.15</div></div>
-                <div class="pj-stats"><span>甯︽潵瀹㈡埛 <b>35浜?/b></span><span>宸蹭粯璐?<b>22浜?/b></span><span>浣ｉ噾 <b>楼3,850</b></span></div>
+                <div class="pj-header"><div class="pj-name">🏛 三星堆周末探究</div><div class="pj-date">2026.05.12 - 06.15</div></div>
+                <div class="pj-stats"><span>带来客户 <b>35人</b></span><span>已付费 <b>22人</b></span><span>佣金 <b>¥3,850</b></span></div>
               </div>
               <div class="project-card" data-status="done" style="border-left-color:#d1d5db;opacity:.6">
-                <div class="pj-header"><div class="pj-name">馃摑 4鏈堣崏鍫傛槬鏃ョ爺瀛?/div><div class="pj-date">2026.04.01 - 04.28</div></div>
-                <div class="pj-stats"><span>甯︽潵瀹㈡埛 <b>23浜?/b></span><span>宸蹭粯璐?<b>18浜?/b></span><span>浣ｉ噾 <b>楼2,880</b></span></div>
+                <div class="pj-header"><div class="pj-name">📝 4月草堂春日研学</div><div class="pj-date">2026.04.01 - 04.28</div></div>
+                <div class="pj-stats"><span>带来客户 <b>23人</b></span><span>已付费 <b>18人</b></span><span>佣金 <b>¥2,880</b></span></div>
               </div>
             </div>
 
             <!-- Performance chart -->
-            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">馃搳 杩?涓湀浣ｉ噾瓒嬪娍</div>
+            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">📊 近6个月佣金趋势</div>
             <div style="background:#fff;border-radius:12px;padding:16px 8px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
               <div class="mini-bar-row" id="commission-chart">
-                <div class="mini-bar" style="height:25%"><span class="bar-val">楼1.2k</span><span class="bar-label">12鏈?/span></div>
-                <div class="mini-bar" style="height:40%"><span class="bar-val">楼2.1k</span><span class="bar-label">1鏈?/span></div>
-                <div class="mini-bar" style="height:55%"><span class="bar-val">楼3.5k</span><span class="bar-label">2鏈?/span></div>
-                <div class="mini-bar" style="height:48%"><span class="bar-val">楼2.8k</span><span class="bar-label">3鏈?/span></div>
-                <div class="mini-bar" style="height:62%"><span class="bar-val">楼4.6k</span><span class="bar-label">4鏈?/span></div>
-                <div class="mini-bar" style="height:82%"><span class="bar-val">楼8.5k</span><span class="bar-label">5鏈?/span></div>
+                <div class="mini-bar" style="height:25%"><span class="bar-val">¥1.2k</span><span class="bar-label">12月</span></div>
+                <div class="mini-bar" style="height:40%"><span class="bar-val">¥2.1k</span><span class="bar-label">1月</span></div>
+                <div class="mini-bar" style="height:55%"><span class="bar-val">¥3.5k</span><span class="bar-label">2月</span></div>
+                <div class="mini-bar" style="height:48%"><span class="bar-val">¥2.8k</span><span class="bar-label">3月</span></div>
+                <div class="mini-bar" style="height:62%"><span class="bar-val">¥4.6k</span><span class="bar-label">4月</span></div>
+                <div class="mini-bar" style="height:82%"><span class="bar-val">¥8.5k</span><span class="bar-label">5月</span></div>
               </div>
-              <div style="text-align:center;font-size:10px;color:#9ca3af;margin-top:20px">鏈湀鍚屾瘮澧為暱 85%</div>
+              <div style="text-align:center;font-size:10px;color:#9ca3af;margin-top:20px">本月同比增长 85%</div>
             </div>
 
             <!-- Settlement Center -->
-            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">馃挸 缁撶畻涓績</div>
+            <div style="font-weight:600;font-size:14px;margin:14px 0 8px">💳 结算中心</div>
             <div class="settle-card">
-              <div class="settle-row"><span class="settle-label">鍙彁鐜伴噾棰?/span><span class="settle-amount">楼6,280</span></div>
-              <div class="settle-row"><span class="settle-label">寰呯粨绠楋紙棰勮6鏈?鏃ワ級</span><span style="font-weight:600;color:#7c3aed">楼1,120</span></div>
-              <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-top:12px" onclick="openWithdrawModal()">馃捀 绔嬪嵆鎻愮幇</button>
-              <div style="text-align:center;font-size:10px;color:#9ca3af;margin-top:6px">姣忔湀5鍙枫€?0鍙风粨绠?路 鏈€浣庢彁鐜?楼100</div>
+              <div class="settle-row"><span class="settle-label">可提现金额</span><span class="settle-amount">¥6,280</span></div>
+              <div class="settle-row"><span class="settle-label">待结算（预计6月5日）</span><span style="font-weight:600;color:#7c3aed">¥1,120</span></div>
+              <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);margin-top:12px" onclick="openWithdrawModal()">💸 立即提现</button>
+              <div style="text-align:center;font-size:10px;color:#9ca3af;margin-top:6px">每月5号、20号结算 · 最低提现 ¥100</div>
             </div>
 
             <!-- Commission rules -->
             <div style="background:#fff;border-radius:12px;padding:14px;margin-top:10px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
-              <div style="font-weight:600;font-size:13px;margin-bottom:6px">馃搻 浣ｉ噾闃舵瑙勫垯</div>
+              <div style="font-weight:600;font-size:13px;margin-bottom:6px">📐 佣金阶梯规则</div>
               <div style="display:flex;text-align:center;font-size:11px;color:#6b7280">
-                <div style="flex:1;border-right:1px solid #e5e7eb"><div style="color:#ea580c;font-weight:600">8%</div>鏈堥攢 < 1涓?/div>
-                <div style="flex:1;border-right:1px solid #e5e7eb"><div style="color:#6b7280;font-weight:600">10%</div>1-5涓?/div>
-                <div style="flex:1"><div style="color:#d97706;font-weight:600">12%</div>> 5涓?<span class="tier-badge gold" style="font-size:9px">褰撳墠</span></div>
+                <div style="flex:1;border-right:1px solid #e5e7eb"><div style="color:#ea580c;font-weight:600">8%</div>月销 < 1万</div>
+                <div style="flex:1;border-right:1px solid #e5e7eb"><div style="color:#6b7280;font-weight:600">10%</div>1-5万</div>
+                <div style="flex:1"><div style="color:#d97706;font-weight:600">12%</div>> 5万 <span class="tier-badge gold" style="font-size:9px">当前</span></div>
               </div>
             </div>
           </div>
@@ -1126,7 +1128,7 @@ body{
 
           <!-- Back to C end -->
           <div style="margin-top:12px;text-align:center;font-size:11px;color:#9ca3af">
-            馃懁 鏌ョ湅鏅€氱敤鎴疯瑙掞紵<span style="color:#4f46e5;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('c')">鍒囨崲鍒癈绔垎閿€</span>
+            👤 查看普通用户视角？<span style="color:#4f46e5;cursor:pointer;text-decoration:underline" onclick="switchPartnerRole('c')">切换到C端分销</span>
           </div>
         </div>
       </div>
@@ -1134,29 +1136,29 @@ body{
       <!-- Sub-page: Create -->
       <div class="screen" id="page-create">
         <div class="toggle-group">
-          <button class="toggle-btn active" onclick="switchCreateType('game')">馃幃 AI鐢熸垚娓告垙</button>
-          <button class="toggle-btn" onclick="switchCreateType('video')">馃幀 AI鐢熸垚瑙嗛</button>
+          <button class="toggle-btn active" onclick="switchCreateType('game')">🎮 AI生成游戏</button>
+          <button class="toggle-btn" onclick="switchCreateType('video')">🎬 AI生成视频</button>
         </div>
 
         <div style="margin-bottom:10px">
-          <label style="font-size:12px;color:#6b7280;margin-bottom:4px;display:block;font-weight:500">璇村嚭浣犵殑鍒涗綔鎯虫硶</label>
-          <textarea id="prompt-input" class="ai-input" rows="3" placeholder="渚嬪锛氬府鎴戝仛涓€涓笁鍥戒富棰樼殑鏀堕泦閲戝竵灏忔父鎴?.."></textarea>
+          <label style="font-size:12px;color:#6b7280;margin-bottom:4px;display:block;font-weight:500">说出你的创作想法</label>
+          <textarea id="prompt-input" class="ai-input" rows="3" placeholder="例如：帮我做一个三国主题的收集金币小游戏..."></textarea>
         </div>
 
         <div id="preset-tags" style="margin-bottom:12px"></div>
 
-        <button class="btn-primary" onclick="startGenerate()">鉁?AI 绔嬪嵆鐢熸垚</button>
+        <button class="btn-primary" onclick="startGenerate()">✨ AI 立即生成</button>
 
         <div id="result-area" style="display:none;margin-top:14px">
           <div id="loading-area" style="display:none">
-            <div style="text-align:center;color:#6b7280;font-size:12px;margin-bottom:6px">AI 姝ｅ湪鍒涗綔涓?..</div>
+            <div style="text-align:center;color:#6b7280;font-size:12px;margin-bottom:6px">AI 正在创作中...</div>
             <div class="loading-dots"><span></span><span></span><span></span></div>
           </div>
           <div id="done-area" style="display:none">
-            <div style="font-size:12px;color:#10b981;text-align:center;margin-bottom:8px">鉁?鍒涗綔瀹屾垚锛?/div>
+            <div style="font-size:12px;color:#10b981;text-align:center;margin-bottom:8px">✅ 创作完成！</div>
             <div id="game-container"></div>
             <div id="video-container"></div>
-            <button class="btn-primary" onclick="saveWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">馃捑 淇濆瓨鍒版垜鐨勪綔鍝?/button>
+            <button class="btn-primary" onclick="saveWork()" style="margin-top:10px;background:linear-gradient(135deg,#10b981,#059669)">💾 保存到我的作品</button>
           </div>
         </div>
       </div>
@@ -1176,76 +1178,77 @@ body{
     <!-- Bottom Nav -->
     <div class="nav-bar">
       <div class="nav-item active" onclick="switchTab('home')" id="nav-home">
-        <!-- 鍒涗綔 - 鐢荤瑪鍥炬爣 -->
+        <!-- 创作 - 画笔图标 -->
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        <span>鍒涗綔</span>
+        <span>创作</span>
       </div>
       <div class="nav-item" onclick="switchTab('works')" id="nav-works">
-        <!-- 浣滃搧 - 鏄剧ず鍣?鎾斁鍥炬爣 -->
+        <!-- 作品 - 显示器+播放图标 -->
         <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="12" cy="10" r="3"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        <span>浣滃搧</span>
+        <span>作品</span>
       </div>
       <div class="nav-item" onclick="switchTab('report')" id="nav-report">
-        <!-- 鎶ュ憡 - 鏂囨。鍥炬爣 -->
+        <!-- 报告 - 文档图标 -->
         <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        <span>鎶ュ憡</span>
+        <span>报告</span>
       </div>
       <div class="nav-item" onclick="switchTab('mall')" id="nav-mall">
-        <!-- 鍟嗗煄 - 璐墿琚嬪浘鏍?-->
+        <!-- 商城 - 购物袋图标 -->
         <svg viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span>鍟嗗煄</span>
+        <span>商城</span>
       </div>
       <div class="nav-item" onclick="switchTab('commission')" id="nav-commission">
-        <!-- 鍒嗛攢 - 鍒嗕韩/鏀剁泭鍥炬爣 -->
+        <!-- 分销 - 分享/收益图标 -->
         <svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        <span>鍒嗛攢</span>
+        <span>分销</span>
       </div>
     </div>
   </div>
 
   <!-- Info Panel -->
   <div class="info-panel" id="info-panel">
-    <h3>馃幆 绂绘嘲AI鐮斿 路 浜у搧婕旂ず</h3>
-    <div class="subtitle">鎵嬫満妯℃嫙鍣?路 鐐瑰嚮5涓猅ab浣撻獙瀹屾暣娴佺▼</div>
+    <h3>🎯 离泰AI研学 · 产品演示</h3>
+    <div class="subtitle">手机模拟器 · 点击5个Tab体验完整流程</div>
 
     <div class="flow-step active" id="flow-1">
       <span class="step-num">1</span>
-      <span class="step-text"><b>瀛︾敓AI鍒涗綔</b> 鈥?杈撳叆鐮斿涓婚锛孉I鐢熸垚鍙帺娓告垙鎴栫煭瑙嗛</span>
+      <span class="step-text"><b>学生AI创作</b> — 输入研学主题，AI生成可玩游戏或短视频</span>
     </div>
     <div class="flow-step" id="flow-2">
       <span class="step-num">2</span>
-      <span class="step-text"><b>浣滃搧娌夋穩</b> 鈥?鑷姩淇濆瓨鑷冲皬绋嬪簭"鎴戠殑浣滃搧"</span>
+      <span class="step-text"><b>作品沉淀</b> — 自动保存至小程序"我的作品"</span>
     </div>
     <div class="flow-step" id="flow-3">
       <span class="step-num">3</span>
-      <span class="step-text"><b>瀹堕暱鎶ュ憡</b> 鈥?鏀惧鍚庤嚜鍔ㄦ帹閫佺爺瀛︽姤鍛婂惈瀛╁瓙AI浣滃搧</span>
+      <span class="step-text"><b>家长报告</b> — 放学后自动推送研学报告含孩子AI作品</span>
     </div>
     <div class="flow-step" id="flow-4">
       <span class="step-num">4</span>
-      <span class="step-text"><b>鍟嗗煄澶嶈喘</b> 鈥?鎶ュ憡搴曢儴鎺ㄨ崘鍏朵粬鐮斿+涓撳睘浼樻儬鍒?/span>
+      <span class="step-text"><b>商城复购</b> — 报告底部推荐其他研学+专属优惠券</span>
     </div>
     <div class="flow-step" id="flow-5">
       <span class="step-num">5</span>
-      <span class="step-text"><b>鍒嗛攢浣撶郴</b> 鈥?C绔垎浜禋浣ｉ噾 + B绔娓?鏈烘瀯涓撳睘宸ュ叿锛堣璇伮蜂簩缁寸爜路瀹㈡埛绠＄悊路闃舵浣ｉ噾锛?/span>
+      <span class="step-text"><b>分销体系</b> — C端分享赚佣金 + B端导游/机构专属工具（认证·二维码·客户管理·阶梯佣金）</span>
     </div>
 
     <div style="margin-top:20px;padding:14px;background:rgba(79,70,229,.12);border-radius:10px">
-      <div style="font-size:12px;color:#93c5fd;margin-bottom:6px;font-weight:600">馃洜 鎶€鏈簳搴?/div>
+      <div style="font-size:12px;color:#93c5fd;margin-bottom:6px;font-weight:600">🛠 技术底座</div>
       <div style="font-size:11px;color:#94a3b8;line-height:1.8">
-        馃幃 AI-Game-Generator API锛堟枃瀛椻啋鍙帺娓告垙锛?br>
-        馃幀 绗笁鏂笰I瑙嗛寮曟搸锛堟枃瀛椻啋鐭棰戯級<br>
-        馃摫 绂绘嘲灏忕▼搴?webview 宓屽叆灞曠ず<br>
-        馃敆 鍏ㄩ摼璺暟鎹疮閫?+ B绔?C绔弻浣ｉ噾浣撶郴
+        🎮 AI-Game-Generator API（文字→可玩游戏）<br>
+        🎬 第三方AI视频引擎（文字→短视频）<br>
+        📱 离泰小程序 webview 嵌入展示<br>
+        🔗 全链路数据贯通 + B端/C端双佣金体系
       </div>
     </div>
 
     <div style="margin-top:12px;padding:14px;background:rgba(124,58,237,.12);border-radius:10px">
-      <div style="font-size:12px;color:#c4b5fd;margin-bottom:6px;font-weight:600">馃挵 B绔垎閿€妯″瀷</div>
+      <div style="font-size:12px;color:#c4b5fd;margin-bottom:6px;font-weight:600">💰 B端分销模型</div>
       <div style="font-size:11px;color:#94a3b8;line-height:1.8">
-        瀵兼父/鏈烘瀯闃舵浣ｉ噾 8%-12%<br>
-        涓撳睘浜岀淮鐮?鎵归噺閭€璇?瀹㈡埛杩借釜<br>
-        鎸夐」鐩垎缁勭鐞?鈫?鎸夊洟缁熻杞寲<br>
-        姣忔湀5鍙?20鍙疯嚜鍔ㄧ粨绠?      </div>
+        导游/机构阶梯佣金 8%-12%<br>
+        专属二维码+批量邀请+客户追踪<br>
+        按项目分组管理 → 按团统计转化<br>
+        每月5号/20号自动结算
+      </div>
     </div>
   </div>
 
@@ -1254,15 +1257,15 @@ body{
 <!-- Purchase Modal -->
 <div class="modal-overlay" id="purchase-modal">
   <div class="modal">
-    <div class="m-icon checkmark" style="color:#10b981">鉁?/div>
-    <div class="m-title" id="modal-title">鎶ュ悕鎴愬姛锛?/div>
+    <div class="m-icon checkmark" style="color:#10b981">✅</div>
+    <div class="m-title" id="modal-title">报名成功！</div>
     <div class="m-desc" id="modal-desc">
-      璁㈠崟缂栧彿锛歀T20260521-0882<br>
-      娲诲姩璇︽儏宸插彂閫佽嚦鎮ㄧ殑鎵嬫満<br><br>
-      <span style="color:#059669;font-weight:600">鎺ㄨ崘浜猴細鏉庡 鉁?/span><br>
-      <span style="font-size:11px;color:#9ca3af">璁よ瘉閿€鍞?路 鎮ㄧ殑涓撳睘椤鹃棶</span>
+      订单编号：LT20260521-0882<br>
+      活动详情已发送至您的手机<br><br>
+      <span style="color:#059669;font-weight:600">推荐人：李姐 ✓</span><br>
+      <span style="font-size:11px;color:#9ca3af">认证销售 · 您的专属顾问</span>
     </div>
-    <button class="btn-primary" onclick="closeModal()" style="margin-top:4px">濂界殑</button>
+    <button class="btn-primary" onclick="closeModal()" style="margin-top:4px">好的</button>
   </div>
 </div>
 
@@ -1273,21 +1276,23 @@ let currentTab = 'home';
 let currentPage = null; // sub-page name
 let generated = false;
 let savedWorks = [
-  {type:'game', title:'鑽夎埞鍊熺灏勫嚮娓告垙', icon:'馃幃', date:'2026.05.21'},
-  {type:'video', title:'姝︿警绁犲缓绛戝贰绀艰棰?, icon:'馃幀', date:'2026.05.21'}
+  {type:'game', title:'草船借箭射击游戏', icon:'🎮', date:'2026.05.21'},
+  {type:'video', title:'武侯祠建筑巡礼视频', icon:'🎬', date:'2026.05.21'}
 ];
 let gameAnimation = null;
 let gameState = null;
 let pageHistory = [];
 
 // =================== Scroll Position Tracking ===================
-// 淇濆瓨姣忎釜 Tab 鍜屽瓙椤甸潰鐨勬粴鍔ㄤ綅缃紝鍒囨崲鏃舵仮澶?let scrollPositions = {};
+// 保存每个 Tab 和子页面的滚动位置，切换时恢复
+let scrollPositions = {};
 
 // =================== Tab Navigation (Optimized: display:none switching + scroll restore) ===================
 function switchTab(tab){
   if(currentPage){ hideSubPage(); }
 
-  // 淇濆瓨褰撳墠 Tab 鐨勬粴鍔ㄤ綅缃?  const screensArea = document.getElementById('screens-area');
+  // 保存当前 Tab 的滚动位置
+  const screensArea = document.getElementById('screens-area');
   const currentScreen = document.querySelector('.screen.active');
   if(currentScreen){
     scrollPositions[currentTab] = currentScreen.scrollTop;
@@ -1295,20 +1300,21 @@ function switchTab(tab){
 
   currentTab = tab;
 
-  // 閫氳繃 display:none/block 鍒囨崲锛堟墍鏈?Tab 鍐呭宸查娓叉煋鍦?DOM 涓級
+  // 通过 display:none/block 切换（所有 Tab 内容已预渲染在 DOM 中）
   document.querySelectorAll('.screen[id^="tab-"]').forEach(s=>s.classList.remove('active'));
   const targetScreen = document.getElementById('tab-'+tab);
   targetScreen.classList.add('active');
 
-  // 鎭㈠婊氬姩浣嶇疆
+  // 恢复滚动位置
   targetScreen.scrollTop = scrollPositions[tab] || 0;
 
-  // 鏇存柊楂樹寒
+  // 更新高亮
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('nav-'+tab).classList.add('active');
   document.getElementById('page-header').style.display = 'none';
 
-  // 浠呭湪棣栨鎴栨暟鎹彉鍖栨椂閲嶆柊娓叉煋锛堥伩鍏嶄笉蹇呰鐨?innerHTML 閲嶇疆锛?  if(tab==='works') renderWorks();
+  // 仅在首次或数据变化时重新渲染（避免不必要的 innerHTML 重置）
+  if(tab==='works') renderWorks();
   if(tab==='report') renderReportWorks();
 
   // Update flow
@@ -1317,7 +1323,7 @@ function switchTab(tab){
 }
 
 function showSubPage(name, title){
-  // 淇濆瓨褰撳墠灞忓箷婊氬姩浣嶇疆
+  // 保存当前屏幕滚动位置
   const currentScreen = document.querySelector('.screen.active');
   if(currentScreen){
     scrollPositions[currentPage || currentTab] = currentScreen.scrollTop;
@@ -1337,7 +1343,8 @@ function showSubPage(name, title){
 
 function hideSubPage(){
   if(!currentPage) return;
-  // 淇濆瓨瀛愰〉闈㈡粴鍔ㄤ綅缃?  const subScreen = document.getElementById('page-'+currentPage);
+  // 保存子页面滚动位置
+  const subScreen = document.getElementById('page-'+currentPage);
   if(subScreen){
     scrollPositions['page-'+currentPage] = subScreen.scrollTop;
   }
@@ -1359,14 +1366,14 @@ function selectType(type, el){
   const btn = document.getElementById('btn-start');
   btn.style.opacity = '1';
   btn.disabled = false;
-  btn.textContent = type==='game' ? '馃幃 寮€濮婣I鍒涗綔娓告垙' : '馃幀 寮€濮婣I鍒涗綔瑙嗛';
+  btn.textContent = type==='game' ? '🎮 开始AI创作游戏' : '🎬 开始AI创作视频';
   document.querySelectorAll('#tab-home .card').forEach(c=>c.style.outline='none');
   el.style.outline='2px solid #4f46e5';
 }
 
 function goCreate(){
   if(!currentType) return;
-  showSubPage('create', currentType==='game'?'AI鍒涗綔娓告垙':'AI鍒涗綔瑙嗛');
+  showSubPage('create', currentType==='game'?'AI创作游戏':'AI创作视频');
   document.getElementById('result-area').style.display='none';
   document.getElementById('game-container').innerHTML='';
   document.getElementById('video-container').innerHTML='';
@@ -1379,7 +1386,7 @@ function goCreate(){
 function switchCreateType(type){
   currentType = type;
   document.querySelectorAll('#page-create .toggle-btn').forEach(b=>{
-    b.classList.toggle('active', b.textContent.includes(type==='game'?'娓告垙':'瑙嗛'));
+    b.classList.toggle('active', b.textContent.includes(type==='game'?'游戏':'视频'));
   });
   document.getElementById('result-area').style.display='none';
   document.getElementById('game-container').innerHTML='';
@@ -1392,11 +1399,11 @@ function switchCreateType(type){
 function resetCreateTags(){
   const tags = document.getElementById('preset-tags');
   if(currentType==='game'){
-    tags.innerHTML = '<span class="tag" onclick="setTag(\'涓夊浗绌哄煄璁¤翰閬挎父鎴廫',this)">涓夊浗绌哄煄璁¤翰閬?/span><span class="tag" onclick="setTag(\'鑽夎埞鍊熺灏勫嚮娓告垙\',this)">鑽夎埞鍊熺灏勫嚮</span><span class="tag" onclick="setTag(\'铚€閬撻毦闂叧娓告垙\',this)">铚€閬撻毦闂叧</span>';
-    document.getElementById('prompt-input').placeholder = '渚嬪锛氬府鎴戝仛涓€涓笁鍥戒富棰樼殑鏀堕泦閲戝竵灏忔父鎴?..';
+    tags.innerHTML = '<span class="tag" onclick="setTag(\'三国空城计躲避游戏\',this)">三国空城计躲避</span><span class="tag" onclick="setTag(\'草船借箭射击游戏\',this)">草船借箭射击</span><span class="tag" onclick="setTag(\'蜀道难闯关游戏\',this)">蜀道难闯关</span>';
+    document.getElementById('prompt-input').placeholder = '例如：帮我做一个三国主题的收集金币小游戏...';
   } else {
-    tags.innerHTML = '<span class="tag" onclick="setTag(\'璇歌憶浜寳浼?0绉掓晠浜媆',this)">璇歌憶浜寳浼?/span><span class="tag" onclick="setTag(\'涓夊浗璧ゅ涔嬫垬鍔ㄧ敾\',this)">璧ゅ涔嬫垬</span><span class="tag" onclick="setTag(\'姝︿警绁犲缓绛戝贰绀糪',this)">姝︿警绁犲贰绀?/span>';
-    document.getElementById('prompt-input').placeholder = '渚嬪锛氬府鎴戠敓鎴愪竴娈?0绉掑叧浜庤崏鑸瑰€熺鐨勭煭瑙嗛...';
+    tags.innerHTML = '<span class="tag" onclick="setTag(\'诸葛亮北伐30秒故事\',this)">诸葛亮北伐</span><span class="tag" onclick="setTag(\'三国赤壁之战动画\',this)">赤壁之战</span><span class="tag" onclick="setTag(\'武侯祠建筑巡礼\',this)">武侯祠巡礼</span>';
+    document.getElementById('prompt-input').placeholder = '例如：帮我生成一段30秒关于草船借箭的短视频...';
   }
 }
 
@@ -1437,11 +1444,11 @@ function renderGame(){
     <canvas id="game-canvas"></canvas>
   </div>
   <div class="touch-controls${isMobile?' show':''}" id="touch-controls">
-    <button class="touch-btn" id="btn-left" ontouchstart="touchMove('left',true)" ontouchend="touchMove('left',false)" onmousedown="touchMove('left',true)" onmouseup="touchMove('left',false)">鈼€</button>
-    <button class="touch-btn touch-btn-fire" id="btn-fire" ontouchstart="touchMove('fire',true)" ontouchend="touchMove('fire',false)" onmousedown="touchMove('fire',true)" onmouseup="touchMove('fire',false)">馃敟 鍙戝皠</button>
-    <button class="touch-btn" id="btn-right" ontouchstart="touchMove('right',true)" ontouchend="touchMove('right',false)" onmousedown="touchMove('right',true)" onmouseup="touchMove('right',false)">鈻?/button>
+    <button class="touch-btn" id="btn-left" ontouchstart="touchMove('left',true)" ontouchend="touchMove('left',false)" onmousedown="touchMove('left',true)" onmouseup="touchMove('left',false)">◀</button>
+    <button class="touch-btn touch-btn-fire" id="btn-fire" ontouchstart="touchMove('fire',true)" ontouchend="touchMove('fire',false)" onmousedown="touchMove('fire',true)" onmouseup="touchMove('fire',false)">🔥 发射</button>
+    <button class="touch-btn" id="btn-right" ontouchstart="touchMove('right',true)" ontouchend="touchMove('right',false)" onmousedown="touchMove('right',true)" onmouseup="touchMove('right',false)">▶</button>
   </div>
-  <div class="touch-hint${isMobile?' show':''}">馃憜 宸﹀彸婊戝姩椋炶埞 路 鐐瑰嚮椋炶埞鍙戝皠</div>`;
+  <div class="touch-hint${isMobile?' show':''}">👆 左右滑动飞船 · 点击飞船发射</div>`;
   setTimeout(initGame, 200);
 }
 
@@ -1450,13 +1457,13 @@ function renderVideo(){
   document.getElementById('game-container').innerHTML='';
   const promptText = document.getElementById('prompt-input').value.substring(0,14);
   c.innerHTML = `<div class="video-preview" style="background:linear-gradient(135deg,#1e1b4b,#312e81,#4c1d95);height:220px">
-    <div style="position:absolute;top:8%;left:8%;font-size:50px;opacity:.25">馃彲</div>
-    <div style="position:absolute;top:30%;right:15%;font-size:36px;opacity:.2">鈿旓笍</div>
-    <div style="position:absolute;bottom:20%;left:20%;font-size:60px;opacity:.12">馃惔</div>
+    <div style="position:absolute;top:8%;left:8%;font-size:50px;opacity:.25">🏯</div>
+    <div style="position:absolute;top:30%;right:15%;font-size:36px;opacity:.2">⚔️</div>
+    <div style="position:absolute;bottom:20%;left:20%;font-size:60px;opacity:.12">🐴</div>
     <div style="position:relative;z-index:2;text-align:center">
       <div class="play-btn" onclick="simPlayVideo(this)" style="margin-bottom:10px"></div>
       <div style="color:#fff;font-size:13px;font-weight:600">${promptText}...</div>
-      <div style="color:#93c5fd;font-size:10px;margin-top:3px">鈴?30绉?路 AI鐢熸垚</div>
+      <div style="color:#93c5fd;font-size:10px;margin-top:3px">⏱ 30秒 · AI生成</div>
     </div>
   </div>`;
 }
@@ -1468,9 +1475,9 @@ function simPlayVideo(el){
   setTimeout(()=>{
     p.innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000">
       <div style="text-align:center;color:#fff">
-        <div style="font-size:36px">馃幀</div>
-        <div style="font-size:13px;margin-top:6px">AI 鐢熸垚涓?..</div>
-        <div style="font-size:10px;color:#93c5fd;margin-top:3px">姝ｅ湪鍚堟垚鐢婚潰涓庨煶鏁?/div>
+        <div style="font-size:36px">🎬</div>
+        <div style="font-size:13px;margin-top:6px">AI 生成中...</div>
+        <div style="font-size:10px;color:#93c5fd;margin-top:3px">正在合成画面与音效</div>
       </div>
     </div>`;
   },300);
@@ -1478,7 +1485,7 @@ function simPlayVideo(el){
     p.innerHTML = `<div style="position:absolute;inset:0;background:#000;display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="playCompletedVideo(this)" id="vid-player">
       <div class="vid-frame" style="background:linear-gradient(135deg,#312e81,#4c1d95);display:flex;align-items:center;justify-content:center">
         <div style="text-align:center">
-          <div style="font-size:28px">馃彲</div>
+          <div style="font-size:28px">🏯</div>
           <div style="color:#fff;font-size:11px;margin-top:6px;opacity:.8">${promptText}...</div>
         </div>
       </div>
@@ -1490,10 +1497,10 @@ function simPlayVideo(el){
 
 function playCompletedVideo(el){
   const frames = [
-    {bg:'linear-gradient(135deg,#312e81,#4c1d95)',icon:'馃彲',text:'涓夊浗鏁呬簨寮€鍚?..'},
-    {bg:'linear-gradient(135deg,#7c2d12,#9a3412)',icon:'鈿旓笍',text:'璧ゅ鐑界伀杩炲ぉ'},
-    {bg:'linear-gradient(135deg,#1e3a5f,#4f46e5)',icon:'馃殺',text:'鑽夎埞鍊熺濂囪皨'},
-    {bg:'linear-gradient(135deg,#166534,#15803d)',icon:'馃惔',text:'鑻遍泟鍑棆鑰屽綊'}
+    {bg:'linear-gradient(135deg,#312e81,#4c1d95)',icon:'🏯',text:'三国故事开启...'},
+    {bg:'linear-gradient(135deg,#7c2d12,#9a3412)',icon:'⚔️',text:'赤壁烽火连天'},
+    {bg:'linear-gradient(135deg,#1e3a5f,#4f46e5)',icon:'🚢',text:'草船借箭奇谋'},
+    {bg:'linear-gradient(135deg,#166534,#15803d)',icon:'🐴',text:'英雄凯旋而归'}
   ];
   const total=30000;
   const frameInterval=total/frames.length;
@@ -1515,7 +1522,7 @@ function playCompletedVideo(el){
     <div class="vid-timer">${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} / 00:30</div>`;
     if(elapsed<total) requestAnimationFrame(updateFrame);
     else el.innerHTML=`<div class="vid-frame" style="background:linear-gradient(135deg,#166534,#15803d);display:flex;align-items:center;justify-content:center">
-      <div style="text-align:center;color:#fff"><div style="font-size:40px">鉁?/div><div style="font-size:13px;margin-top:6px">鎾斁瀹屾瘯</div></div>
+      <div style="text-align:center;color:#fff"><div style="font-size:40px">✅</div><div style="font-size:13px;margin-top:6px">播放完毕</div></div>
     </div>`;
   }
   requestAnimationFrame(updateFrame);
@@ -1648,13 +1655,13 @@ function initGame(){
     for(let e of gameState.enemies){ctx.fillStyle='#ef4444';ctx.fillRect(e.x,e.y,e.w,e.h);ctx.fillStyle='#fca5a5';ctx.fillRect(e.x+3,e.y+3,5,5);ctx.fillRect(e.x+16,e.y+3,5,5)}
     for(let c of gameState.coins){ctx.fillStyle='#fbbf24';ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fef3c7';ctx.beginPath();ctx.arc(c.x-2,c.y-2,c.r/3,0,Math.PI*2);ctx.fill()}
     ctx.fillStyle='#a78bfa';for(let b of gameState.bullets)ctx.fillRect(b.x,b.y,b.w,b.h);
-    ctx.fillStyle='#fbbf24';ctx.font='bold 14px sans-serif';ctx.fillText('猸?'+gameState.score,10,20);
-    ctx.fillStyle='#ef4444';ctx.fillText('鉂わ笍 '.repeat(gameState.lives),canvas.width-58,20);
+    ctx.fillStyle='#fbbf24';ctx.font='bold 14px sans-serif';ctx.fillText('⭐ '+gameState.score,10,20);
+    ctx.fillStyle='#ef4444';ctx.fillText('❤️ '.repeat(gameState.lives),canvas.width-58,20);
     if(gameState.gameOver){
       ctx.fillStyle='rgba(0,0,0,.7)';ctx.fillRect(0,0,canvas.width,canvas.height);
       ctx.fillStyle='#fff';ctx.font='bold 22px sans-serif';ctx.textAlign='center';
-      ctx.fillText('娓告垙缁撴潫',canvas.width/2,canvas.height/2-8);
-      ctx.font='13px sans-serif';ctx.fillText('寰楀垎:'+gameState.score+' 路 鐐瑰嚮閲嶆柊寮€濮?,canvas.width/2,canvas.height/2+18);
+      ctx.fillText('游戏结束',canvas.width/2,canvas.height/2-8);
+      ctx.font='13px sans-serif';ctx.fillText('得分:'+gameState.score+' · 点击重新开始',canvas.width/2,canvas.height/2+18);
       ctx.textAlign='start';
     }
   }
@@ -1669,13 +1676,13 @@ function saveWork(){
   savedWorks.unshift({
     type:currentType,
     title:prompt.substring(0,10)+(prompt.length>10?'...':''),
-    icon:currentType==='game'?'馃幃':'馃幀',
+    icon:currentType==='game'?'🎮':'🎬',
     date:today
   });
   updateFlow(3);
   hideSubPage();
   switchTab('works');
-  showToast('浣滃搧宸蹭繚瀛橈紒瀹堕暱灏嗘敹鍒扮爺瀛︽姤鍛婃帹閫?);
+  showToast('作品已保存！家长将收到研学报告推送');
 }
 
 // =================== Works Rendering (Enhanced with type tag + date) ===================
@@ -1690,7 +1697,7 @@ function renderWorks(){
       <div class="work-body">
         <div class="work-name">${w.title}</div>
         <div class="work-meta">
-          <span class="work-type-tag ${w.type==='game'?'tag-game':'tag-video'}">${w.type==='game'?'娓告垙':'瑙嗛'}</span>
+          <span class="work-type-tag ${w.type==='game'?'tag-game':'tag-video'}">${w.type==='game'?'游戏':'视频'}</span>
           <span class="work-date">${w.date}</span>
         </div>
       </div>
@@ -1709,21 +1716,22 @@ function renderReportWorks(){
       <div class="work-body" style="padding:8px">
         <div class="work-name" style="font-size:11px">${w.title}</div>
         <div class="work-meta">
-          <span class="work-type-tag ${w.type==='game'?'tag-game':'tag-video'}">${w.type==='game'?'娓告垙':'瑙嗛'}</span>
+          <span class="work-type-tag ${w.type==='game'?'tag-game':'tag-video'}">${w.type==='game'?'游戏':'视频'}</span>
         </div>
       </div>
     </div>
   `).join('');
 }
 
-function viewWork(i){showToast(savedWorks[i].title+' 路 姝ｅ紡鐗堝彲鍦ㄧ嚎娓哥帺/瑙傜湅')}
+function viewWork(i){showToast(savedWorks[i].title+' · 正式版可在线游玩/观看')}
 
-// =================== Mall (Optimized: 鏂囧寲鐮斿/绉戞妧鎺㈢储/鑷劧鍗氱墿 涓夌淮搴︾瓫閫? ===================
+// =================== Mall (Optimized: 文化研学/科技探索/自然博物 三维度筛选) ===================
 function switchMallTab(cat, el){
   document.querySelectorAll('#mall-filters .toggle-btn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
 
-  // 鎸夊垎绫荤瓫閫夊崱鐗?  document.querySelectorAll('#mall-list .mall-item').forEach(item=>{
+  // 按分类筛选卡片
+  document.querySelectorAll('#mall-list .mall-item').forEach(item=>{
     if(cat==='all'){
       item.style.display = 'block';
     } else {
@@ -1733,15 +1741,15 @@ function switchMallTab(cat, el){
   });
 }
 
-// Mall product data (expanded with 绉戞妧鎺㈢储 and 鑷劧鍗氱墿)
+// Mall product data (expanded with 科技探索 and 自然博物)
 const mallProducts = {
-  caotang: {icon:'馃彲',title:'鏉滅敨鑽夊爞 路 璇楀湥鏂囧寲涔嬫梾',age:'8-15宀?,duration:'鍗婃棩鐮斿',price:169,orig:299,bg:'linear-gradient(135deg,#f0fdf4,#dcfce7)',desc:'璺熼殢璇楀湥瓒宠抗锛屽湪鑽夊爞涓綋楠孉I璇楄瘝鍒涗綔銆傚鐢熷皢鐢ˋI灏嗘潨鐢悕鍙ョ敓鎴愮煭瑙嗛锛屽苟鍙埗浣?璇楀湥闂叧"浜掑姩灏忔父鎴忋€?},
-  samsung: {icon:'馃椏',title:'涓夋槦鍫?路 鍙よ渶鏂囨槑鎺㈢',age:'10-16宀?,duration:'鍏ㄦ棩鐮斿',price:219,orig:369,bg:'linear-gradient(135deg,#ede9fe,#ddd6fe)',desc:'鎺㈢涓夋槦鍫嗘柊棣嗭紝AI杩樺師鍙よ渶绁鍦烘櫙銆傚鐢熷彲鐢ˋI鐢熸垚"闈掗摐闈㈠叿閬楄抗"鎺㈢储娓告垙锛屾垨鍒朵綔鍙よ渶鏂囨槑30绉掔煭鐗囥€傚惈鍗堥+鑰冨彜浣撻獙銆?},
-  wuhouci: {icon:'鈿旓笍',title:'姝︿警绁?路 涓夊浗浜夐湼AI鐮斿',age:'8-14宀?,duration:'鍗婃棩鐮斿',price:149,orig:259,bg:'linear-gradient(135deg,#fef3c7,#fde68a)',desc:'璧拌繘姝︿警绁狅紝绌挎涓夊浗銆傚鐢熺敤AI灏嗙┖鍩庤銆佽崏鑸瑰€熺绛夋晠浜嬪彉鎴愬彲鐜╂父鎴忥紝杩樿兘鐢熸垚涓夊浗浜虹墿鐭棰戙€傚湪鍒涗綔涓悊瑙ｅ巻鍙层€?},
-  nature: {icon:'馃',title:'鑷劧鍗氱墿棣?路 鎭愰緳涓嶢I',age:'6-12宀?,duration:'鍗婃棩鐮斿',price:139,orig:219,bg:'linear-gradient(135deg,#dbeafe,#bfdbfe)',desc:'鎭愰緳涓轰粈涔堜細鐏粷锛熺敤AI鏉ュ仛绉戞櫘瑙嗛锛佸鐢熷彲鍦ㄨ嚜鐒跺崥鐗╅杈圭湅鍖栫煶杈圭敤AI鐢熸垚鎭愰緳涓婚鐭棰戞垨浜掑姩闂瓟娓告垙銆?},
-  space: {icon:'馃殌',title:'鑸ぉ绉戞妧棣?路 鏄熼檯AI鎺㈢储',age:'8-14宀?,duration:'鍏ㄦ棩鐮斿',price:189,orig:329,bg:'linear-gradient(135deg,#1e1b4b,#312e81)',desc:'鎺㈢储瀹囧畽濂ョ锛孉I鍔╁姏鏄熼檯鍒涙兂锛佸鐢熷湪鑸ぉ棣嗕腑瀛︿範鑸ぉ鐭ヨ瘑锛屼娇鐢ˋI鐢熸垚鏄熼檯鎺㈤櫓鐭棰戞垨澶┖鎴樻枟灏忔父鎴忋€傚惈VR澶┖浣撻獙+鍗堥銆?},
-  scitech: {icon:'馃敩',title:'鍥涘窛绉戞妧棣?路 AI瀹為獙瀹?,age:'8-14宀?,duration:'鍗婃棩鐮斿',price:129,orig:239,bg:'linear-gradient(135deg,#fef2f2,#fee2e2)',desc:'璧拌繘鍥涘窛绉戞妧棣咥I瀹為獙瀹わ紝浜叉墜浣撻獙AI鏈哄櫒浜虹紪绋嬨€傚鐢熻兘浣跨敤AI宸ュ叿鍒涘缓灞炰簬鑷繁鐨勬櫤鑳介棶绛旀満鍣ㄤ汉鎴栫瀛﹀疄楠屾ā鎷熷姩鐢汇€?},
-  panda: {icon:'馃惣',title:'澶х唺鐚熀鍦?路 鐢熸€佷笌AI',age:'6-12宀?,duration:'鍗婃棩鐮斿',price:159,orig:269,bg:'linear-gradient(135deg,#ecfdf5,#d1fae5)',desc:'浜茶繎鍥藉疂澶х唺鐚紝鐢ˋI璁茶堪鐢熸€佷繚鎶ゆ晠浜嬨€傚鐢熻鐪嬪ぇ鐔婄尗鍚庯紝鐢ˋI鍒朵綔"鐔婄尗鏃ヨ"鐭棰戯紝鎴栬璁?淇濇姢澶х唺鐚?浜掑姩闂瓟娓告垙銆?}
+  caotang: {icon:'🏯',title:'杜甫草堂 · 诗圣文化之旅',age:'8-15岁',duration:'半日研学',price:169,orig:299,bg:'linear-gradient(135deg,#f0fdf4,#dcfce7)',desc:'跟随诗圣足迹，在草堂中体验AI诗词创作。学生将用AI将杜甫名句生成短视频，并可制作"诗圣闯关"互动小游戏。'},
+  samsung: {icon:'🗿',title:'三星堆 · 古蜀文明探秘',age:'10-16岁',duration:'全日研学',price:219,orig:369,bg:'linear-gradient(135deg,#ede9fe,#ddd6fe)',desc:'探秘三星堆新馆，AI还原古蜀祭祀场景。学生可用AI生成"青铜面具遗迹"探索游戏，或制作古蜀文明30秒短片。含午餐+考古体验。'},
+  wuhouci: {icon:'⚔️',title:'武侯祠 · 三国争霸AI研学',age:'8-14岁',duration:'半日研学',price:149,orig:259,bg:'linear-gradient(135deg,#fef3c7,#fde68a)',desc:'走进武侯祠，穿梭三国。学生用AI将空城计、草船借箭等故事变成可玩游戏，还能生成三国人物短视频。在创作中理解历史。'},
+  nature: {icon:'🦋',title:'自然博物馆 · 恐龙与AI',age:'6-12岁',duration:'半日研学',price:139,orig:219,bg:'linear-gradient(135deg,#dbeafe,#bfdbfe)',desc:'恐龙为什么会灭绝？用AI来做科普视频！学生可在自然博物馆边看化石边用AI生成恐龙主题短视频或互动问答游戏。'},
+  space: {icon:'🚀',title:'航天科技馆 · 星际AI探索',age:'8-14岁',duration:'全日研学',price:189,orig:329,bg:'linear-gradient(135deg,#1e1b4b,#312e81)',desc:'探索宇宙奥秘，AI助力星际创想！学生在航天馆中学习航天知识，使用AI生成星际探险短视频或太空战斗小游戏。含VR太空体验+午餐。'},
+  scitech: {icon:'🔬',title:'四川科技馆 · AI实验室',age:'8-14岁',duration:'半日研学',price:129,orig:239,bg:'linear-gradient(135deg,#fef2f2,#fee2e2)',desc:'走进四川科技馆AI实验室，亲手体验AI机器人编程。学生能使用AI工具创建属于自己的智能问答机器人或科学实验模拟动画。'},
+  panda: {icon:'🐼',title:'大熊猫基地 · 生态与AI',age:'6-12岁',duration:'半日研学',price:159,orig:269,bg:'linear-gradient(135deg,#ecfdf5,#d1fae5)',desc:'亲近国宝大熊猫，用AI讲述生态保护故事。学生观看大熊猫后，用AI制作"熊猫日记"短视频，或设计"保护大熊猫"互动问答游戏。'}
 };
 
 function showMallDetail(key){
@@ -1753,62 +1761,63 @@ function showMallDetail(key){
     <div style="display:flex;gap:8px;margin-bottom:10px">
       <span class="badge badge-blue">${p.age}</span>
       <span class="badge badge-green">${p.duration}</span>
-      <span class="badge badge-blue">AI鍒涗綔宸ュ潑</span>
+      <span class="badge badge-blue">AI创作工坊</span>
     </div>
     <div style="font-size:13px;color:#374151;line-height:1.7;margin-bottom:16px">${p.desc}</div>
     <div class="card">
-      <div style="font-weight:600;font-size:13px;margin-bottom:8px">馃搵 璇剧▼瀹夋帓</div>
+      <div style="font-weight:600;font-size:13px;margin-bottom:8px">📋 课程安排</div>
       <div style="font-size:12px;color:#6b7280;line-height:1.8">
-        涓婂崍锛氬甯堝甫棰嗗疄鍦扮爺瀛︼紙90鍒嗛挓锛?br>
-        涓嬪崍锛欰I鍒涗綔宸ュ潑锛?0鍒嗛挓锛?br>
-        &nbsp;&nbsp;鈥?AI娓告垙鍒涗綔 / AI瑙嗛鍒朵綔<br>
-        &nbsp;&nbsp;鈥?浣滃搧淇濆瓨鍒板皬绋嬪簭<br>
-        鏀惧锛氬闀挎敹鍒扮爺瀛︽姤鍛?浣滃搧灞曠ず
+        上午：导师带领实地研学（90分钟）<br>
+        下午：AI创作工坊（60分钟）<br>
+        &nbsp;&nbsp;• AI游戏创作 / AI视频制作<br>
+        &nbsp;&nbsp;• 作品保存到小程序<br>
+        放学：家长收到研学报告+作品展示
       </div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
       <div>
-        <div style="font-size:24px;font-weight:700;color:#ef4444">楼${p.price}</div>
-        <div style="font-size:12px;color:#9ca3af;text-decoration:line-through">楼${p.orig}</div>
+        <div style="font-size:24px;font-weight:700;color:#ef4444">¥${p.price}</div>
+        <div style="font-size:12px;color:#9ca3af;text-decoration:line-through">¥${p.orig}</div>
       </div>
-      <button class="btn-primary" style="width:160px" onclick="buyNow('${key}')">绔嬪嵆鎶ュ悕</button>
+      <button class="btn-primary" style="width:160px" onclick="buyNow('${key}')">立即报名</button>
     </div>
   `;
-  showSubPage('mall-detail', '娲诲姩璇︽儏');
+  showSubPage('mall-detail', '活动详情');
   updateFlow(4);
 }
 
 function buyNow(key){
   const p = mallProducts[key];
-  showSubPage('order', '纭璁㈠崟');
+  showSubPage('order', '确认订单');
   document.getElementById('order-content').innerHTML = `
     <div class="order-card">
-      <div style="font-weight:600;font-size:15px;margin-bottom:10px">馃搵 璁㈠崟纭</div>
-      <div class="o-row"><span>娲诲姩</span><span>${p.title}</span></div>
-      <div class="o-row"><span>瀛︾敓</span><span>寮犲皬瀹?路 10宀?/span></div>
-      <div class="o-row"><span>鏃ユ湡</span><span>2026骞?鏈?4鏃ワ紙鍛ㄥ叚锛?/span></div>
-      <div class="o-row"><span>鎺ㄨ崘浜?/span><span style="color:#059669">鏉庡锛堣璇侀攢鍞級</span></div>
+      <div style="font-weight:600;font-size:15px;margin-bottom:10px">📋 订单确认</div>
+      <div class="o-row"><span>活动</span><span>${p.title}</span></div>
+      <div class="o-row"><span>学生</span><span>张小宇 · 10岁</span></div>
+      <div class="o-row"><span>日期</span><span>2026年5月24日（周六）</span></div>
+      <div class="o-row"><span>推荐人</span><span style="color:#059669">李姐（认证销售）</span></div>
       <div style="border-top:1px dashed #e5e7eb;margin:8px 0"></div>
-      <div class="o-row"><span>鍘熶环</span><span style="text-decoration:line-through;color:#9ca3af">楼${p.orig}</span></div>
-      <div class="o-row"><span>涓撳睘浼樻儬</span><span style="color:#10b981">-楼${p.orig-p.price}</span></div>
+      <div class="o-row"><span>原价</span><span style="text-decoration:line-through;color:#9ca3af">¥${p.orig}</span></div>
+      <div class="o-row"><span>专属优惠</span><span style="color:#10b981">-¥${p.orig-p.price}</span></div>
       <div style="border-top:1px solid #e5e7eb;margin:8px 0"></div>
-      <div class="o-row"><span>搴斾粯</span><span class="o-total">楼${p.price}</span></div>
+      <div class="o-row"><span>应付</span><span class="o-total">¥${p.price}</span></div>
     </div>
     <div style="background:#f0fdf4;border-radius:10px;padding:12px;font-size:12px;color:#059669;margin-bottom:12px">
-      鉁?鎺ㄨ崘浜?b>鏉庡</b>灏嗚幏寰椾剑閲?<b>楼${Math.round(p.price*0.08)}</b>锛堢害8%锛?    </div>
-    <button class="btn-primary" onclick="confirmOrder('${key}')">馃挸 纭鏀粯 楼${p.price}</button>
+      ✅ 推荐人<b>李姐</b>将获得佣金 <b>¥${Math.round(p.price*0.08)}</b>（约8%）
+    </div>
+    <button class="btn-primary" onclick="confirmOrder('${key}')">💳 确认支付 ¥${p.price}</button>
   `;
 }
 
 function confirmOrder(key){
   document.getElementById('purchase-modal').classList.add('show');
-  document.getElementById('modal-title').textContent = '鎶ュ悕鎴愬姛锛?;
+  document.getElementById('modal-title').textContent = '报名成功！';
   const p = mallProducts[key];
   document.getElementById('modal-desc').innerHTML = `
-    璁㈠崟缂栧彿锛歀T20260521-${Math.floor(Math.random()*9000+1000)}<br>
+    订单编号：LT20260521-${Math.floor(Math.random()*9000+1000)}<br>
     ${p.title}<br><br>
-    <span style="color:#059669;font-weight:600">鎺ㄨ崘浜猴細鏉庡 鉁?/span><br>
-    <span style="font-size:11px;color:#9ca3af">浣ｉ噾 楼${Math.round(p.price*0.08)} 宸茶鍏?/span>
+    <span style="color:#059669;font-weight:600">推荐人：李姐 ✓</span><br>
+    <span style="font-size:11px;color:#9ca3af">佣金 ¥${Math.round(p.price*0.08)} 已计入</span>
   `;
   updateFlow(5);
 }
@@ -1817,7 +1826,7 @@ function closeModal(){
   document.getElementById('purchase-modal').classList.remove('show');
   hideSubPage();
   switchTab('mall');
-  showToast('鎶ュ悕鎴愬姛锛佷剑閲戝凡璁″叆鎺ㄨ崘浜鸿处鎴?);
+  showToast('报名成功！佣金已计入推荐人账户');
 }
 
 // =================== Flow & Toast ===================
@@ -1839,10 +1848,10 @@ function showToast(msg){
 renderWorks();
 renderReportWorks();
 
-// =================== Poster Modal (B绔簩缁寸爜娴锋姤) ===================
+// =================== Poster Modal (B端二维码海报) ===================
 function openPosterModal(activityTitle, referrer){
-  document.getElementById('poster-activity-title').textContent = activityTitle || '姝︿警绁?路 涓夊浗鏂囧寲鐮斿';
-  document.getElementById('poster-referrer').textContent = referrer || '鍒樺';
+  document.getElementById('poster-activity-title').textContent = activityTitle || '武侯祠 · 三国文化研学';
+  document.getElementById('poster-referrer').textContent = referrer || '刘导';
   document.getElementById('poster-modal').classList.add('show');
 }
 
@@ -1873,8 +1882,8 @@ function updateBView(){
   if(partnerCertified){
     document.getElementById('partner-not-certified').style.display='none';
     document.getElementById('partner-certified').style.display='block';
-    document.getElementById('partner-avatar').textContent='鍒?;
-    document.getElementById('partner-name-display').textContent=document.getElementById('cert-name').value||'鍒樺';
+    document.getElementById('partner-avatar').textContent='刘';
+    document.getElementById('partner-name-display').textContent=document.getElementById('cert-name').value||'刘导';
   } else {
     document.getElementById('partner-not-certified').style.display='block';
     document.getElementById('partner-certified').style.display='none';
@@ -1884,28 +1893,28 @@ function updateBView(){
 function submitCertification(){
   const name = document.getElementById('cert-name').value.trim();
   const phone = document.getElementById('cert-phone').value.trim();
-  if(!name){showToast('璇峰～鍐欏鍚?);return}
-  if(!phone){showToast('璇峰～鍐欐墜鏈哄彿');return}
+  if(!name){showToast('请填写姓名');return}
+  if(!phone){showToast('请填写手机号');return}
 
   const container = document.getElementById('partner-not-certified');
   container.innerHTML = `
     <div class="cert-status">
-      <div class="cert-status-icon">鈴?/div>
+      <div class="cert-status-icon">⏳</div>
       <div>
-        <div style="font-weight:600;font-size:14px">璁よ瘉瀹℃牳涓?/div>
-        <div style="font-size:11px;color:#92400e">鎻愪氦浜?${new Date().toLocaleDateString('zh-CN')} 路 棰勮1-3涓伐浣滄棩</div>
+        <div style="font-weight:600;font-size:14px">认证审核中</div>
+        <div style="font-size:11px;color:#92400e">提交于 ${new Date().toLocaleDateString('zh-CN')} · 预计1-3个工作日</div>
       </div>
     </div>
     <div style="background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)">
-      <div style="font-weight:600;font-size:13px;margin-bottom:8px">馃搵 鎻愪氦淇℃伅</div>
+      <div style="font-weight:600;font-size:13px;margin-bottom:8px">📋 提交信息</div>
       <div style="font-size:12px;color:#6b7280;line-height:2">
-        濮撳悕锛?b>${name}</b><br>
-        鎵嬫満锛?{phone}<br>
-        韬唤锛?{document.getElementById('cert-type').options[document.getElementById('cert-type').selectedIndex].text}
+        姓名：<b>${name}</b><br>
+        手机：${phone}<br>
+        身份：${document.getElementById('cert-type').options[document.getElementById('cert-type').selectedIndex].text}
       </div>
     </div>
     <div style="text-align:center;padding:0 10px">
-      <div style="font-size:12px;color:#6b7280">瀹℃牳閫氳繃鍚庡皢鑷姩寮€閫氬叏閮ㄥ悎浣滀紮浼村伐鍏?/div>
+      <div style="font-size:12px;color:#6b7280">审核通过后将自动开通全部合作伙伴工具</div>
     </div>
   `;
 
@@ -1913,17 +1922,17 @@ function submitCertification(){
     partnerCertified = true;
     container.innerHTML = `
       <div class="cert-status verified">
-        <div class="cert-status-icon">鉁?/div>
+        <div class="cert-status-icon">✅</div>
         <div>
-          <div style="font-weight:600;font-size:14px;color:#059669">璁よ瘉閫氳繃锛?/div>
-          <div style="font-size:11px;color:#059669">娆㈣繋${name}鎴愪负绂绘嘲鐮斿鍚堜綔浼欎即</div>
+          <div style="font-weight:600;font-size:14px;color:#059669">认证通过！</div>
+          <div style="font-size:11px;color:#059669">欢迎${name}成为离泰研学合作伙伴</div>
         </div>
       </div>
     `;
     document.getElementById('partner-certified').style.display='block';
     document.getElementById('partner-avatar').textContent=name.charAt(0);
     document.getElementById('partner-name-display').textContent=name;
-    showToast('馃帀 璁よ瘉鎴愬姛锛佷紮浼村伐鍏峰凡鍏ㄩ儴寮€鏀?);
+    showToast('🎉 认证成功！伙伴工具已全部开放');
   }, 3000);
 }
 
@@ -1933,56 +1942,59 @@ function showToolDetail(tool){
   const certifiedBlock = document.getElementById('partner-certified');
   switch(tool){
     case 'qr':
-      // 涓撳睘浜岀淮鐮?鈫?寮瑰嚭妯℃嫙娴锋姤寮圭獥锛堣€岄潪鍐呭祵灞曠ず锛?      const partnerName = document.getElementById('partner-name-display').textContent || '鍒樺';
-      openPosterModal('姝︿警绁?路 涓夊浗鏂囧寲鐮斿', partnerName);
-      return; // 娴锋姤寮圭獥宸叉墦寮€锛屼笉闇€瑕侀殣钘?B 绔潰鏉?    case 'invite':
-      // 鎵归噺閭€璇?鈫?灞曠ず閭€璇峰崱鐗囷紙澧炲己鐗堬紝鍚畬鏁撮個璇锋枃妗堝拰閾炬帴锛?      area.innerHTML = `
+      // 专属二维码 → 弹出模拟海报弹窗（而非内嵌展示）
+      const partnerName = document.getElementById('partner-name-display').textContent || '刘导';
+      openPosterModal('武侯祠 · 三国文化研学', partnerName);
+      return; // 海报弹窗已打开，不需要隐藏 B 端面板
+    case 'invite':
+      // 批量邀请 → 展示邀请卡片（增强版，含完整邀请文案和链接）
+      area.innerHTML = `
         <div class="invite-card">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-            <span style="font-size:28px">馃摠</span>
+            <span style="font-size:28px">📨</span>
             <div>
-              <div style="font-weight:600;font-size:14px">鎵归噺閭€璇?/div>
-              <div style="font-size:11px;color:#9ca3af">涓€閿敓鎴愰個璇峰崱鐗囷紝鍒嗕韩鍒板闀跨兢/鏈嬪弸鍦?/div>
+              <div style="font-weight:600;font-size:14px">批量邀请</div>
+              <div style="font-size:11px;color:#9ca3af">一键生成邀请卡片，分享到家长群/朋友圈</div>
             </div>
           </div>
-          <!-- 閭€璇峰崱鐗囬瑙?-->
+          <!-- 邀请卡片预览 -->
           <div class="invite-msg">
-            <div style="text-align:center;font-weight:700;font-size:14px;color:#4f46e5;margin-bottom:8px">馃彌 绂绘嘲AI鐮斿 路 瀹堕暱涓撳睘閭€璇?/div>
+            <div style="text-align:center;font-weight:700;font-size:14px;color:#4f46e5;margin-bottom:8px">🏛 离泰AI研学 · 家长专属邀请</div>
             <div style="line-height:2">
-              鍚勪綅瀹堕暱濂斤紒<br>
-              绂绘嘲AI鐮斿路<b>姝︿警绁犺绋?/b>鏈懆鏈彂鍥紝<br>
-              瀛╁瓙灏嗙敤AI鍒涗綔涓夊浗娓告垙鍜屽井鐢靛奖锛?br><br>
-              馃搮 鏃堕棿锛?鏈?4鏃ワ紙鍛ㄥ叚锛?:00-16:00<br>
-              馃搷 鍦扮偣锛氭垚閮芥渚<br>
-              馃懁 鎺ㄨ崘浜猴細${document.getElementById('partner-name-display').textContent || '鍒樺'}<br>
-              馃挵 鍘熶环楼259锛岄€氳繃姝ら摼鎺ユ姤鍚嶇珛鍑徛?10<br><br>
-              馃憞 鐐瑰嚮涓嬫柟閾炬帴绔嬪嵆鎶ュ悕 馃憞<br>
+              各位家长好！<br>
+              离泰AI研学·<b>武侯祠课程</b>本周末发团，<br>
+              孩子将用AI创作三国游戏和微电影！<br><br>
+              📅 时间：5月24日（周六）9:00-16:00<br>
+              📍 地点：成都武侯祠<br>
+              👤 推荐人：${document.getElementById('partner-name-display').textContent || '刘导'}<br>
+              💰 原价¥259，通过此链接报名立减¥110<br><br>
+              👇 点击下方链接立即报名 👇<br>
               <span style="color:#4f46e5;font-weight:600">https://lt.ai/ref/liudao_5821</span>
             </div>
           </div>
           <div style="display:flex;gap:8px">
-            <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);flex:1" onclick="showToast('閭€璇锋枃妗?閾炬帴宸插鍒跺埌鍓创鏉?)">馃搵 澶嶅埗閭€璇锋枃妗?/button>
-            <button class="btn-secondary btn-sm" style="flex:1;text-align:center" onclick="showToast('宸茬敓鎴愪笓灞為摼鎺ワ紝鍙垎浜埌寰俊')">馃摛 鍒嗕韩鍒板井淇?/button>
+            <button class="btn-primary" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);flex:1" onclick="showToast('邀请文案+链接已复制到剪贴板')">📋 复制邀请文案</button>
+            <button class="btn-secondary btn-sm" style="flex:1;text-align:center" onclick="showToast('已生成专属链接，可分享到微信')">📤 分享到微信</button>
           </div>
         </div>
-        <div style="text-align:center;margin-top:8px"><span style="color:#7c3aed;cursor:pointer;font-size:12px" onclick="toolBack()">鈫?杩斿洖宸ュ叿鍒楄〃</span></div>
+        <div style="text-align:center;margin-top:8px"><span style="color:#7c3aed;cursor:pointer;font-size:12px" onclick="toolBack()">← 返回工具列表</span></div>
       `;
       break;
     case 'clients':
       const clients = [
-        {name:'鐜嬪厛鐢?,init:3,time:'5鏈?1鏃?路 宸蹭粯娆?,tag:'宸叉垚浜?楼169',tagClass:'badge-green'},
-        {name:'闄堝コ澹?,init:2,time:'5鏈?0鏃?路 宸蹭粯娆?,tag:'宸叉垚浜?楼219',tagClass:'badge-green'},
-        {name:'寮犵埜鐖?,init:6,time:'5鏈?9鏃?路 娴忚涓?,tag:'鏈浆鍖?,tagClass:'badge-orange'},
-        {name:'鏉庡濡?,init:8,time:'5鏈?8鏃?路 鍜ㄨ涓?,tag:'璺熻繘涓?,tagClass:'badge-blue'},
-        {name:'鍛ㄥコ澹?,init:4,time:'5鏈?5鏃?路 宸蹭粯娆?,tag:'宸叉垚浜?楼149',tagClass:'badge-green'},
-        {name:'璧靛厛鐢?,init:5,time:'5鏈?4鏃?路 娴忚涓?,tag:'鏈浆鍖?,tagClass:'badge-orange'},
+        {name:'王先生',init:3,time:'5月21日 · 已付款',tag:'已成交 ¥169',tagClass:'badge-green'},
+        {name:'陈女士',init:2,time:'5月20日 · 已付款',tag:'已成交 ¥219',tagClass:'badge-green'},
+        {name:'张爸爸',init:6,time:'5月19日 · 浏览中',tag:'未转化',tagClass:'badge-orange'},
+        {name:'李妈妈',init:8,time:'5月18日 · 咨询中',tag:'跟进中',tagClass:'badge-blue'},
+        {name:'周女士',init:4,time:'5月15日 · 已付款',tag:'已成交 ¥149',tagClass:'badge-green'},
+        {name:'赵先生',init:5,time:'5月14日 · 浏览中',tag:'未转化',tagClass:'badge-orange'},
       ];
       area.innerHTML = `
-        <div style="font-weight:600;font-size:14px;margin-bottom:8px">馃懃 鎴戠殑瀹㈡埛锛?{clients.length}浜猴級</div>
+        <div style="font-weight:600;font-size:14px;margin-bottom:8px">👥 我的客户（${clients.length}人）</div>
         <div style="display:flex;gap:6px;margin-bottom:10px;font-size:11px">
-          <span style="padding:4px 10px;background:#7c3aed;color:#fff;border-radius:12px;font-size:10px">鍏ㄩ儴</span>
-          <span style="padding:4px 10px;background:#f5f3ff;color:#7c3aed;border-radius:12px;font-size:10px;cursor:pointer">宸叉垚浜?3</span>
-          <span style="padding:4px 10px;background:#f5f3ff;color:#7c3aed;border-radius:12px;font-size:10px;cursor:pointer">璺熻繘涓?3</span>
+          <span style="padding:4px 10px;background:#7c3aed;color:#fff;border-radius:12px;font-size:10px">全部</span>
+          <span style="padding:4px 10px;background:#f5f3ff;color:#7c3aed;border-radius:12px;font-size:10px;cursor:pointer">已成交 3</span>
+          <span style="padding:4px 10px;background:#f5f3ff;color:#7c3aed;border-radius:12px;font-size:10px;cursor:pointer">跟进中 3</span>
         </div>
         ${clients.map(c=>`
           <div class="client-item">
@@ -1992,9 +2004,9 @@ function showToolDetail(tool){
           </div>
         `).join('')}
         <div style="margin-top:12px;text-align:center">
-          <button class="btn-secondary btn-sm" onclick="showToast('鍗冲皢鎻愰啋鏈浆鍖栧鎴?)">馃敂 鎻愰啋鏈浆鍖栧鎴?/button>
+          <button class="btn-secondary btn-sm" onclick="showToast('即将提醒未转化客户')">🔔 提醒未转化客户</button>
         </div>
-        <div style="text-align:center;margin-top:8px"><span style="color:#7c3aed;cursor:pointer;font-size:12px" onclick="toolBack()">鈫?杩斿洖宸ュ叿鍒楄〃</span></div>
+        <div style="text-align:center;margin-top:8px"><span style="color:#7c3aed;cursor:pointer;font-size:12px" onclick="toolBack()">← 返回工具列表</span></div>
       `;
       break;
   }
@@ -2022,57 +2034,76 @@ function filterProjects(status, el){
 function openWithdrawModal(){
   const modal = document.getElementById('purchase-modal');
   modal.classList.add('show');
-  document.getElementById('modal-title').textContent='鎻愮幇纭';
+  document.getElementById('modal-title').textContent='提现确认';
   document.getElementById('modal-desc').innerHTML = `
     <div class="withdraw-form">
-      <div style="text-align:left;font-size:13px;color:#6b7280">鍙彁鐜伴噾棰濓細<b style="color:#5b21b6;font-size:18px">楼6,280</b></div>
-      <label style="font-size:12px;color:#6b7280;display:block;margin-top:10px">鎻愮幇閲戦</label>
+      <div style="text-align:left;font-size:13px;color:#6b7280">可提现金额：<b style="color:#5b21b6;font-size:18px">¥6,280</b></div>
+      <label style="font-size:12px;color:#6b7280;display:block;margin-top:10px">提现金额</label>
       <input type="number" id="withdraw-amount" value="6280" min="100" style="font-weight:600;font-size:16px;color:#1f2937">
-      <label style="font-size:12px;color:#6b7280;display:block">鍒拌处璐︽埛</label>
-      <input type="text" value="鍒樺 路 灏惧彿 6821" readonly style="background:#f3f4f6">
-      <div style="font-size:10px;color:#9ca3af;margin:8px 0;text-align:left">棰勮30鍒嗛挓鍐呭埌璐?路 鍏嶆墜缁垂</div>
+      <label style="font-size:12px;color:#6b7280;display:block">到账账户</label>
+      <input type="text" value="刘导 · 尾号 6821" readonly style="background:#f3f4f6">
+      <div style="font-size:10px;color:#9ca3af;margin:8px 0;text-align:left">预计30分钟内到账 · 免手续费</div>
     </div>
   `;
   const closeBtn = modal.querySelector('.btn-primary');
-  closeBtn.textContent = '纭鎻愮幇';
+  closeBtn.textContent = '确认提现';
   closeBtn.onclick = function(){
     modal.classList.remove('show');
-    showToast('馃挵 鎻愮幇鐢宠宸叉彁浜わ紝棰勮30鍒嗛挓鍐呭埌璐?);
-    modal.querySelector('.btn-primary').textContent = '濂界殑';
+    showToast('💰 提现申请已提交，预计30分钟内到账');
+    modal.querySelector('.btn-primary').textContent = '好的';
     modal.querySelector('.btn-primary').onclick = closeModal;
   };
 }
 </script>
 
 <!--
-==================== 淇敼娓呭崟 ====================
+==================== 修改清单 ====================
 
-1. 銆怬PC娓呴櫎銆?   - 鍒犻櫎 C绔垎閿€鐢ㄦ埛鍗＄墖 "OPC璁よ瘉閿€鍞? 鈫?"璁よ瘉閿€鍞?
-   - 鍒犻櫎 鎶ュ悕鎴愬姛寮圭獥 "OPC璁よ瘉閿€鍞?路 鎮ㄧ殑涓撳睘椤鹃棶" 鈫?"璁よ瘉閿€鍞?路 鎮ㄧ殑涓撳睘椤鹃棶"
-   - 鍒犻櫎 璁㈠崟纭椤?"鏉庡锛圤PC璁よ瘉閿€鍞級" 鈫?"鏉庡锛堣璇侀攢鍞級"
-   - 鍏ㄥ眬鎼滅储纭鏃犻仐婕?
-2. 銆愪綔鍝乀ab琛ュ叏銆?   - savedWorks 鍒濆鏁版嵁鏀逛负鏇村畬鏁寸殑绀轰緥锛氳崏鑸瑰€熺灏勫嚮娓告垙銆佹渚寤虹瓚宸＄ぜ瑙嗛
-   - 鏂板 .work-card 鏍峰紡锛堝惈 gam-cover/video-cover 鑳屾櫙 + work-body + work-type-tag + work-date锛?   - renderWorks() 杈撳嚭鍚被鍨嬫爣绛撅紙娓告垙/瑙嗛锛夊拰鍒涗綔鏃ユ湡鐨勫畬鏁翠綔鍝佸崱鐗?   - 淇濈暀搴曢儴"鍒涗綔杈句汉涓撳睘浼樻儬"鍗＄墖
+1. 【OPC清除】
+   - 删除 C端分销用户卡片 "OPC认证销售" → "认证销售"
+   - 删除 报名成功弹窗 "OPC认证销售 · 您的专属顾问" → "认证销售 · 您的专属顾问"
+   - 删除 订单确认页 "李姐（OPC认证销售）" → "李姐（认证销售）"
+   - 全局搜索确认无遗漏
 
-3. 銆怋绔伐鍏锋ā鎷熷寮恒€?   - 涓撳睘浜岀淮鐮?娴锋姤锛氱偣鍑诲脊鍑?poster-modal锛堟ā鎷熸捣鎶ュ脊绐楋級锛屽惈娓愬彉鑳屾櫙銆佹椿鍔ㄦ爣棰樸€佹ā鎷熶簩缁寸爜SVG鍥炬銆佹帹鑽愪汉淇℃伅
-   - 鎵归噺閭€璇凤細澧炲己涓?invite-card 鏍峰紡锛屽惈瀹屾暣閭€璇锋枃妗堥瑙堝崱鐗囷紝澶嶅埗/鍒嗕韩鍙屾寜閽?   - 鏂板 openPosterModal() / closePosterModal() 鍑芥暟鍜?poster-modal-overlay 鏍峰紡
+2. 【作品Tab补全】
+   - savedWorks 初始数据改为更完整的示例：草船借箭射击游戏、武侯祠建筑巡礼视频
+   - 新增 .work-card 样式（含 gam-cover/video-cover 背景 + work-body + work-type-tag + work-date）
+   - renderWorks() 输出含类型标签（游戏/视频）和创作日期的完整作品卡片
+   - 保留底部"创作达人专属优惠"卡片
 
-4. 銆愬晢鍩庣瓫閫変紭鍖栥€?   - 绛涢€夌淮搴︿粠 "鍗氱墿棣?鑷劧鎺㈢储" 鏀逛负 "鏂囧寲鐮斿/绉戞妧鎺㈢储/鑷劧鍗氱墿" 涓変釜缁村害
-   - mallProducts 鏂板 space锛堣埅澶╃鎶€棣嗭級銆乻citech锛堝洓宸濈鎶€棣嗭級銆乸anda锛堝ぇ鐔婄尗鍩哄湴锛?   - 姣忎釜鍟嗗搧鍗＄墖娣诲姞 data-mall-cat 灞炴€э紝switchMallTab 鏀逛负鎸夊睘鎬х瓫閫?   - 鏂囧寲鐮斿: 鑽夊爞+涓夋槦鍫?姝︿警绁?3涓?锛涚鎶€鎺㈢储: 鑸ぉ+绉戞妧棣?2涓?锛涜嚜鐒跺崥鐗? 鑷劧鍗氱墿棣?鐔婄尗鍩哄湴(2涓?
-   - 鍏ㄩ儴鐘舵€佷笅鍏?涓晢鍝侊紝姣忎釜鍒嗙被閮芥湁瓒冲缁撴灉
+3. 【B端工具模拟增强】
+   - 专属二维码/海报：点击弹出 poster-modal（模拟海报弹窗），含渐变背景、活动标题、模拟二维码SVG图案、推荐人信息
+   - 批量邀请：增强为 invite-card 样式，含完整邀请文案预览卡片，复制/分享双按钮
+   - 新增 openPosterModal() / closePosterModal() 函数和 poster-modal-overlay 样式
 
-5. 銆怲ab鍒囨崲浼樺寲銆?   - 鎵€鏈?Tab 鍐呭宸插湪 DOM 涓娓叉煋锛屼笉鍐嶉€氳繃 innerHTML 鍏ㄩ噺閲嶇粯
-   - 鏂板 scrollPositions 瀵硅薄璺熻釜鍚?Tab/瀛愰〉闈㈢殑婊氬姩浣嶇疆
-   - switchTab() 鍒囨崲鍓嶄繚瀛樺綋鍓嶆粴鍔ㄤ綅缃紝鍒囨崲鍚庢仮澶嶇洰鏍?Tab 鐨勬粴鍔ㄤ綅缃?   - showSubPage() / hideSubPage() 鍚屾牱淇濆瓨鍜屾仮澶嶅瓙椤甸潰婊氬姩浣嶇疆
-   - 涓昏壊浠?#2563eb 缁熶竴鏀逛负 #4F46E5锛坕ndigo-600锛?
-6. 銆怱VG鍥炬爣鏇挎崲銆?   - Tab 鏍?涓浘鏍囨浛鎹负绠€娲佺嚎鏉￠鏍糞VG锛氬垱浣?鐢荤瑪)銆佷綔鍝?鏄剧ず鍣?銆佹姤鍛?鏂囨。)銆佸晢鍩?璐墿琚?銆佸垎閿€(鍒嗕韩缃戠粶)
-   - AI鍒涗綔宸ュ潑涓や釜鍏ュ彛 馃幃/馃幀 鏇挎崲涓?SVG锛氭父鎴忔墜鏌勫浘鏍?+ 瑙嗛鎾斁鍥炬爣
-   - SVG 浣跨敤 stroke:#4f46e5锛宎ctive 鐘舵€佽窡闅忎富鑹?
-7. 銆愯绋嬪皝闈㈠浘鐗囥€?   - 鎵€鏈夊晢鍩庡崱鐗囧皝闈㈡坊鍔犲唴鑱?SVG 鎻掑浘锛堣儗鏅眰锛夛紝emoji 浣滀负鍓嶆櫙瑁呴グ淇濈暀
-   - 鑽夊爞锛氫紶缁熷缓绛?绔瑰瓙锛涗笁鏄熷爢锛氶潚閾滈潰鍏凤紱姝︿警绁狅細鍙ゅ缓绛?鏉炬爲
-   - 鑸ぉ棣嗭細鐏+鏄熺悆锛涜嚜鐒跺崥鐗╅锛氭亹榫欓鏋讹紱绉戞妧棣嗭細鍘熷瓙杞ㄩ亾锛涚唺鐚熀鍦帮細鐔婄尗杞粨
-   - 绾?SVG 鏃犲閮ㄤ緷璧栵紝淇濇寔杞婚噺
+4. 【商城筛选优化】
+   - 筛选维度从 "博物馆/自然探索" 改为 "文化研学/科技探索/自然博物" 三个维度
+   - mallProducts 新增 space（航天科技馆）、scitech（四川科技馆）、panda（大熊猫基地）
+   - 每个商品卡片添加 data-mall-cat 属性，switchMallTab 改为按属性筛选
+   - 文化研学: 草堂+三星堆+武侯祠(3个)；科技探索: 航天+科技馆(2个)；自然博物: 自然博物馆+熊猫基地(2个)
+   - 全部状态下共7个商品，每个分类都有足够结果
 
-8. 銆愪富鑹茬粺涓€銆?   - 鍏ㄥ眬涓昏壊浠?#2563eb锛坆lue-600锛夌粺涓€鏀逛负 #4F46E5锛坕ndigo-600锛?   - 娑夊強锛歜tn-primary銆乶av-item.active銆乼ag銆乴oading-dots銆乺eport-header銆乫low-step銆乮nfo-panel绛?-->
+5. 【Tab切换优化】
+   - 所有 Tab 内容已在 DOM 中预渲染，不再通过 innerHTML 全量重绘
+   - 新增 scrollPositions 对象跟踪各 Tab/子页面的滚动位置
+   - switchTab() 切换前保存当前滚动位置，切换后恢复目标 Tab 的滚动位置
+   - showSubPage() / hideSubPage() 同样保存和恢复子页面滚动位置
+   - 主色从 #2563eb 统一改为 #4F46E5（indigo-600）
+
+6. 【SVG图标替换】
+   - Tab 栏5个图标替换为简洁线条风格SVG：创作(画笔)、作品(显示器)、报告(文档)、商城(购物袋)、分销(分享网络)
+   - AI创作工坊两个入口 🎮/🎬 替换为 SVG：游戏手柄图标 + 视频播放图标
+   - SVG 使用 stroke:#4f46e5，active 状态跟随主色
+
+7. 【课程封面图片】
+   - 所有商城卡片封面添加内联 SVG 插图（背景层），emoji 作为前景装饰保留
+   - 草堂：传统建筑+竹子；三星堆：青铜面具；武侯祠：古建筑+松树
+   - 航天馆：火箭+星球；自然博物馆：恐龙骨架；科技馆：原子轨道；熊猫基地：熊猫轮廓
+   - 纯 SVG 无外部依赖，保持轻量
+
+8. 【主色统一】
+   - 全局主色从 #2563eb（blue-600）统一改为 #4F46E5（indigo-600）
+   - 涉及：btn-primary、nav-item.active、tag、loading-dots、report-header、flow-step、info-panel等
+-->
 </body>
 </html>
